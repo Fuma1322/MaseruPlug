@@ -1,5 +1,5 @@
 import React from "react";
-import { NotebookPen, Globe, ChartScatter, Users, Hammer, Wrench, Scissors, Palette } from "lucide-react";
+import { Hammer, Wrench, Scissors, Palette } from "lucide-react";
 import Link from "next/link";
 
 const categories = [
