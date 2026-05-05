@@ -1,7 +1,10 @@
+import Hero from '@/components/Frontend/Hero'
 import React from 'react'
 
 export default function page() {
   return (
-    <div>Hello Maseru</div>
+    <div>
+        <Hero />
+    </div>
   )
 }
