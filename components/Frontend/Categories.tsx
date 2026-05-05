@@ -1,27 +1,26 @@
-import { motion } from "framer-motion";
 import React from "react";
-import { NotebookPen, Globe, ChartScatter, Users } from "lucide-react";
+import { NotebookPen, Globe, ChartScatter, Users, Hammer, Wrench, Scissors, Palette } from "lucide-react";
 import Link from "next/link";
 
 const categories = [
   {
-    icon: <NotebookPen className="h-16 w-16" />,
-    description: "Blog and Article Writing",
+    icon: <Palette className="h-24 w-24 text-[#16a34a]" />,
+    description: "Nail Techs",
     href: "#",
   },
   {
-    icon: <Users className="h-16 w-16" />,
-    description: "Website Content",
+    icon: <Scissors className="h-24 w-24 text-[#16a34a]" />,
+    description: "Salons",
     href: "#",
   },
   {
-    icon: <ChartScatter className="h-16 w-16" />,
-    description: "Content Strategy and Consulting",
+    icon: <Wrench className="h-24 w-24 text-[#16a34a]" />,
+    description: "Plumbers",
     href: "#",
   },
   {
-    icon: <Globe className="h-16 w-16" />,
-    description: "Social Media Management",
+    icon: <Hammer className="h-24 w-24 text-[#16a34a]" />,
+    description: "Carpenters",
     href: "#",
   },
 ];
@@ -32,13 +31,9 @@ export default function Categories() {
       <div className="py-14">
         <div className="max-w-screen-xl mx-auto px-4 md:px-8">
           <div className="max-w-xl mx-auto text-center">
-            <h3 className="text-[#204E51] text-3xl font-bold sm:text-4xl">
-              Our Service
+            <h3 className="text-[#111111] text-3xl font-bold sm:text-4xl">
+              Browse Categories
             </h3>
-            <p className="mt-3 flex items-center text-center justify-center">
-              Li Europan lingues es membres del sam familie. Lor <br /> separat
-              existentie es un myth Por scientie, musica.
-            </p>
           </div>
           <div className="mt-12 flex justify-center">
             <ul className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-x-8 gap-y-8">
