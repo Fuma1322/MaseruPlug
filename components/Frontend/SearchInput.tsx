@@ -23,7 +23,7 @@ export function SearchInput() {
   };
 
   return (
-    <div className="flex flex-col justify-center items-center px-4">
+    <div className="flex flex-col justify-center w-full items-center px-4">
       <PlaceholdersAndVanishInput
         placeholders={placeholders}
         onChange={handleChange}

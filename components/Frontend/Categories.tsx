@@ -1,5 +1,5 @@
 import React from "react";
-import { Hammer, Wrench, Scissors, Palette } from "lucide-react";
+import { ArrowRight, Hammer, Wrench, Scissors, Palette } from "lucide-react";
 import Link from "next/link";
 
 const categories = [
@@ -52,6 +52,12 @@ export default function Categories() {
                 </li>
               ))}
             </ul>
+          </div>
+          <div className="mt-8 text-center">
+            <Link href="/categories" className="inline-flex items-center gap-2 text-[#16a34a] font-bold hover:text-[#0f8b33]">
+              Browse More Categories
+              <ArrowRight className="h-4 w-4 font-bold" />
+            </Link>
           </div>
         </div>
       </div>
