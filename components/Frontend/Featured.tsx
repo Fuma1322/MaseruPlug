@@ -1,12 +1,8 @@
 "use client";
 
-import Image from "next/image";
-import {
-  Card,
-  CardContent,
-} from "@/components/ui/card";
-import { Button } from "@/components/ui/button";
 import { MapPin } from "lucide-react";
+import { Card, CardAction, CardDescription, CardFooter, CardHeader, CardTitle } from "../ui/card";
+import { Button } from "../ui/button";
 
 interface FeaturedItem {
   id: string;
@@ -27,14 +23,14 @@ const featuredItems: FeaturedItem[] = [
   {
     id: "3",
     title: "Nails By Lelo",
-    description: "Custom furniture and home repairs",
+    description: "Creative nail designs and treatments",
     image: "/lelo.jpg",
     location: "Maseru West"
   },
   {
     id: "4",
     title: "Perfect Woodworks",
-    description: "Creative nail designs and treatments",
+    description: "Custom furniture and home repairs",
     image: "/perfect.jpg",
     location: "Maseru North"
   },
@@ -48,32 +44,47 @@ export default function Featured() {
             Featured Business
           </h3>
         </div>
-      <div className="grid gap-6 sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-3">
-        {featuredItems.map((item) => (
-          <Card key={item.id} className="w-full max-w-full overflow-hidden p-0 shadow-xl border border-[#16a35a]">
-            <div className="relative h-60">
-                <Image
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+          {featuredItems.map((item) => (
+            <Card
+              key={item.id}
+              className="relative w-full pt-0 shadow-xl border border-[#25D366] overflow-hidden"
+            >
+              <div className="absolute inset-0 z-30 aspect-video bg-black/25" />
+
+              <img
                 src={item.image}
                 alt={item.title}
-                fill
-                className="object-cover"
-                />
-            </div>
+                className="relative z-20 aspect-video w-full object-cover"
+              />
 
-            <CardContent className="p-4 space-y-2">
-                <h3 className="font-bold text-xl">{item.title}</h3>
-                <p className="text-[#111111] font-semibold">{item.description}</p>
-                <div className="flex items-center gap-2">
-                  <span className="text-[#16a34a]"><MapPin /></span>
-                  <h4 className="text-[#111111] font-semibold">{item.location}</h4>
+              <CardHeader className="space-y-3">
+                <div className="flex items-start justify-between gap-3">
+                  <div>
+                    <CardTitle className="font-bold text-xl">
+                      {item.title}
+                    </CardTitle>
+
+                    <div className="flex items-center gap-1 mt-2 text-sm text-muted-foreground">
+                      <MapPin className="w-4 h-4 text-[#25D366]" />
+                      <span>{item.location}</span>
+                    </div>
+                  </div>
                 </div>
-                <Button variant="secondary" size="lg" className="w-full border border-[#16a34a] py-2 text-[#16a34a] hover:bg-[#16a34a] hover:text-white transition-colors duration-300 font-bold">
+
+                <CardDescription className="font-semibold text-[#111111]">
+                  {item.description}
+                </CardDescription>
+              </CardHeader>
+
+              <CardFooter className="flex items-center justify-center">
+                <Button className="w-full inline-flex h-12 transform hover:-translate-y-1 transition duration-300 animate-shimmer items-center justify-center rounded-md border-[2px] border-[#25D366] px-6 font-bold text-[#111111]">
                   View Profile
                 </Button>
-            </CardContent>
+              </CardFooter>
             </Card>
-        ))}
-      </div>
+          ))}
+        </div>
     </div>
   );
 }
