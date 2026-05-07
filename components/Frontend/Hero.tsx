@@ -1,7 +1,7 @@
 "use client";
 
 import Balancer from "react-wrap-balancer";
-import { Section, Container } from "@/components/ui/craft";
+import { Container } from "@/components/ui/craft";
 import { SearchInput } from "./SearchInput";
 
 const Hero = () => {
