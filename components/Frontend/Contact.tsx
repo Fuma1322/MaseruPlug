@@ -8,6 +8,7 @@ import {
 } from "lucide-react";
 import { FaFacebook, FaWhatsapp } from "react-icons/fa";
 import ContactCTA from "./ContactCTA";
+import { Button } from "../ui/button";
 
 const contactMethods = [
   {
@@ -110,11 +111,11 @@ export default function ContactPage() {
 
           {/* Section Heading */}
           <div className="max-w-2xl mx-auto text-center mb-14">
-            <h2 className="text-4xl md:text-5xl font-bold text-[#111111]">
+            <h2 className="text-3xl md:text-5xl font-bold text-[#111111]">
               Get In Touch
             </h2>
 
-            <p className="mt-4 text-neutral-500 text-lg">
+            <p className="mt-4 text-neutral-500 text-md">
               Choose your preferred way to connect with the MaseruPlug team.
             </p>
           </div>
@@ -143,13 +144,15 @@ export default function ContactPage() {
                 </p>
 
                 {/* Button */}
-                <Link
+                <Button className="mt-8 inline-flex w-full h-12 items-center gap-2 border-3px border-[#25D366] hover:bg-[#1ebe5d] text-[#111111] font-semibold px-6 py-3 rounded-xl transition-all duration-300"
+                >
+                    <Link
                   href={method.href}
                   target="_blank"
-                  className="mt-8 inline-flex items-center gap-2 bg-[#111111] hover:bg-[#1ebe5d] text-white font-semibold px-6 py-3 rounded-xl transition-all duration-300"
                 >
                   {method.button}
                 </Link>
+                </Button>
               </div>
             ))}
           </div>
