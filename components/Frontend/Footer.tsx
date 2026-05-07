@@ -1,5 +1,4 @@
 import React from 'react'
-import { Button } from '../ui/button'
 import Link from 'next/link'
 import { FaWhatsapp, FaFacebook } from 'react-icons/fa'
 
