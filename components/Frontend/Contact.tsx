@@ -7,6 +7,7 @@ import {
   Mail,
 } from "lucide-react";
 import { FaFacebook, FaWhatsapp } from "react-icons/fa";
+import ContactCTA from "./ContactCTA";
 
 const contactMethods = [
   {
@@ -154,6 +155,7 @@ export default function ContactPage() {
           </div>
         </div>
       </section>
+      <ContactCTA />
     </div>
   );
 }
