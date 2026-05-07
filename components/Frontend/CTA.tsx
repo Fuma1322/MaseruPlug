@@ -24,7 +24,7 @@ export default function CTA() {
 
                 {/* Right CTA */}
                 <div className="w-full md:w-auto">
-                    <Button className="w-full md:w-auto inline-flex h-12 lg:w-[210px] transform hover:-translate-y-1 transition duration-300 animate-shimmer items-center justify-center rounded-md bg-[linear-gradient(110deg,#25D366_20%,#13a047_70%,#25D366_80%)] bg-[length:200%_100%] px-6 font-bold text-[#111111] focus:outline-none focus:ring-2 focus:ring-slate-400 focus:ring-offset-2">
+                    <Button className="w-full md:w-auto inline-flex h-12 lg:w-[210px] transform hover:-translate-y-1 transition duration-300 animate-shimmer items-center justify-center rounded-md bg-[linear-gradient(110deg,#25D366_20%,#13a047_70%,#25D366_80%)] bg-[length:200%_100%] px-6 font-bold text-[#111111]">
                         Contact On WhatsApp
                     </Button>
                 </div>

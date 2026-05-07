@@ -9,7 +9,7 @@ export default function Navbar () {
     const [state, setState] = useState(false)
 
     const navigation = [
-        { title: "Categories", path: "/categories" },
+        { title: "Categories", path: "/category/[slug]" },
         { title: "Contact", path: "/contact" },
     ]
 
@@ -17,7 +17,6 @@ export default function Navbar () {
         <nav className="bg-white w-full md:static md:text-sm md:border-none m-0 p-0">
             <div className="items-center px-4 max-w-screen-xl mx-auto md:flex md:px-8">
                 <div className="flex items-center justify-between py-3 md:py-5 md:block">
-                    {/* logo text */}
                     <Link href="/">
                         <h2 className="font-extrabold text-2xl"><span className='text-[#16a34a]'>Maseru</span>Plug</h2>
                     </Link>
@@ -52,9 +51,8 @@ export default function Navbar () {
                                 )
                             })
                         }
-                        {/* Login and Sign Up buttons */}
                         <div className="flex flex-col gap-y-4 gap-x-6 md:flex-row md:space-y-0">
-                            <Button className="inline-flex h-12 lg:w-[210px] animate-shimmer items-center justify-center rounded-md bg-[linear-gradient(110deg,#16a34a_20%,#13a047_50%,#16a34a_80%)] bg-[length:200%_100%] px-6 font-bold text-[#111111] transition-colors focus:outline-none focus:ring-2 focus:ring-slate-400 focus:ring-offset-2 focus:ring-offset-slate-50">
+                            <Button className="inline-flex h-12 lg:w-[210px] animate-shimmer items-center justify-center rounded-md bg-[linear-gradient(110deg,#16a34a_20%,#13a047_50%,#16a34a_80%)] bg-[length:200%_100%] px-6 font-bold text-[#111111]">
                                 Contact On WhatsApp
                             </Button>
                         </div>
