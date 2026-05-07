@@ -11,10 +11,10 @@ const Hero = () => {
       <div
         className="relative h-[600px] bg-cover bg-center flex items-center justify-center"
         style={{
-          backgroundImage: `url("/hero.jpg")`,
+          backgroundImage: `url("/hero2.jpg")`,
         }}
       >
-        <div className="absolute inset-0 bg-gradient-to-b from-black/50 via-black/20 to-transparent" />
+        <div className="absolute inset-0" />
         {/* Overlay content */}
         <Container className="relative flex flex-col items-center text-center text-white p-10 rounded-md max-w-7xl">
         <h1 className="scroll-m-20 text-5xl font-bold tracking-tight lg:text-7xl text-[#111111]">
