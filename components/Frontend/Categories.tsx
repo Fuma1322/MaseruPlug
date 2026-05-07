@@ -4,22 +4,22 @@ import Link from "next/link";
 
 const categories = [
   {
-    icon: <Palette className="h-24 w-24 text-[#16a34a]" />,
+    icon: <Palette className="h-24 w-24 text-[#25D366]" />,
     description: "Nail Techs",
     href: "/category/1",
   },
   {
-    icon: <Scissors className="h-24 w-24 text-[#16a34a]" />,
+    icon: <Scissors className="h-24 w-24 text-[#25D366]" />,
     description: "Salons",
     href: "#",
   },
   {
-    icon: <Wrench className="h-24 w-24 text-[#16a34a]" />,
+    icon: <Wrench className="h-24 w-24 text-[#25D366]" />,
     description: "Plumbers",
     href: "#",
   },
   {
-    icon: <Hammer className="h-24 w-24 text-[#16a34a]" />,
+    icon: <Hammer className="h-24 w-24 text-[#25D366]" />,
     description: "Carpenters",
     href: "#",
   },
@@ -54,7 +54,7 @@ export default function Categories() {
             </ul>
           </div>
           <div className="mt-8 text-center">
-            <Link href="/category/1" scroll = {false} className="inline-flex items-center gap-2 text-[#16a34a] font-bold hover:text-[#0f8b33]">
+            <Link href="/category/1" scroll = {false} className="inline-flex items-center gap-2 text-[#25D366] font-bold hover:text-[#16a34a]">
               Browse More Categories
               <ArrowRight className="h-4 w-4 font-bold" />
             </Link>

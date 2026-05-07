@@ -1,4 +1,4 @@
-import Profiles from '@/components/Frontend/Profiles'
+import Profiles from '@/components/Frontend/ProfilesPage'
 import React from 'react'
 
 export default function page() {

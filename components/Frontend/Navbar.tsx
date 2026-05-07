@@ -18,7 +18,7 @@ export default function Navbar () {
             <div className="items-center px-4 max-w-screen-xl mx-auto md:flex md:px-8">
                 <div className="flex items-center justify-between py-3 md:py-5 md:block">
                     <Link href="/">
-                        <h2 className="font-extrabold text-2xl"><span className='text-[#16a34a]'>Maseru</span>Plug</h2>
+                        <h2 className="font-extrabold text-2xl"><span className='text-[#25D366]'>Maseru</span>Plug</h2>
                     </Link>
                     <div className="md:hidden">
                         <button className="text-gray-500 hover:text-gray-800"
@@ -52,7 +52,7 @@ export default function Navbar () {
                             })
                         }
                         <div className="flex flex-col gap-y-4 gap-x-6 md:flex-row md:space-y-0">
-                            <Button className="inline-flex h-12 lg:w-[210px] animate-shimmer items-center justify-center rounded-md bg-[linear-gradient(110deg,#16a34a_20%,#13a047_50%,#16a34a_80%)] bg-[length:200%_100%] px-6 font-bold text-[#111111]">
+                            <Button className="inline-flex h-12 lg:w-[210px] animate-shimmer items-center justify-center rounded-md bg-[linear-gradient(110deg,#25D366_20%,#13a047_50%,#25D366_80%)] bg-[length:200%_100%] px-6 font-bold text-[#111111]">
                                 Contact On WhatsApp
                             </Button>
                         </div>

@@ -78,11 +78,14 @@ export default function Featured() {
               </CardHeader>
 
               <CardFooter className="flex items-center justify-center">
-                <Link href="/business/1">
-                <Button className="w-full inline-flex h-12 transform hover:-translate-y-1 transition duration-300 animate-shimmer items-center justify-center rounded-md border-[2px] border-[#25D366] px-6 font-bold text-[#111111]">
+                <Button
+                  asChild
+                  className="w-full inline-flex h-12 transform hover:-translate-y-1 transition duration-300 animate-shimmer items-center justify-center rounded-md border-[2px] border-[#25D366] px-6 font-bold text-[#111111]"
+                > 
+                  <a href="/business/1">
                   View Profile
+                  </a>
                 </Button>
-                </Link>
               </CardFooter>
             </Card>
           ))}
