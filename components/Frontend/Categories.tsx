@@ -6,7 +6,7 @@ const categories = [
   {
     icon: <Palette className="h-24 w-24 text-[#16a34a]" />,
     description: "Nail Techs",
-    href: "/",
+    href: "/category/1",
   },
   {
     icon: <Scissors className="h-24 w-24 text-[#16a34a]" />,
@@ -36,7 +36,7 @@ export default function Categories() {
             </h3>
           </div>
           <div className="mt-12 flex justify-center">
-            <ul className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-x-8 gap-y-8">
+            <ul className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-x-8 gap-y-4">
               {categories.map((category, idx) => (
                 <li key={idx}>
                   <div className="h-full w-full max-w-xs rounded-2xl bg-white p-6 border border-neutral-200 shadow-xl flex flex-col items-center justify-center">
@@ -54,7 +54,7 @@ export default function Categories() {
             </ul>
           </div>
           <div className="mt-8 text-center">
-            <Link href="/categories" className="inline-flex items-center gap-2 text-[#16a34a] font-bold hover:text-[#0f8b33]">
+            <Link href="/category/1" scroll = {false} className="inline-flex items-center gap-2 text-[#16a34a] font-bold hover:text-[#0f8b33]">
               Browse More Categories
               <ArrowRight className="h-4 w-4 font-bold" />
             </Link>

@@ -6,7 +6,7 @@ export default function Footer() {
 
     const quickLinks = [
         {
-            href: '/categories',
+            href: '/category/1',
             name: 'Categories'
         },
         {

@@ -9,7 +9,7 @@ export default function Navbar () {
     const [state, setState] = useState(false)
 
     const navigation = [
-        { title: "Categories", path: "/categories" },
+        { title: "Categories", path: "/category/1" },
         { title: "Contact", path: "/contact" },
     ]
 
