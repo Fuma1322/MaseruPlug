@@ -11,7 +11,7 @@ export default function Footer() {
         },
         {
             href: '/contact',
-            name: 'Contact'
+            name: 'List Your Business'
         },
     ]
 

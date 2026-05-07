@@ -186,14 +186,14 @@ export default function ProfilePage() {
 
           </div>
         </div>
-        <>
+        <div className="my-20">
          <section className="py-10 px-4">
           <div className="max-w-screen-xl mx-auto border border-[#25D366] rounded-2xl shadow-xl p-6 md:p-8 flex flex-col md:flex-row items-center justify-between gap-8">
 
             {/* Left Content */}
             <div className="flex flex-col sm:flex-row items-center text-center sm:text-left gap-5 flex-1">
               <div>
-                <h3 className="text-2xl sm:text-4xl lg:text-5xl font-bold leading-tight p-3">
+                <h3 className="text-4xl lg:text-5xl font-bold leading-tight p-3">
                   Contact this business
                 </h3>
               </div>
@@ -224,7 +224,7 @@ export default function ProfilePage() {
 
           </div>
         </section>
-        </>
+        </div>
     </div>
 
   );
