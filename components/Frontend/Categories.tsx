@@ -36,7 +36,7 @@ export default function Categories() {
             </h3>
           </div>
           <div className="mt-12 flex justify-center">
-            <ul className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-x-8 gap-y-4">
+            <ul className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-x-4 gap-y-8">
               {categories.map((category, idx) => (
                 <li key={idx}>
                   <div className="h-full w-full max-w-xs rounded-2xl bg-white p-6 border border-neutral-200 shadow-xl flex flex-col items-center justify-center">
