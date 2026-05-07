@@ -123,7 +123,7 @@ export default function Featured() {
 
   return (
     <div className="space-y-6 p-4">
-      <div className="w-full flex flex-col justify-center items-center bg-teal-50/50 rounded-xl h-[250px] py-14 px-6 shadow-xl">
+      <div className="w-full flex flex-col justify-center items-center text-center bg-teal-50/60 rounded-xl  min-h-[180px] sm:min-h-[250px] py-14 px-6 shadow-xl">
         <h2 className="text-3xl text-[#111111] sm:text-5xl font-bold">
           Nail Techs In Maseru
         </h2>

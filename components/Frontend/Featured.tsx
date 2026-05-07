@@ -41,7 +41,7 @@ export default function Featured() {
     <div className="space-y-6 p-4">
         <div className="max-w-xl mx-auto text-center">
           <h3 className="text-[#111111] text-3xl py-4 font-bold sm:text-4xl">
-            Featured Business
+            Featured Businesses
           </h3>
         </div>
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">

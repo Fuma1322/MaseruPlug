@@ -14,7 +14,7 @@ export default function Navbar () {
     ]
 
     return (
-        <nav className="bg-white w-full md:static md:text-sm md:border-none m-0 p-0">
+        <nav className="sticky top-0 z-50 bg-white w-full md:text-sm md:border-none m-0 p-0">
             <div className="items-center px-4 max-w-screen-xl mx-auto md:flex md:px-8">
                 <div className="flex items-center justify-between py-3 md:py-5 md:block">
                     <Link href="/">
