@@ -9,7 +9,7 @@ export default function Navbar () {
     const [state, setState] = useState(false)
 
     const navigation = [
-        { title: "Categories", path: "/category/[slug]" },
+        { title: "Categories", path: "/categories" },
         { title: "Contact", path: "/contact" },
     ]
 
@@ -44,9 +44,9 @@ export default function Navbar () {
                             navigation.map((item, idx) => {
                                 return (
                                     <li key={idx} className="text-black font-semibold hover:text-gray-600">
-                                        <a href={item.path} className="block mr-20">
+                                        <Link href={item.path} className="block mr-20">
                                             {item.title}
-                                        </a>
+                                        </Link>
                                     </li>
                                 )
                             })

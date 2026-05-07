@@ -1,7 +1,7 @@
 "use client";
 
-import { MapPin } from "lucide-react";
-import { Card, CardAction, CardDescription, CardFooter, CardHeader, CardTitle } from "../ui/card";
+import { Link, MapPin } from "lucide-react";
+import { Card, CardDescription, CardFooter, CardHeader, CardTitle } from "../ui/card";
 import { Button } from "../ui/button";
 
 interface FeaturedItem {
@@ -78,9 +78,11 @@ export default function Featured() {
               </CardHeader>
 
               <CardFooter className="flex items-center justify-center">
+                <Link href="/business/[slug]" className="w-full">
                 <Button className="w-full inline-flex h-12 transform hover:-translate-y-1 transition duration-300 animate-shimmer items-center justify-center rounded-md border-[2px] border-[#25D366] px-6 font-bold text-[#111111]">
                   View Profile
                 </Button>
+                </Link>
               </CardFooter>
             </Card>
           ))}

@@ -6,7 +6,7 @@ const categories = [
   {
     icon: <Palette className="h-24 w-24 text-[#16a34a]" />,
     description: "Nail Techs",
-    href: "#",
+    href: "/",
   },
   {
     icon: <Scissors className="h-24 w-24 text-[#16a34a]" />,
