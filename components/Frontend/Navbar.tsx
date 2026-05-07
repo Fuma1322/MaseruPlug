@@ -9,8 +9,9 @@ export default function Navbar () {
     const [state, setState] = useState(false)
 
     const navigation = [
+        { title: "Home", path: "/" },
         { title: "Categories", path: "/category/1" },
-        { title: "Contact", path: "/contact" },
+        { title: "List Your Business", path: "/contact" },
     ]
 
     return (
@@ -53,7 +54,9 @@ export default function Navbar () {
                         }
                         <div className="flex flex-col gap-y-4 gap-x-6 md:flex-row md:space-y-0">
                             <Button className="inline-flex h-12 lg:w-[210px] animate-shimmer items-center justify-center rounded-md bg-[linear-gradient(110deg,#25D366_20%,#13a047_50%,#25D366_80%)] bg-[length:200%_100%] px-6 font-bold text-[#111111]">
-                                Contact On WhatsApp
+                                <Link href="https://wa.me/+26663272145" target="_blank">
+                                    Contact On WhatsApp
+                                </Link>
                             </Button>
                         </div>
                     </ul>
