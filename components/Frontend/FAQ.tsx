@@ -26,12 +26,15 @@ const FAQ = () => {
               text= {
                 <>
                 MaseruPlug is a youth-led initiative that serves as a comprehensive platform
-                for connecting the youth of Lesotho with a wide range of opportunities, resources, 
-                and information. Our mission is to empower young people by providing them with access
-                to educational content, job listings, events, and various other resources that can help 
-                them thrive in their personal and professional lives. Through our user-friendly website and 
-                mobile app, we aim to create a vibrant community where the youth can discover and engage with 
-                opportunities that align with their interests and aspirations.
+                for connecting the citizens of Lesotho with a wide range of services. Our mission
+                is to empower small businesses by providing them with access
+                to an online presence that can help their businesses grow and succeed. 
+                We are dedicated to fostering economic growth and development in Lesotho by bridging 
+                the gap between local businesses and the community. Through our platform, we aim to create 
+                opportunities for small businesses to thrive, while also providing valuable resources and information
+                to help individuals. Through our user-friendly website and 
+                mobile app, we aim to create a vibrant community where the Maseru can discover and engage with 
+                services that align with their day to day needs.
                 </>
               }
             />
@@ -40,7 +43,7 @@ const FAQ = () => {
               text={
                 <>
                 To list your business on MaseruPlug, simply click the "Contact Us" 
-                button below and send us a message with your business details. Our team
+                buttons above and send us a message with your business details. Our team
                 will review your submission and get back to you with the next steps to get your business listed on our platform.
                 </>
               }
