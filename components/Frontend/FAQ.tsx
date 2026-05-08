@@ -12,7 +12,7 @@ const FAQ = () => {
               <span className="mb-2 block text-lg font-bold text-gray-700 dark:text-gray-100">
                 FAQ
               </span>
-              <h2 className="mb-4 text-3xl font-bold text-dark dark:text-gray-400 sm:text-[40px]/[48px]">
+              <h2 className="mb-4 text-3xl font-bold text-dark dark:text-gray-400 sm:text-[40px]/[48px] p-4">
                 Any Questions? Look Here
               </h2>
             </div>
@@ -25,47 +25,39 @@ const FAQ = () => {
               header="What is MaseruPlug?"
               text= {
                 <>
-                MaseruPlug is a youth-led initiative that serves as a comprehensive platform
-                for connecting the citizens of Lesotho with a wide range of services. Our mission
-                is to empower small businesses by providing them with access
-                to an online presence that can help their businesses grow and succeed. 
-                We are dedicated to fostering economic growth and development in Lesotho by bridging 
-                the gap between local businesses and the community. Through our platform, we aim to create 
-                opportunities for small businesses to thrive, while also providing valuable resources and information
-                to help individuals. Through our user-friendly website and 
-                mobile app, we aim to create a vibrant community where the Maseru can discover and engage with 
-                services that align with their day to day needs.
+                MaseruPlug is a local platform that helps people
+                in Maseru find trusted service providers such as 
+                nail techs, hair salons, carpenters, and other small 
+                businesses—all in one place.
                 </>
               }
             />
             <AccordionItem
-              header="How do I list my business on MaseruPlug?"
+              header="How do I contact a business on MaseruPlug?"
               text={
                 <>
-                To list your business on MaseruPlug, simply click the "Contact Us" 
-                buttons above and send us a message with your business details. Our team
-                will review your submission and get back to you with the next steps to get your business listed on our platform.
+                Simply open a business profile and click the WhatsApp 
+                or Call button to contact the business directly. There 
+                are no middlemen or booking fees.
                 </>
               }
             />
           </div>
           <div className="w-full px-4 lg:w-1/2">
              <AccordionItem
-              header="How can I contact MaseruPlug?"
+              header="How much does it cost to list my business?"
               text={
                 <>
-                You can contact MaseruPlug through our links above, where you will 
-                find various methods to get in touch with us. Whether you prefer to call,
-                or reach out via social media, we are here to assist you with any questions or inquiries you may have.
+                We offer affordable listing options for small businesses, 
+                including once-off setup and monthly plans with ongoing support 
+                and promotion. Contact us for current pricing.
                 </>
               }
             />
             <AccordionItem
-              header="How long does it take to get listed on MaseruPlug?"
-              text="The time it takes to get listed on MaseruPlug can vary depending 
-              on the volume of submissions we receive. However, our team strives to review 
-              and process all listings as quickly as possible, typically within a few business 
-              days. If you have any specific questions about your listing status, please feel free to contact us directly."
+              header="How can I list my business on MaseruPlug?"
+              text="If you own a business and want more customers, contact us on WhatsApp. 
+              We’ll create your profile, add your photos and contact details, and help you get discovered online."
             />
           </div>
         </div>
