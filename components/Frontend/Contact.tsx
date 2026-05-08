@@ -32,13 +32,6 @@ const contactMethods = [
     href: "tel:+26663272145",
     button: "Call Now",
   },
-  {
-    icon: <Mail className="h-20 w-20 text-red-500" />,
-    title: "Email Us",
-    description: "Send us an email and we’ll get back to you.",
-    href: "mailto:hello@maseruplug.com",
-    button: "Send Email",
-  },
 ];
 
 export default function ContactPage() {
@@ -121,7 +114,7 @@ export default function ContactPage() {
           </div>
 
           {/* Cards */}
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
 
             {contactMethods.map((method, idx) => (
               <div
