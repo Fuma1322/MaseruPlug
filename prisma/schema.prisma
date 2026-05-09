@@ -1,0 +1,58 @@
+// schema.prisma
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "mongodb"
+}
+
+enum BusinessStatus {
+  PENDING
+  ACTIVE
+  INACTIVE
+}
+
+model Category {
+  id          String     @id @default(auto()) @map("_id") @db.ObjectId
+  name        String
+  slug        String     @unique
+  description String?
+  imageUrl    String?
+  icon        String?
+
+  businesses  Business[]
+
+  createdAt   DateTime   @default(now())
+  updatedAt   DateTime   @updatedAt
+}
+
+model Business {
+  id              String          @id @default(auto()) @map("_id") @db.ObjectId
+
+  name            String
+  slug            String          @unique
+  description     String
+  location        String
+
+  phone           String
+  whatsapp        String
+
+  images          String[]
+
+  facebookUrl     String?
+  websiteUrl      String?
+
+  metaTitle       String?
+  metaDescription String?
+
+  isFeatured      Boolean         @default(false)
+  status          BusinessStatus  @default(PENDING)
+
+  categoryId      String          @db.ObjectId
+  category        Category        @relation(fields: [categoryId], references: [id])
+
+  createdAt       DateTime        @default(now())
+  updatedAt       DateTime        @updatedAt
+}
