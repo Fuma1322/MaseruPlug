@@ -113,7 +113,7 @@ export default function Featured() {
               <CardFooter>
                 <Button
                   asChild
-                  className="w-full h-12 rounded-xl border-[#25D366] text-[#25D366] font-semibold shadow-sm hover:bg-[#20bd5a]"
+                  className="w-full h-12 rounded-xl border-[#25D366] text-[#25D366] font-semibold shadow-sm hover:text-[#111111]"
                 >
                   <Link href={`/business/${item.slug}`}>
                     View Profile

@@ -1,10 +1,10 @@
+import AdminCards from '@/components/Dashboard/AdminCards'
 import React from 'react'
 
-export default async function page() {
-  
+export default function page() {
   return (
     <div>
-        <h1 className="text-2xl font-bold mb-4">Dashboard</h1>
+        <AdminCards />
     </div>
-  );
+  )
 }

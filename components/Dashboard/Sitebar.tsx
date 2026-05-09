@@ -19,8 +19,8 @@ export default function Sidebar() {
   const sideBarLinks = [
     { title: "Home", path: "/", icon: Home },
     { title: "Dashboard", path: "/dashboard", icon: Activity },
-    { title: "Landlords", path: "/dashboard/landlord/view", icon: Users },
-    { title: "Listings", path: "/dashboard/landlord/list", icon: University },
+    { title: "Categories", path: "/dashboard/categories", icon: Users },
+    { title: "Businesses", path: "/dashboard/business", icon: University },
     { title: "Create Listing", path: "/dashboard/landlord/create", icon: DiamondPlus },
   ];
 
