@@ -38,7 +38,7 @@ export async function createBusiness(data: BusinessProps) {
     });
 
     // Revalidate relevant pages
-    revalidatePath("/dashboard/businesses");
+    revalidatePath("/dashboard/business");
     revalidatePath("/");
     revalidatePath(`/business/${newBusiness.slug}`);
 
