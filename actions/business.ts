@@ -5,8 +5,7 @@ import { BusinessProps } from "@/types/types";
 import { revalidatePath } from "next/cache";
 
 /**
- * Create a new business
- */
+ * Create a new business*/
 export async function createBusiness(data: BusinessProps) {
   try {
     // Check if a business with the same slug already exists
