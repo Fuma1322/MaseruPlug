@@ -8,7 +8,7 @@ import Link from "next/link";
 import toast from "react-hot-toast";
 import { X } from "lucide-react";
 
-// import { createCategory, updateCategory } from "@/actions/categories";
+import { createCategory, updateCategory } from "@/actions/categories";
 import generateSlug from "@/utils/generateSlug";
 
 import TextInput from "@/components/FormInputs/TextInput";

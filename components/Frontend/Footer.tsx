@@ -34,7 +34,9 @@ export default function Footer() {
                     <div className="grid gap-10 md:grid-cols-[1.5fr_1fr]">
                         <div className="space-y-6 md:text-left text-center">
                             <h2 className="font-extrabold text-4xl">
+                                <Link href="/dashboard">
                                 <span className="text-[#25D366]">Maseru</span>Plug
+                                </Link>
                             </h2>
                             <p className="max-w-xl mx-auto md:mx-0 text-body text-base leading-7">
                                 Find services fast and connect with local businesses in Maseru. Your one-stop directory for trusted service providers. Explore, compare, and contact with ease.
