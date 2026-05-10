@@ -2,7 +2,6 @@ export type CategoryProps = {
   name: string;
   slug: string;
   description?: string;
-  imageUrl?: string;
   icon?: string;
 };
 

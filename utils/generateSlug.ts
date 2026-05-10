@@ -1,3 +1,7 @@
-export default function generateSlug(title:string){
-    return title.toLowerCase().replace(/[^\w\s]/g, '').replace(/\s+/g, '-');
+export default function generateSlug(text: string = "") {
+  return text
+    .toLowerCase()
+    .trim()
+    .replace(/\s+/g, "-")
+    .replace(/[^\w-]+/g, "");
 }

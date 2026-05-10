@@ -12,7 +12,6 @@ import { createCategory, updateCategory } from "@/actions/categories";
 import generateSlug from "@/utils/generateSlug";
 
 import TextInput from "@/components/FormInputs/TextInput";
-import ImageInput from "@/components/FormInputs/ImageInput";
 import SubmitButton from "@/components/FormInputs/SubmitButton";
 
 import { Button } from "@/components/ui/button";
@@ -22,7 +21,6 @@ export type CategoryProps = {
   name: string;
   slug: string;
   description?: string;
-  imageUrl?: string;
   icon?: string;
 };
 
@@ -37,7 +35,6 @@ export default function CategoryForm({
   const editingId = initialData?.id || "";
 
   const [isLoading, setIsLoading] = useState(false);
-  const [imageUrl, setImageUrl] = useState(initialData?.imageUrl || "");
 
   const {
     register,
@@ -53,12 +50,13 @@ export default function CategoryForm({
   });
 
   async function onSubmit(data: CategoryProps) {
+      console.log("SUBMITTED DATA:", data);
+      console.log("SUCCESS:", data);
     try {
       setIsLoading(true);
 
       data.slug = generateSlug(data.name);
-      data.imageUrl = imageUrl;
-
+      
       let response;
 
       if (editingId) {
@@ -73,6 +71,7 @@ export default function CategoryForm({
             ? response.error
             : "Something went wrong"
         );
+        
         return;
       }
 
@@ -81,7 +80,6 @@ export default function CategoryForm({
           ? "Category updated successfully"
           : "Category created successfully"
       );
-
       reset();
       router.push("/dashboard/categories");
       router.refresh();
@@ -121,6 +119,7 @@ export default function CategoryForm({
             register={register}
             errors={errors}
             placeholder="e.g. Nail Technicians"
+            isRequired
           />
 
           <TextInput
@@ -129,6 +128,7 @@ export default function CategoryForm({
             register={register}
             errors={errors}
             placeholder="e.g. Sparkles"
+          isRequired = {false}
           />
         </div>
 
@@ -138,20 +138,13 @@ export default function CategoryForm({
           register={register}
           errors={errors}
           placeholder="Brief description of this category"
-        />
-
-        {/* Image Upload */}
-        <ImageInput
-          label="Category Image"
-          imageUrl={imageUrl}
-          setImageUrl={setImageUrl}
-          endpoint="categoryImage"
+          
         />
 
         {/* Actions */}
         <div className="flex items-center justify-between gap-4 pt-4">
           <Button asChild type="button" variant="outline">
-            <Link href="/dashboard/categories">Cancel</Link>
+            <Link href="/dashboard">Cancel</Link>
           </Button>
 
           <SubmitButton

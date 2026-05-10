@@ -1,8 +1,10 @@
-import React from 'react';
-import { Label } from '../ui/label';
-import { Input } from '../ui/input';
-import Link from 'next/link';
-import { cn } from '@/lib/utils';
+"use client";
+
+import React from "react";
+import { Label } from "../ui/label";
+import { Input } from "../ui/input";
+import Link from "next/link";
+import { cn } from "@/lib/utils";
 
 type TextInputsProps = {
   label: string;
@@ -27,15 +29,17 @@ export default function TextInput({
   placeholder,
   page,
   className = "col-span-full",
-  isRequired = true,
+  isRequired = false,
   value,
   onChange,
 }: TextInputsProps) {
+  console.log("Field:", name, "Required:", isRequired);
+  
   return (
     <div className={cn("grid gap-2", className)}>
       {type === "password" && page === "login" ? (
         <div className="flex items-center">
-          <Label htmlFor={`${name}`}> {label}</Label>
+          <Label htmlFor={name}>{label}</Label>
           <Link
             href="/forgot-password"
             className="ml-auto inline-block text-sm underline"
@@ -44,21 +48,23 @@ export default function TextInput({
           </Link>
         </div>
       ) : (
-        <Label htmlFor={`${name}`}>{label}</Label>
+        <Label htmlFor={name}>{label}</Label>
       )}
 
       <Input
-        {...register(`${name}`, { required: isRequired })}
-        id={`${name}`}
-        name={`${name}`}
+        id={name}
         type={type}
-        autoComplete="name"
-        placeholder={placeholder ? placeholder : ""}
-        value={value}
-        onChange={onChange}
+        autoComplete={name}
+        placeholder={placeholder || ""}
+        {...register(name, {
+          required: isRequired ? `${label} is required` : false,
+        })}
       />
-      {errors[`${name}`] && isRequired && (
-        <span className="text-red-600 text-sm">{`${label}`} is required</span>
+
+      {errors[name] && (
+        <span className="text-sm text-red-600">
+          {errors[name]?.message?.toString() || `${label} is required`}
+        </span>
       )}
     </div>
   );

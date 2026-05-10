@@ -17,7 +17,6 @@ export async function createCategory(data: CategoryProps) {
         name: data.name,
         slug,
         description: data.description,
-        imageUrl: data.imageUrl,
         icon: data.icon,
       },
     });
@@ -86,7 +85,6 @@ export async function updateCategory(id: string, data: Partial<CategoryProps>) {
       data: {
         name: data.name,
         description: data.description,
-        imageUrl: data.imageUrl,
         icon: data.icon,
         slug: data.name ? generateSlug(data.name) : undefined,
       },
