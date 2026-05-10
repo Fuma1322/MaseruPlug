@@ -1,163 +1,163 @@
-"use client";
+// "use client";
 
-import { useState } from "react";
-import { useForm } from "react-hook-form";
-import { Category } from "@prisma/client";
-import { useRouter } from "next/navigation";
-import Link from "next/link";
-import toast from "react-hot-toast";
-import { X } from "lucide-react";
+// import { useState } from "react";
+// import { useForm } from "react-hook-form";
+// import { Category } from "@prisma/client";
+// import { useRouter } from "next/navigation";
+// import Link from "next/link";
+// import toast from "react-hot-toast";
+// import { X } from "lucide-react";
 
-import { createCategory, updateCategory } from "@/actions/categories";
-import generateSlug from "@/utils/generateSlug";
+// import { createCategory, updateCategory } from "@/actions/categories";
+// import generateSlug from "@/utils/generateSlug";
 
-import TextInput from "@/components/FormInputs/TextInput";
-import SubmitButton from "@/components/FormInputs/SubmitButton";
+// import TextInput from "@/components/FormInputs/TextInput";
+// import SubmitButton from "@/components/FormInputs/SubmitButton";
 
-import { Button } from "@/components/ui/button";
-import { TextAreaInput } from "../FormInputs/TextAreaInput";
+// import { Button } from "@/components/ui/button";
+// import { TextAreaInput } from "../FormInputs/TextAreaInput";
 
-export type CategoryProps = {
-  name: string;
-  slug: string;
-  description?: string;
-  icon?: string;
-};
+// export type CategoryProps = {
+//   name: string;
+//   slug: string;
+//   description?: string;
+//   icon?: string;
+// };
 
-export default function CategoryForm({
-  title,
-  initialData,
-}: {
-  title: string;
-  initialData?: Category;
-}) {
-  const router = useRouter();
-  const editingId = initialData?.id || "";
+// export default function CategoryForm({
+//   title,
+//   initialData,
+// }: {
+//   title: string;
+//   initialData?: Category;
+// }) {
+//   const router = useRouter();
+//   const editingId = initialData?.id || "";
 
-  const [isLoading, setIsLoading] = useState(false);
+//   const [isLoading, setIsLoading] = useState(false);
 
-  const {
-    register,
-    handleSubmit,
-    reset,
-    formState: { errors },
-  } = useForm<CategoryProps>({
-    defaultValues: {
-      name: initialData?.name || "",
-      description: initialData?.description || "",
-      icon: initialData?.icon || "",
-    },
-  });
+//   const {
+//     register,
+//     handleSubmit,
+//     reset,
+//     formState: { errors },
+//   } = useForm<CategoryProps>({
+//     defaultValues: {
+//       name: initialData?.name || "",
+//       description: initialData?.description || "",
+//       icon: initialData?.icon || "",
+//     },
+//   });
 
-  async function onSubmit(data: CategoryProps) {
-      console.log("SUBMITTED DATA:", data);
-      console.log("SUCCESS:", data);
-    try {
-      setIsLoading(true);
+//   async function onSubmit(data: CategoryProps) {
+//       console.log("SUBMITTED DATA:", data);
+//       console.log("SUCCESS:", data);
+//     try {
+//       setIsLoading(true);
 
-      data.slug = generateSlug(data.name);
+//       data.slug = generateSlug(data.name);
       
-      let response;
+//       let response;
 
-      if (editingId) {
-        response = await updateCategory(editingId, data);
-      } else {
-        response = await createCategory(data);
-      }
+//       if (editingId) {
+//         response = await updateCategory(editingId, data);
+//       } else {
+//         response = await createCategory(data);
+//       }
 
-      if (response?.error) {
-        toast.error(
-          typeof response.error === "string"
-            ? response.error
-            : "Something went wrong"
-        );
+//       if (response?.error) {
+//         toast.error(
+//           typeof response.error === "string"
+//             ? response.error
+//             : "Something went wrong"
+//         );
         
-        return;
-      }
+//         return;
+//       }
 
-      toast.success(
-        editingId
-          ? "Category updated successfully"
-          : "Category created successfully"
-      );
-      reset();
-      router.push("/dashboard/categories");
-      router.refresh();
-    } catch (error) {
-      console.error(error);
-      toast.error("Something went wrong");
-    } finally {
-      setIsLoading(false);
-    }
-  }
+//       toast.success(
+//         editingId
+//           ? "Category updated successfully"
+//           : "Category created successfully"
+//       );
+//       reset();
+//       router.push("/dashboard/categories");
+//       router.refresh();
+//     } catch (error) {
+//       console.error(error);
+//       toast.error("Something went wrong");
+//     } finally {
+//       setIsLoading(false);
+//     }
+//   }
 
-  return (
-    <div className="w-full max-w-3xl mx-auto m-3 rounded-xl border border-gray-200 bg-white shadow-md">
-      {/* Header */}
-      <div className="border-b px-6 py-4">
-        <div className="flex items-center justify-between gap-4">
-          <h1 className="text-2xl font-bold tracking-tight">{title}</h1>
+//   return (
+//     <div className="w-full max-w-3xl mx-auto m-3 rounded-xl border border-gray-200 bg-white shadow-md">
+//       {/* Header */}
+//       <div className="border-b px-6 py-4">
+//         <div className="flex items-center justify-between gap-4">
+//           <h1 className="text-2xl font-bold tracking-tight">{title}</h1>
 
-          <Button asChild type="button" variant="outline" size="icon">
-            <Link href="/dashboard/categories">
-              <X className="h-4 w-4" />
-            </Link>
-          </Button>
-        </div>
-      </div>
+//           <Button asChild type="button" variant="outline" size="icon">
+//             <Link href="/dashboard/categories">
+//               <X className="h-4 w-4" />
+//             </Link>
+//           </Button>
+//         </div>
+//       </div>
 
-      {/* Form */}
-      <form
-        onSubmit={handleSubmit(onSubmit)}
-        className="space-y-8 px-6 py-6"
-      >
-        {/* Basic Information */}
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-          <TextInput
-            label="Category Name"
-            name="name"
-            register={register}
-            errors={errors}
-            placeholder="e.g. Nail Technicians"
-            isRequired
-          />
+//       {/* Form */}
+//       <form
+//         onSubmit={handleSubmit(onSubmit)}
+//         className="space-y-8 px-6 py-6"
+//       >
+//         {/* Basic Information */}
+//         <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+//           <TextInput
+//             label="Category Name"
+//             name="name"
+//             register={register}
+//             errors={errors}
+//             placeholder="e.g. Nail Technicians"
+//             isRequired
+//           />
 
-          <TextInput
-            label="Icon"
-            name="icon"
-            register={register}
-            errors={errors}
-            placeholder="e.g. Sparkles"
-          isRequired = {false}
-          />
-        </div>
+//           <TextInput
+//             label="Icon"
+//             name="icon"
+//             register={register}
+//             errors={errors}
+//             placeholder="e.g. Sparkles"
+//           isRequired = {false}
+//           />
+//         </div>
 
-        <TextAreaInput
-          label="Description"
-          name="description"
-          register={register}
-          errors={errors}
-          placeholder="Brief description of this category"
+//         <TextAreaInput
+//           label="Description"
+//           name="description"
+//           register={register}
+//           errors={errors}
+//           placeholder="Brief description of this category"
           
-        />
+//         />
 
-        {/* Actions */}
-        <div className="flex items-center justify-between gap-4 pt-4">
-          <Button asChild type="button" variant="outline">
-            <Link href="/dashboard">Cancel</Link>
-          </Button>
+//         {/* Actions */}
+//         <div className="flex items-center justify-between gap-4 pt-4">
+//           <Button asChild type="button" variant="outline">
+//             <Link href="/dashboard">Cancel</Link>
+//           </Button>
 
-          <SubmitButton
-            title={editingId ? "Update Category" : "Create Category"}
-            isLoading={isLoading}
-            LoadingTitle={
-              editingId
-                ? "Updating category..."
-                : "Creating category..."
-            }
-          />
-        </div>
-      </form>
-    </div>
-  );
-}
+//           <SubmitButton
+//             title={editingId ? "Update Category" : "Create Category"}
+//             isLoading={isLoading}
+//             LoadingTitle={
+//               editingId
+//                 ? "Updating category..."
+//                 : "Creating category..."
+//             }
+//           />
+//         </div>
+//       </form>
+//     </div>
+//   );
+// }
