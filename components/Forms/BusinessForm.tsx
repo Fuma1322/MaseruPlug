@@ -2,7 +2,7 @@
 
 import { useState } from "react";
 import { useForm } from "react-hook-form";
-import { Category, BusinessStatus } from "@prisma/client";
+import { BusinessStatus } from "@prisma/client";
 import { useRouter } from "next/navigation";
 import toast from "react-hot-toast";
 
