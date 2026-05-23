@@ -33,7 +33,6 @@ export default function TextInput({
   value,
   onChange,
 }: TextInputsProps) {
-  console.log("Field:", name, "Required:", isRequired);
   
   return (
     <div className={cn("grid gap-2", className)}>

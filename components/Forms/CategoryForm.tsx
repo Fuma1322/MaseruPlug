@@ -91,7 +91,10 @@ export default function CategoryForm({
 
       {/* Form */}
       <form
-        onSubmit={handleSubmit(onSubmit)}
+        onSubmit={(e) => {
+        console.log("FORM SUBMITTED");
+        handleSubmit(onSubmit)(e);
+    }}
         className="space-y-8 px-6 py-6"
       >
         {/* Basic Information */}
