@@ -1,7 +1,7 @@
 "use server";
 
 import { revalidatePath } from "next/cache";
-import { prisma } from "@/lib/db";
+import prisma from "@/lib/db";
 import { CategoryProps } from "@/types/types";
 import generateSlug from "@/utils/generateSlug";
 
@@ -26,7 +26,8 @@ export async function createCategory(data: CategoryProps) {
 
     return { success: true, data: category };
   } catch (error) {
-    console.error("CREATE_CATEGORY_ERROR:", error);
+    console.log("FULL ERROR:", JSON.stringify(error, null, 2));
+    console.error(error);
     return { success: false, error: "Failed to create category" };
   }
 }
