@@ -54,7 +54,7 @@ export default function Categories() {
             </ul>
           </div>
           <div className="mt-8 text-center">
-            <Link href="/category/1" scroll = {false} className="inline-flex items-center gap-2 text-[#25D366] font-bold hover:text-[#16a34a]">
+            <Link href="/categories" scroll = {false} className="inline-flex items-center gap-2 text-[#25D366] font-bold hover:text-[#16a34a]">
               Browse More Categories
               <ArrowRight className="h-4 w-4 font-bold" />
             </Link>
