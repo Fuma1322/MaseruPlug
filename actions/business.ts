@@ -1,6 +1,6 @@
 "use server";
 
-import { prisma } from "@/lib/db";
+import prisma from "@/lib/db";
 import { BusinessProps } from "@/types/types";
 import { revalidatePath } from "next/cache";
 

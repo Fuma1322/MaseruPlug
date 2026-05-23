@@ -4,31 +4,51 @@ import { revalidatePath } from "next/cache";
 import prisma from "@/lib/db";
 import { CategoryProps } from "@/types/types";
 import generateSlug from "@/utils/generateSlug";
+import { CategorySchema } from "./zod";
 
 /**
  * CREATE CATEGORY
  */
-export async function createCategory(data: CategoryProps) {
+
+export async function createCategory(data: unknown) {
   try {
-    const slug = generateSlug(data.name);
+    // ✅ Validate FIRST
+    const parsed = CategorySchema.safeParse(data);
+
+    if (!parsed.success) {
+      return {
+        success: false,
+        error: parsed.error.flatten(),
+      };
+    }
+
+    const validData = parsed.data;
+
+    const slug = generateSlug(validData.name);
 
     const category = await prisma.category.create({
       data: {
-        name: data.name,
+        name: validData.name,
         slug,
-        description: data.description,
-        icon: data.icon,
+        description: validData.description,
+        icon: validData.icon,
       },
     });
 
     revalidatePath("/dashboard/categories");
     revalidatePath("/");
 
-    return { success: true, data: category };
+    return {
+      success: true,
+      data: category,
+    };
   } catch (error) {
-    console.log("FULL ERROR:", JSON.stringify(error, null, 2));
-    console.error(error);
-    return { success: false, error: "Failed to create category" };
+    console.error("CREATE_CATEGORY_ERROR:", error);
+
+    return {
+      success: false,
+      error: "Failed to create category",
+    };
   }
 }
 
