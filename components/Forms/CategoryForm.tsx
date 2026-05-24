@@ -1,7 +1,7 @@
 "use client";
 
 import { useState } from "react";
-import { useForm } from "react-hook-form";
+import { useForm, type UseFormRegister, type FieldErrors } from "react-hook-form";
 import { useRouter } from "next/navigation";
 import Link from "next/link";
 import toast from "react-hot-toast";
@@ -102,8 +102,8 @@ export default function CategoryForm({
           <TextInput
             label="Category Name"
             name="name"
-            register={register}
-            errors={errors}
+            register={register as UseFormRegister<Record<string, unknown>>}
+            errors={errors as unknown as FieldErrors<Record<string, unknown>>}
             placeholder="e.g. Nail Technicians"
             isRequired
           />
@@ -111,8 +111,8 @@ export default function CategoryForm({
           <TextInput
             label="Icon"
             name="icon"
-            register={register}
-            errors={errors}
+            register={register as UseFormRegister<Record<string, unknown>>}
+            errors={errors as unknown as FieldErrors<Record<string, unknown>>}
             placeholder="e.g. Sparkles"
             isRequired={false}
           />
@@ -121,8 +121,8 @@ export default function CategoryForm({
         <TextAreaInput
           label="Description"
           name="description"
-          register={register}
-          errors={errors}
+          register={register as UseFormRegister<Record<string, unknown>>}
+          errors={errors as unknown as FieldErrors<Record<string, unknown>>}
           placeholder="Brief description of this category"
           isRequired={false}
         />
