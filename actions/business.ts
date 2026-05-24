@@ -2,17 +2,37 @@
 
 import prisma from "@/lib/db";
 import { BusinessProps } from "@/types/types";
+import generateSlug from "@/utils/generateSlug";
 import { revalidatePath } from "next/cache";
+import { BusinessSchema } from "./zod";
 
 /**
  * Create a new business*/
 export async function createBusiness(data: BusinessProps) {
   try {
-    // Check if a business with the same slug already exists
+    console.log("🚀 RAW INPUT:", data);
+
+    // 1. VALIDATE WITH ZOD
+    const parsed = BusinessSchema.safeParse(data);
+
+    if (!parsed.success) {
+      console.log("❌ VALIDATION ERROR:", parsed.error.flatten());
+
+      return {
+        data: null,
+        status: 400,
+        error: parsed.error.flatten(),
+      };
+    }
+
+    const validData = parsed.data;
+
+    const slug = validData.slug || generateSlug(validData.name);
+
+    console.log("🔍 Using slug:", slug);
+
     const existingBusiness = await prisma.business.findUnique({
-      where: {
-        slug: data.slug,
-      },
+      where: { slug },
     });
 
     if (existingBusiness) {
@@ -23,21 +43,44 @@ export async function createBusiness(data: BusinessProps) {
       };
     }
 
-    // Create business
+    console.log("🆕 Creating business...");
+
     const newBusiness = await prisma.business.create({
       data: {
-        ...data,
-        images: data.images || [],
-        isFeatured: data.isFeatured ?? false,
-        status: data.status ?? "PENDING",
+        name: validData.name,
+        slug,
+
+        description: validData.description,
+        location: validData.location,
+
+        phone: validData.phone,
+        whatsapp: validData.whatsapp,
+
+        images: validData.images ?? [],
+
+        facebookUrl: validData.facebookUrl || null,
+        websiteUrl: validData.websiteUrl || null,
+
+        metaTitle: validData.metaTitle || null,
+        metaDescription: validData.metaDescription || null,
+
+        isFeatured: validData.isFeatured ?? false,
+        status: validData.status ?? "PENDING",
+
+        category: {
+          connect: {
+            id: validData.categoryId,
+          },
+        },
       },
       include: {
         category: true,
       },
     });
 
-    // Revalidate relevant pages
-    revalidatePath("/dashboard/business");
+    console.log("✅ BUSINESS CREATED:", newBusiness.id);
+
+    revalidatePath("/dashboard/businesses");
     revalidatePath("/");
     revalidatePath(`/business/${newBusiness.slug}`);
 
@@ -47,7 +90,7 @@ export async function createBusiness(data: BusinessProps) {
       error: null,
     };
   } catch (error) {
-    console.error("Error creating business:", error);
+    console.error("🔥 CREATE BUSINESS ERROR:", error);
 
     return {
       data: null,

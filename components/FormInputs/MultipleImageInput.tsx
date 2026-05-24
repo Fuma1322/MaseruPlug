@@ -71,7 +71,7 @@ export default function MultipleImageInput({
         <UploadDropzone
           endpoint={endpoint}
           onClientUploadComplete={(res) => {
-            const urls = res.map((item) => item.url);
+            const urls = res.map((item) => item.ufsUrl);
 
             // Append new images to existing ones
             setImages((prev) => [...prev, ...urls].slice(0, 12));

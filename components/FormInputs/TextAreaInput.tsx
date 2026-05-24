@@ -31,6 +31,7 @@ export function TextAreaInput({
         {...register(name, {
           required: isRequired ? `${label} is required` : false,
         })}
+        onChange={() => {}}
       />
 
       {errors[name] && (
