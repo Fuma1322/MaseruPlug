@@ -1,8 +1,9 @@
 "use client";
 
-import { MapPin, Check, Phone } from "lucide-react";
-import { FaWhatsapp } from "react-icons/fa";
 import Link from "next/link";
+import Image from "next/image";
+import { FaWhatsapp } from "react-icons/fa";
+import { MapPin, Check, Phone } from "lucide-react";
 
 export default function ProfilePage() {
   const galleryImages = [
@@ -34,9 +35,11 @@ export default function ProfilePage() {
 
           {/* Main Image */}
           <div className="overflow-hidden rounded-3xl shadow-xl">
-            <img
+            <Image
               src={galleryImages[0]}
               alt="Main"
+              width={1200}
+              height={800}
               className="w-full h-[400px] object-cover hover:scale-105 transition duration-500"
             />
           </div>
@@ -48,9 +51,11 @@ export default function ProfilePage() {
                 key={index}
                 className="overflow-hidden rounded-2xl shadow-md"
               >
-                <img
+                <Image
                   src={image}
                   alt={`Gallery ${index}`}
+                  width={400}
+                  height={300}
                   className="w-full h-24 md:h-28 object-cover hover:scale-110 transition duration-300 cursor-pointer"
                 />
               </div>
@@ -176,9 +181,11 @@ export default function ProfilePage() {
                 key={index}
                 className="group overflow-hidden rounded-3xl shadow-lg"
               >
-                <img
+                <Image
                   src={image}
                   alt={`Gallery ${index + 1}`}
+                  width={600}
+                  height={500}
                   className="w-full h-[280px] object-cover transition duration-500 group-hover:scale-110"
                 />
               </div>
