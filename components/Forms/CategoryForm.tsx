@@ -40,7 +40,6 @@ export default function CategoryForm({
     handleSubmit,
     reset,
     setValue,
-    watch,
     formState: { errors },
   } = useForm<CategoryProps>();
 
