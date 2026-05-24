@@ -1,11 +1,15 @@
 import prisma from "@/lib/db";
+import Image from "next/image";
+import Link from "next/link";
+
 import {
   Card,
-  CardDescription,
+  CardContent,
   CardFooter,
   CardHeader,
   CardTitle,
 } from "@/components/ui/card";
+
 import { MapPin } from "lucide-react";
 import { Button } from "@/components/ui/button";
 
@@ -17,63 +21,100 @@ interface Props {
 
 export default async function CategoryPage({ params }: Props) {
   const category = await prisma.category.findUnique({
-    where: { slug: params.slug },
+    where: {
+      slug: params.slug,
+    },
     include: {
       businesses: true,
     },
   });
 
   if (!category) {
-    return <div className="p-10 text-center">Category not found</div>;
+    return (
+      <div className="p-10 text-center text-lg font-semibold">
+        Category not found
+      </div>
+    );
   }
 
   return (
-    <div className="space-y-6 p-4">
+    <div className="space-y-10 px-4 py-6 md:px-8 lg:px-12">
 
       {/* HEADER */}
-      <div className="w-full flex flex-col justify-center items-center text-center bg-teal-50/60 rounded-xl min-h-[180px] sm:min-h-[250px] py-14 px-6 shadow-xl">
-        <h2 className="text-3xl text-[#111111] sm:text-5xl font-bold">
+      <div className="w-full flex flex-col justify-center items-center text-center bg-teal-50/60 rounded-3xl min-h-[220px] sm:min-h-[280px] py-14 px-6 shadow-xl">
+        <h2 className="text-4xl text-[#111111] sm:text-6xl font-extrabold tracking-tight">
           {category.name}
         </h2>
-        <p className="text-lg font-bold text-[#25D366] mt-4">
-          Find the best {category.name.toLowerCase()}s near you
+
+        <p className="text-lg md:text-xl font-semibold text-[#25D366] mt-5">
+          Find the best {category.name.toLowerCase()} near you
         </p>
       </div>
 
+      {/* EMPTY STATE */}
+      {category.businesses.length === 0 && (
+        <div className="text-center py-20">
+          <h3 className="text-2xl font-bold text-[#111111]">
+            No businesses found
+          </h3>
+
+          <p className="text-muted-foreground mt-3">
+            Businesses in this category will appear here.
+          </p>
+        </div>
+      )}
+
       {/* GRID */}
-      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5">
+      <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-8">
 
         {category.businesses.map((item) => (
           <Card
             key={item.id}
-            className="relative w-full max-w-sm mx-auto pt-0 shadow-md border border-[#25D366] overflow-hidden"
+            className="group overflow-hidden rounded-3xl border border-[#25D366] bg-white shadow-sm transition-all duration-300 hover:-translate-y-2 hover:shadow-2xl"
           >
-            <div className="absolute inset-0 z-30 aspect-video bg-black/25" />
+            {/* IMAGE */}
+            <div className="relative aspect-[16/10] overflow-hidden">
 
-            <img
-              src={item.images?.[0] || "/lelo.jpg"}
-              alt={item.name}
-              className="relative z-20 aspect-video w-full object-cover"
-            />
+              <Image
+                src={item.images?.[0] || "/lelo.jpg"}
+                alt={item.name}
+                fill
+                sizes="(max-width: 768px) 100vw, (max-width: 1280px) 50vw, 33vw"
+                className="object-cover object-center transition-transform duration-300 group-hover:scale-105"
+              />
 
-            <CardHeader className="space-y-2">
-              <CardTitle className="font-bold text-lg">
+              {/* GRADIENT */}
+              <div className="absolute inset-0 bg-gradient-to-t from-black/50 via-black/10 to-transparent" />
+
+              {/* LOCATION BADGE */}
+              <div className="absolute bottom-4 left-4 inline-flex items-center gap-1 rounded-full bg-white/90 backdrop-blur-sm px-3 py-1 text-xs font-medium text-[#111111] shadow-sm">
+                <MapPin className="h-3.5 w-3.5 text-[#25D366]" />
+                {item.location}
+              </div>
+            </div>
+
+            {/* CONTENT */}
+            <CardHeader className="pb-3">
+              <CardTitle className="text-xl font-bold text-[#111111] group-hover:text-[#25D366] transition-colors">
                 {item.name}
               </CardTitle>
-
-              <div className="flex items-center gap-1 text-sm text-muted-foreground">
-                <MapPin className="w-4 h-4 text-[#25D366]" />
-                <span>{item.location}</span>
-              </div>
-
-              <CardDescription className="text-sm font-medium text-[#111111]">
-                {item.description}
-              </CardDescription>
             </CardHeader>
 
-            <CardFooter className="flex items-center justify-center">
-              <Button className="w-full h-10 text-sm">
-                View Profile
+            <CardContent className="pb-6">
+              <p className="text-sm md:text-base leading-relaxed text-muted-foreground line-clamp-3">
+                {item.description}
+              </p>
+            </CardContent>
+
+            {/* FOOTER */}
+            <CardFooter>
+              <Button
+                asChild
+                className="w-full h-12 rounded-xl border-[#25D366] text-[#25D366] font-semibold shadow-sm hover:text-[#111111]"
+              >
+                <Link href={`/business/${item.slug}`}>
+                  View Profile
+                </Link>
               </Button>
             </CardFooter>
           </Card>
