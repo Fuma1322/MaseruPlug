@@ -91,7 +91,7 @@ export default function BusinessForm({
     router.push("/dashboard/businesses");
     router.refresh();
   } catch (error) {
-    console.log("FORM ERRORS:", errors);
+    // console.log("FORM ERRORS:", errors);
     toast.error("Something went wrong");
   } finally {
     setIsLoading(false);

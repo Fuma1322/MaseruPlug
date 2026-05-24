@@ -30,8 +30,6 @@ export default function TextInput({
   page,
   className = "col-span-full",
   isRequired = false,
-  value,
-  onChange,
 }: TextInputsProps) {
   
   return (

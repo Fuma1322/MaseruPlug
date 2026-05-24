@@ -3,7 +3,7 @@
 import Balancer from "react-wrap-balancer";
 import { Container } from "@/components/ui/craft";
 import { SearchInput } from "./SearchInput";
-import { BadgeCheck, ShieldCheck, Sparkles } from "lucide-react";
+import { BadgeCheck } from "lucide-react";
 
 const Hero = () => {
   return (

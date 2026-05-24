@@ -18,7 +18,6 @@ export default function SelectInput({
   label,
   name,
   register,
-  errors,
   placeholder,
   className = "sm:col-span-2",
   options = [],

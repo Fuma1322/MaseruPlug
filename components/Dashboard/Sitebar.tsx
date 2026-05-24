@@ -6,7 +6,6 @@ import { cn } from "@/lib/utils";
 import { usePathname } from "next/navigation";
 import {
   Activity,
-  DiamondPlus,
   Home,
   MonitorSmartphone,
   University,

@@ -136,7 +136,7 @@ export default function ProfilePage() {
 
           <p className="text-lg leading-relaxed text-gray-600">
             Nails By Lelo is dedicated to delivering luxury nail experiences
-            with exceptional attention to detail. Whether you're preparing for
+            with exceptional attention to detail. Whether you&apos;re preparing for
             a special occasion or simply treating yourself, every appointment is
             designed to leave you feeling confident and beautiful.
           </p>

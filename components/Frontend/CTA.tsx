@@ -1,7 +1,6 @@
 import React from 'react'
 import { FaWhatsapp } from 'react-icons/fa'
 import { Button } from '../ui/button'
-import { Link } from 'lucide-react'
 
 export default function CTA() {
     return (

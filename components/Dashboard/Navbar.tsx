@@ -19,7 +19,6 @@ import { Avatar, AvatarFallback, AvatarImage } from "../ui/avatar";
 
 import {
   Activity,
-  DiamondPlus,
   Home,
   Menu,
   University,
