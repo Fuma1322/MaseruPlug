@@ -21,7 +21,7 @@ export function TextAreaInput<T extends FieldValues>({
   placeholder,
   className = "col-span-full",
   isRequired = false,
-}: TextAreaInputProps) {
+}: TextAreaInputProps<T>) {
   const error = errors?.[name];
 
   return (

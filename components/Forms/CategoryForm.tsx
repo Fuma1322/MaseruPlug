@@ -4,7 +4,7 @@ import Link from "next/link";
 import { X } from "lucide-react";
 import { useState } from "react";
 import toast from "react-hot-toast";
-import { useForm, type UseFormRegister, type FieldErrors } from "react-hook-form";
+import { useForm } from "react-hook-form";
 import { useRouter } from "next/navigation";
 
 import { createCategory } from "@/actions/categories";
