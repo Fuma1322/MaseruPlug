@@ -7,6 +7,7 @@ import { UploadDropzone } from "@/lib/uploadthing";
 import { XCircle } from "lucide-react";
 import Image from "next/image";
 import toast from "react-hot-toast";
+import { Button } from "../ui/button";
 
 type MultipleImageInputProps = {
   label: string;
@@ -47,13 +48,13 @@ export default function MultipleImageInput({
         <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 mb-6">
           {images.map((imageUrl, index) => (
             <div key={index} className="relative">
-              <button
+              <Button
                 type="button"
                 onClick={() => handleImageRemove(index)}
                 className="absolute -top-2 -right-2 z-10 rounded-full bg-white shadow-md text-red-500 hover:text-red-600"
               >
                 <XCircle className="w-6 h-6" />
-              </button>
+              </Button>
 
               <Image
                 src={imageUrl}
@@ -68,23 +69,30 @@ export default function MultipleImageInput({
       )}
 
       {/* Upload Zone */}
-      {images.length < 12 && (
-        <UploadDropzone
-          endpoint={endpoint}
-          onClientUploadComplete={(res) => {
-            const urls = res.map((item) => item.ufsUrl);
+{images.length < 12 && (
+  <UploadDropzone
+    endpoint={endpoint}
+    appearance={{
+      container:
+        "border-2 border-dashed border-[#25D366] rounded-2xl bg-white p-8",
+      label: "text-[#111111] font-semibold",
+      allowedContent: "text-gray-500 text-sm",
+      button:
+        "bg-[#25D366] text-white font-semibold px-4 py-2 rounded-lg hover:bg-[#1faa55]",
+    }}
+    onClientUploadComplete={(res) => {
+      const urls = res.map((item) => item.ufsUrl);
 
-            // Append new images to existing ones
-            setImages((prev) => [...prev, ...urls].slice(0, 12));
+      setImages((prev) => [...prev, ...urls].slice(0, 12));
 
-            toast.success("Images uploaded successfully");
-          }}
-          onUploadError={(error: Error) => {
-            toast.error("Image upload failed. Try again.");
-            console.error(error);
-          }}
-        />
-      )}
+      toast.success("Images uploaded successfully");
+    }}
+    onUploadError={(error: Error) => {
+      toast.error("Image upload failed. Try again.");
+      console.error(error);
+    }}
+  />
+)}
 
       {/* Counter */}
       <p className="mt-2 text-sm text-muted-foreground">

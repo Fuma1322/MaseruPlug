@@ -1,7 +1,7 @@
-import prisma from "@/lib/db";
-import { notFound } from "next/navigation";
 import Link from "next/link";
+import prisma from "@/lib/db";
 import Image from "next/image";
+import { notFound } from "next/navigation";
 
 import { FaWhatsapp } from "react-icons/fa";
 import { MapPin, Phone } from "lucide-react";
