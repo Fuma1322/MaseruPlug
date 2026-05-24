@@ -48,13 +48,16 @@ export default function BusinessForm({
   const [isFeatured, setIsFeatured] = useState(false);
 
   const {
-    register,
-    handleSubmit,
-    reset,
-    formState,
-  } = useForm<BusinessProps>();
-
-  const errors = formState.errors as FieldErrors<BusinessProps>;
+  register,
+  handleSubmit,
+  reset,
+  watch,
+  formState: { errors },
+} = useForm<BusinessProps>({
+  defaultValues: {
+    description: "",
+  },
+});;
 
   const categoryOptions = categories.map((category) => ({
     label: category.name,
@@ -90,7 +93,7 @@ export default function BusinessForm({
     toast.success("Business created successfully");
 
     reset();
-    router.push("/dashboard/businesses");
+    router.push("/dashboard");
     router.refresh();
   } catch {
     toast.error("Something went wrong");
@@ -98,6 +101,8 @@ export default function BusinessForm({
     setIsLoading(false);
   }
 }
+
+console.log("DESCRIPTION VALUE:", watch("description"));
 
   return (
     <div className="w-full max-w-5xl mx-auto m-3 rounded-xl border border-gray-200 bg-white shadow-sm">
@@ -130,13 +135,13 @@ export default function BusinessForm({
         </div>
 
         {/* Description */}
-        <TextAreaInput
+        <TextAreaInput<BusinessProps>
           label="Description"
           name="description"
           register={register}
           errors={errors}
           placeholder="Describe the business"
-          isRequired={true}
+          isRequired
         />
 
         {/* Contact Info */}
