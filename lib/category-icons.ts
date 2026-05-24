@@ -1,4 +1,3 @@
-// lib/category-icons.ts
 import {
   Scissors,
   Palette,
