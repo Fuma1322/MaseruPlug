@@ -1,5 +1,5 @@
 import React from "react";
-import { FieldErrors, FieldValues, UseFormRegister,  Path } from "react-hook-form";
+import { FieldErrors, FieldValues, UseFormRegister} from "react-hook-form";
 
 type SelectInputProps = {
   label: string;

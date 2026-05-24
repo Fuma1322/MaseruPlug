@@ -1,7 +1,7 @@
 "use client";
 
 import { useState } from "react";
-import { useForm, type UseFormRegister } from "react-hook-form";
+import { useForm, type UseFormRegister, type FieldErrors } from "react-hook-form";
 import { BusinessStatus, Category } from "@prisma/client";
 import { useRouter } from "next/navigation";
 import toast from "react-hot-toast";
@@ -51,8 +51,10 @@ export default function BusinessForm({
     register,
     handleSubmit,
     reset,
-    formState: { errors },
+    formState,
   } = useForm<BusinessProps>();
+
+  const errors = formState.errors as FieldErrors<Record<string, unknown>>;
 
   const categoryOptions = categories.map((category) => ({
     label: category.name,
@@ -112,7 +114,7 @@ export default function BusinessForm({
           <TextInput
             label="Business Name"
             name="name"
-            register={register as unknown as UseFormRegister<any>}
+            register={register as unknown as UseFormRegister<Record<string, unknown>>}
             errors={errors}
             placeholder="e.g. Nails by Lelo"
             isRequired
@@ -121,7 +123,7 @@ export default function BusinessForm({
           <SelectInput
             label="Category"
             name="categoryId"
-            register={register as unknown as UseFormRegister<any>}
+            register={register as unknown as UseFormRegister<Record<string, unknown>>}
             errors={errors}
             options={categoryOptions}
           />
@@ -131,7 +133,7 @@ export default function BusinessForm({
         <TextAreaInput
           label="Description"
           name="description"
-          register={register as unknown as UseFormRegister<any>}
+          register={register as unknown as UseFormRegister<Record<string, unknown>>}
           errors={errors}
           placeholder="Describe the business"
           isRequired={true}
@@ -142,7 +144,7 @@ export default function BusinessForm({
           <TextInput
             label="Location"
             name="location"
-            register={register as unknown as UseFormRegister<any>}
+            register={register as unknown as UseFormRegister<Record<string, unknown>>}
             errors={errors}
             placeholder="e.g. Maseru West"
             isRequired
@@ -151,7 +153,7 @@ export default function BusinessForm({
           <TextInput
             label="Phone"
             name="phone"
-            register={register as unknown as UseFormRegister<any>}
+            register={register as unknown as UseFormRegister<Record<string, unknown>>}
             errors={errors}
             placeholder="+266 5800 0000"
             isRequired
@@ -160,7 +162,7 @@ export default function BusinessForm({
           <TextInput
             label="WhatsApp"
             name="whatsapp"
-            register={register as unknown as UseFormRegister<any>}
+            register={register as unknown as UseFormRegister<Record<string, unknown>>}
             errors={errors}
             placeholder="+266 5800 0000"
           />
@@ -168,7 +170,7 @@ export default function BusinessForm({
           <TextInput
             label="Facebook URL"
             name="facebookUrl"
-            register={register as unknown as UseFormRegister<any>}
+            register={register as unknown as UseFormRegister<Record<string, unknown>>}
             errors={errors}
             placeholder="https://facebook.com/..."
           />
@@ -176,7 +178,7 @@ export default function BusinessForm({
           <TextInput
             label="Website URL"
             name="websiteUrl"
-            register={register as unknown as UseFormRegister<any>}
+            register={register as unknown as UseFormRegister<Record<string, unknown>>}
             errors={errors}
             placeholder="https://example.com"
           />
@@ -195,7 +197,7 @@ export default function BusinessForm({
           <TextInput
             label="Meta Title"
             name="metaTitle"
-            register={register as unknown as UseFormRegister<any>}
+            register={register as unknown as UseFormRegister<Record<string, unknown>>}
             errors={errors}
             placeholder="SEO title"
           />
@@ -203,7 +205,7 @@ export default function BusinessForm({
           <SelectInput
             label="Status"
             name="status"
-            register={register as unknown as UseFormRegister<any>}
+            register={register as unknown as UseFormRegister<Record<string, unknown>>}
             errors={errors}
             options={statusOptions}
           />
@@ -212,7 +214,7 @@ export default function BusinessForm({
         <TextAreaInput
           label="Meta Description"
           name="metaDescription"
-          register={register as unknown as UseFormRegister<any>}
+          register={register as unknown as UseFormRegister<Record<string, unknown>>}
           errors={errors}
           placeholder="SEO description"
         />

@@ -3,7 +3,7 @@ import { Label } from "../ui/label";
 import { cn } from "@/lib/utils";
 import { FieldErrors, UseFormRegister } from "react-hook-form";
 
-type FormValues = Record<string, any>;
+type FormValues = Record<string, unknown>;
 
 type TextAreaInputProps = {
   label: string;
