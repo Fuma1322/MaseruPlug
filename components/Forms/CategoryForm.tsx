@@ -2,7 +2,7 @@
 
 import Link from "next/link";
 import { X } from "lucide-react";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import toast from "react-hot-toast";
 import { useForm } from "react-hook-form";
 import { useRouter } from "next/navigation";
@@ -15,6 +15,8 @@ import SubmitButton from "@/components/FormInputs/SubmitButton";
 import { TextAreaInput } from "../FormInputs/TextAreaInput";
 
 import { Button } from "@/components/ui/button";
+import IconPicker from "../Frontend/Icon-Picker";
+import IconPreview from "../Frontend/Icon-Preview";
 
 export type CategoryProps = {
   name: string;
@@ -31,13 +33,20 @@ export default function CategoryForm({
   const router = useRouter();
 
   const [isLoading, setIsLoading] = useState(false);
+  const [selectedIcon, setSelectedIcon] = useState("");
 
   const {
     register,
     handleSubmit,
     reset,
+    setValue,
+    watch,
     formState: { errors },
   } = useForm<CategoryProps>();
+
+  useEffect(() => {
+  setValue("icon", selectedIcon);
+}, [selectedIcon, setValue]);
 
   async function onSubmit(data: CategoryProps) {
     try {
@@ -108,14 +117,16 @@ export default function CategoryForm({
             isRequired
           />
 
-          <TextInput
-            label="Icon"
-            name="icon"
-            register={register}
-            errors={errors}
-            placeholder="e.g. Sparkles"
-            isRequired={false}
-          />
+          <div className="col-span-full space-y-2">
+            <label className="text-sm font-medium">Choose Icon</label>
+
+            <IconPicker
+              value={selectedIcon}
+              onChange={setSelectedIcon}
+            />
+
+            <IconPreview value={selectedIcon} />
+          </div>
         </div>
 
         <TextAreaInput
