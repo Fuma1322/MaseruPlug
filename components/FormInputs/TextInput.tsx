@@ -6,11 +6,18 @@ import { Input } from "../ui/input";
 import Link from "next/link";
 import { cn } from "@/lib/utils";
 
-type TextInputsProps = {
+import {
+  FieldErrors,
+  FieldValues,
+  UseFormRegister,
+  Path,
+} from "react-hook-form";
+
+type TextInputsProps<T extends FieldValues> = {
   label: string;
-  register: any;
-  name: string;
-  errors: any;
+  register: UseFormRegister<T>;
+  name: Path<T>;
+  errors: FieldErrors<T>;
   type?: string;
   page?: string;
   placeholder?: string;
@@ -18,9 +25,9 @@ type TextInputsProps = {
   isRequired?: boolean;
   value?: string;
   onChange?: (e: React.ChangeEvent<HTMLInputElement>) => void;
-};
+};;
 
-export default function TextInput({
+export default function TextInput<T extends FieldValues>({
   label,
   register,
   name,
@@ -30,7 +37,7 @@ export default function TextInput({
   page,
   className = "col-span-full",
   isRequired = false,
-}: TextInputsProps) {
+}: TextInputsProps<T>) {
   
   return (
     <div className={cn("grid gap-2", className)}>

@@ -1,12 +1,15 @@
 import { Textarea } from "@/components/ui/textarea";
 import { Label } from "../ui/label";
 import { cn } from "@/lib/utils";
+import { FieldErrors, UseFormRegister } from "react-hook-form";
+
+type FormValues = Record<string, any>;
 
 type TextAreaInputProps = {
   label: string;
-  register: any;
+  register: UseFormRegister<FormValues>;
   name: string;
-  errors: any;
+  errors: FieldErrors<FormValues>;
   placeholder?: string;
   className?: string;
   isRequired?: boolean;
@@ -21,6 +24,8 @@ export function TextAreaInput({
   className = "col-span-full",
   isRequired = false,
 }: TextAreaInputProps) {
+  const error = errors?.[name];
+
   return (
     <div className={cn("grid gap-2", className)}>
       <Label htmlFor={name}>{label}</Label>
@@ -31,12 +36,11 @@ export function TextAreaInput({
         {...register(name, {
           required: isRequired ? `${label} is required` : false,
         })}
-        onChange={() => {}}
       />
 
-      {errors[name] && (
+      {error && (
         <span className="text-red-600 text-sm">
-          {errors[name]?.message?.toString()}
+          {String(error.message ?? `${label} is required`)}
         </span>
       )}
     </div>

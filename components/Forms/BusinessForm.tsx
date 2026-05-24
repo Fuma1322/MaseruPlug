@@ -1,7 +1,7 @@
 "use client";
 
 import { useState } from "react";
-import { useForm } from "react-hook-form";
+import { useForm, type UseFormRegister } from "react-hook-form";
 import { BusinessStatus, Category } from "@prisma/client";
 import { useRouter } from "next/navigation";
 import toast from "react-hot-toast";
@@ -90,8 +90,7 @@ export default function BusinessForm({
     reset();
     router.push("/dashboard/businesses");
     router.refresh();
-  } catch (error) {
-    // console.log("FORM ERRORS:", errors);
+  } catch {
     toast.error("Something went wrong");
   } finally {
     setIsLoading(false);
@@ -113,7 +112,7 @@ export default function BusinessForm({
           <TextInput
             label="Business Name"
             name="name"
-            register={register}
+            register={register as unknown as UseFormRegister<any>}
             errors={errors}
             placeholder="e.g. Nails by Lelo"
             isRequired
@@ -122,7 +121,7 @@ export default function BusinessForm({
           <SelectInput
             label="Category"
             name="categoryId"
-            register={register}
+            register={register as unknown as UseFormRegister<any>}
             errors={errors}
             options={categoryOptions}
           />
@@ -132,7 +131,7 @@ export default function BusinessForm({
         <TextAreaInput
           label="Description"
           name="description"
-          register={register}
+          register={register as unknown as UseFormRegister<any>}
           errors={errors}
           placeholder="Describe the business"
           isRequired={true}
@@ -143,7 +142,7 @@ export default function BusinessForm({
           <TextInput
             label="Location"
             name="location"
-            register={register}
+            register={register as unknown as UseFormRegister<any>}
             errors={errors}
             placeholder="e.g. Maseru West"
             isRequired
@@ -152,7 +151,7 @@ export default function BusinessForm({
           <TextInput
             label="Phone"
             name="phone"
-            register={register}
+            register={register as unknown as UseFormRegister<any>}
             errors={errors}
             placeholder="+266 5800 0000"
             isRequired
@@ -161,7 +160,7 @@ export default function BusinessForm({
           <TextInput
             label="WhatsApp"
             name="whatsapp"
-            register={register}
+            register={register as unknown as UseFormRegister<any>}
             errors={errors}
             placeholder="+266 5800 0000"
           />
@@ -169,7 +168,7 @@ export default function BusinessForm({
           <TextInput
             label="Facebook URL"
             name="facebookUrl"
-            register={register}
+            register={register as unknown as UseFormRegister<any>}
             errors={errors}
             placeholder="https://facebook.com/..."
           />
@@ -177,7 +176,7 @@ export default function BusinessForm({
           <TextInput
             label="Website URL"
             name="websiteUrl"
-            register={register}
+            register={register as unknown as UseFormRegister<any>}
             errors={errors}
             placeholder="https://example.com"
           />
@@ -196,7 +195,7 @@ export default function BusinessForm({
           <TextInput
             label="Meta Title"
             name="metaTitle"
-            register={register}
+            register={register as unknown as UseFormRegister<any>}
             errors={errors}
             placeholder="SEO title"
           />
@@ -204,7 +203,7 @@ export default function BusinessForm({
           <SelectInput
             label="Status"
             name="status"
-            register={register}
+            register={register as unknown as UseFormRegister<any>}
             errors={errors}
             options={statusOptions}
           />
@@ -213,7 +212,7 @@ export default function BusinessForm({
         <TextAreaInput
           label="Meta Description"
           name="metaDescription"
-          register={register}
+          register={register as unknown as UseFormRegister<any>}
           errors={errors}
           placeholder="SEO description"
         />

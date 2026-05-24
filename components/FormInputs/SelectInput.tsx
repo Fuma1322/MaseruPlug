@@ -1,11 +1,11 @@
 import React from "react";
-import { FieldErrors, FieldValues, UseFormRegister } from "react-hook-form";
+import { FieldErrors, FieldValues, UseFormRegister,  Path } from "react-hook-form";
 
 type SelectInputProps = {
   label: string;
   name: string; 
- register: UseFormRegister<FieldValues>;
- errors: FieldErrors<FieldValues>;
+  register: UseFormRegister<FieldValues>;
+  errors: FieldErrors<FieldValues>;
   placeholder?: string;
   className?: string;
   options: SelectOption[];
