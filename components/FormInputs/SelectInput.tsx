@@ -1,21 +1,21 @@
 import React from "react";
-import { FieldErrors, FieldValues, UseFormRegister} from "react-hook-form";
+import { FieldErrors, FieldValues, UseFormRegister, Path } from "react-hook-form";
 
-type SelectInputProps = {
+type SelectInputProps<T extends FieldValues> = {
   label: string;
-  name: string; 
-  register: UseFormRegister<FieldValues>;
-  errors: FieldErrors<FieldValues>;
+  name: Path<T>;
+  register: UseFormRegister<T>;
+  errors: FieldErrors<T>;
   placeholder?: string;
   className?: string;
   options: SelectOption[];
-  multiple?:boolean;
+  multiple?: boolean;
 };
 export type SelectOption = {
   value: string;
   label: string;
 };
-export default function SelectInput({
+export default function SelectInput<T extends FieldValues>({
   label,
   name,
   register,
@@ -23,7 +23,7 @@ export default function SelectInput({
   className = "sm:col-span-2",
   options = [],
   multiple = false,
-}: SelectInputProps) {
+}: SelectInputProps<T>) {
   return (
     <div className={className}> 
       <label

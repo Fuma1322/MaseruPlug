@@ -1,21 +1,19 @@
 import { Textarea } from "@/components/ui/textarea";
 import { Label } from "../ui/label";
 import { cn } from "@/lib/utils";
-import { FieldErrors, UseFormRegister } from "react-hook-form";
+import { FieldErrors, FieldValues, UseFormRegister, Path } from "react-hook-form";
 
-type FormValues = Record<string, unknown>;
-
-type TextAreaInputProps = {
+type TextAreaInputProps<T extends FieldValues> = {
   label: string;
-  register: UseFormRegister<FormValues>;
-  name: string;
-  errors: FieldErrors<FormValues>;
+  register: UseFormRegister<T>;
+  name: Path<T>;
+  errors: FieldErrors<T>;
   placeholder?: string;
   className?: string;
   isRequired?: boolean;
 };
 
-export function TextAreaInput({
+export function TextAreaInput<T extends FieldValues>({
   label,
   register,
   name,
