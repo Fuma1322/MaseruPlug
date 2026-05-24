@@ -34,7 +34,6 @@ export default function NavBar() {
     { title: "Dashboard", path: "/dashboard", icon: Activity },
     { title: "Categories", path: "/dashboard/categories", icon: Users },
     { title: "Businesses", path: "/dashboard/business", icon: University },
-    { title: "Create Listing", path: "/dashboard/landlord/create", icon: DiamondPlus },
   ];
 
   return (
