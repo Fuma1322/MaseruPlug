@@ -82,7 +82,7 @@ export default function CategoryForm({
           </h1>
 
           <Button asChild type="button" variant="outline" size="icon">
-            <Link href="/dashboard/categories">
+            <Link href="/dashboard">
               <X className="h-4 w-4" />
             </Link>
           </Button>
@@ -130,7 +130,7 @@ export default function CategoryForm({
         {/* Actions */}
         <div className="flex items-center justify-between gap-4 pt-4">
           <Button asChild type="button" variant="outline">
-            <Link href="/dashboard/categories">
+            <Link href="/dashboard">
               Cancel
             </Link>
           </Button>
