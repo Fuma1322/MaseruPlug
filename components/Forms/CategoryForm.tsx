@@ -2,21 +2,21 @@
 
 import Link from "next/link";
 import { X } from "lucide-react";
-import { useEffect, useState } from "react";
 import toast from "react-hot-toast";
 import { useForm } from "react-hook-form";
 import { useRouter } from "next/navigation";
-
-import { createCategory } from "@/actions/categories";
-import generateSlug from "@/utils/generateSlug";
-
-import TextInput from "@/components/FormInputs/TextInput";
-import SubmitButton from "@/components/FormInputs/SubmitButton";
-import { TextAreaInput } from "../FormInputs/TextAreaInput";
+import { useEffect, useState } from "react";
 
 import { Button } from "@/components/ui/button";
 import IconPicker from "../Frontend/Icon-Picker";
 import IconPreview from "../Frontend/Icon-Preview";
+
+import generateSlug from "@/utils/generateSlug";
+import { createCategory } from "@/actions/categories";
+
+import TextInput from "@/components/FormInputs/TextInput";
+import { TextAreaInput } from "../FormInputs/TextAreaInput";
+import SubmitButton from "@/components/FormInputs/SubmitButton";
 
 export type CategoryProps = {
   name: string;
