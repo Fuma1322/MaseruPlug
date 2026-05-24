@@ -1,3 +1,4 @@
+import Link from "next/link";
 import prisma from "@/lib/db";
 import { Palette, Scissors, Wrench, Hammer } from "lucide-react";
 
@@ -34,28 +35,26 @@ export default async function CategoriesPage() {
 
               {categories.map((category) => (
                 <li key={category.id}>
-                  <div className="h-full w-full max-w-xs rounded-2xl bg-white p-6 border border-neutral-200 shadow-xl flex flex-col items-center justify-center">
+                  <Link href={`/categories/${category.slug}`}>
+                    <div className="h-full w-full max-w-xs rounded-2xl bg-white p-6 border border-neutral-200 shadow-xl flex flex-col items-center justify-center">
+                        
+                        <div className="text-xl rounded-full px-4 py-0.5 mt-4 flex justify-center">
+                        {iconMap[category.name] || (
+                            <Palette className="h-24 w-24 text-[#25D366]" />
+                        )}
+                        </div>
 
-                    {/* ICON */}
-                    <div className="text-xl rounded-full px-4 py-0.5 mt-4 flex justify-center">
-                      {iconMap[category.name] || (
-                        <Palette className="h-24 w-24 text-[#25D366]" />
-                      )}
+                        <p className="text-lg text-center font-bold text-neutral-500 mt-4">
+                        {category.name}
+                        </p>
+
+                        {category.description && (
+                        <p className="text-sm text-center text-neutral-400 mt-2">
+                            {category.description}
+                        </p>
+                        )}
                     </div>
-
-                    {/* NAME */}
-                    <p className="text-lg text-center font-bold text-neutral-500 mt-4">
-                      {category.name}
-                    </p>
-
-                    {/* DESCRIPTION */}
-                    {category.description && (
-                      <p className="text-sm text-center text-neutral-400 mt-2">
-                        {category.description}
-                      </p>
-                    )}
-
-                  </div>
+                    </Link>
                 </li>
               ))}
 
