@@ -1,11 +1,11 @@
 "use client";
 
-import { useState } from "react";
-import { useForm, type UseFormRegister, type FieldErrors } from "react-hook-form";
-import { useRouter } from "next/navigation";
 import Link from "next/link";
 import toast from "react-hot-toast";
 import { X } from "lucide-react";
+import { useState } from "react";
+import { useForm, type UseFormRegister, type FieldErrors } from "react-hook-form";
+import { useRouter } from "next/navigation";
 
 import { createCategory } from "@/actions/categories";
 import generateSlug from "@/utils/generateSlug";
