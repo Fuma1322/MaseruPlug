@@ -21,7 +21,7 @@ export default function Navbar () {
                     <Link href="/">
                         <h2 className="font-extrabold text-2xl"><span className='text-[#25D366]'>Maseru</span>Plug</h2>
                     </Link>
-                    <div className="md:hidden">
+                    <div className="hidden">
                         <button className="text-gray-500 hover:text-gray-800"
                             onClick={() => setState(!state)}
                         >
@@ -39,7 +39,7 @@ export default function Navbar () {
                         </button>
                     </div>
                 </div>
-                <div className={`flex-1 pb-3 mt-8 md:block md:pb-0 md:mt-0 ${state ? 'block' : 'hidden'}`}>
+                <div className="hidden md:block flex-1 pb-3 mt-8 md:pb-0 md:mt-0">
                     <ul className="justify-end items-center space-y-10 md:flex md:space-x-6 md:space-y-0">
                         {
                             navigation.map((item, idx) => {
