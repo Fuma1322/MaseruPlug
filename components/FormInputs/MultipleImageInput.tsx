@@ -2,6 +2,7 @@
 
 "use client";
 
+import { OurFileRouter } from "@/app/api/uploadthing/core";
 import { UploadDropzone } from "@/lib/uploadthing";
 import { XCircle } from "lucide-react";
 import Image from "next/image";
@@ -15,7 +16,7 @@ type MultipleImageInputProps = {
   setImages: React.Dispatch<React.SetStateAction<string[]>>;
 
   className?: string;
-  endpoint: any;
+  endpoint: keyof OurFileRouter;
 };
 
 export default function MultipleImageInput({

@@ -13,12 +13,12 @@ export const ourFileRouter = {
       // !!! Whatever is returned here is sent to the clientside `onClientUploadComplete` callback
       return { uploadedBy: "MaseruPlug" };
     }),
-    additionalDocs: f({ pdf: { maxFileSize: "4MB", maxFileCount:4 }, })
-    .onUploadComplete(async ({ file }) => {
-      console.log("file url", file.url);
-      // !!! Whatever is returned here is sent to the clientside `onClientUploadComplete` callback
-      return { uploadedBy: "MaseruPlug" };
-    }),
+    // additionalDocs: f({ pdf: { maxFileSize: "4MB", maxFileCount:4 }, })
+    // .onUploadComplete(async ({ file }) => {
+    //   console.log("file url", file.url);
+    //   // !!! Whatever is returned here is sent to the clientside `onClientUploadComplete` callback
+    //   return { uploadedBy: "MaseruPlug" };
+    // }),
 } satisfies FileRouter;
  
 export type OurFileRouter = typeof ourFileRouter;

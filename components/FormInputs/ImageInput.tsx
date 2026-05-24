@@ -4,19 +4,21 @@ import toast from "react-hot-toast";
 import { Button } from "../ui/button";
 import { UploadDropzone } from "@/lib/uploadthing";
 
+type ImageInputProps = {
+  label: string;
+  imageUrl: string;
+  setImageUrl: React.Dispatch<React.SetStateAction<string>>;
+  className?: string;
+  endpoint: string;
+};
+
 export default function ImageInput({
     label,
     imageUrl = "",
     setImageUrl,
     className = "col-span-full",
     endpoint = "",
-}:{
-    label: string;
-    imageUrl: string;
-    setImageUrl: any;
-    className?: string;
-    endpoint: any;
-}) {
+}: ImageInputProps ) {
   return (
     <div className={className}>
         <div className="flex justify-between items-center">
