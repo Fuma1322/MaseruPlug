@@ -1,7 +1,7 @@
 "use client";
 
 import { useState } from "react";
-import { useForm, type FieldErrors } from "react-hook-form";
+import { useForm} from "react-hook-form";
 import { BusinessStatus, Category } from "@prisma/client";
 import { useRouter } from "next/navigation";
 import toast from "react-hot-toast";
