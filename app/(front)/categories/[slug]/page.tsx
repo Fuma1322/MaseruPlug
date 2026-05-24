@@ -35,7 +35,7 @@ export default async function CategoryPage({ params }: Props) {
         <h2 className="text-3xl text-[#111111] sm:text-5xl font-bold">
           {category.name}
         </h2>
-        <p className="text-lg text-[#111111] mt-4">
+        <p className="text-lg font-bold text-[#25D366] mt-4">
           Find the best {category.name.toLowerCase()}s near you
         </p>
       </div>
