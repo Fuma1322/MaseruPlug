@@ -46,8 +46,11 @@ export default function NavBar() {
           </Button>
         </SheetTrigger>
 
-        <SheetContent side="left" className="flex flex-col">
-          <nav className="grid gap-2 text-lg font-medium py-8">
+        <SheetContent
+        side="left"
+        className="w-72 sm:w-80 bg-white dark:bg-gray-950 p-0 pt-safe"
+      >
+          <nav className="flex flex-col gap-1 px-3 py-4 text-base font-medium">
             {sideBarLinks.map((item, i) => {
               const Icon = item.icon;
               return (
@@ -55,15 +58,18 @@ export default function NavBar() {
                   key={i}
                   href={item.path}
                   className={cn(
-                    "flex items-center gap-3 rounded-lg px-3 py-2 text-muted-foreground transition-all hover:text-primary",
+                    "flex items-center gap-3 rounded-xl px-3 py-3 text-muted-foreground transition hover:bg-muted hover:text-primary",
                     pathname === item.path && "bg-muted text-primary"
                   )}
                 >
-                  <Icon className="h-4 w-4" />
+                  <Icon className="h-5 w-5" />
                   {item.title}
                 </Link>
               );
             })}
+        <div className="mt-auto border-t p-4 text-md text-[#25D366] text-muted-foreground">
+          MaseruPlug Admin Panel
+        </div>
           </nav>
         </SheetContent>
       </Sheet>
