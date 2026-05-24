@@ -55,7 +55,7 @@ export default async function BusinessProfilePage({
 
           {/* Small Images */}
           <div className="grid grid-cols-4 gap-3">
-            {galleryImages.slice(1).map((image, index) => (
+            {galleryImages.slice(1, 5).map((image, index) => (
               <div
                 key={index}
                 className="overflow-hidden rounded-2xl shadow-md"
