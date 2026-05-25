@@ -1,9 +1,13 @@
 "use client";
 
 import { useState } from "react";
+import { useRouter } from "next/navigation";
 import { PlaceholdersAndVanishInput } from "../ui/placeholders-and-vanish-input";
 
 export function SearchInput() {
+  const router = useRouter();
+  const [query, setQuery] = useState("");
+
   const placeholders = [
     "Search Nail Techs",
     "Search Salons",
@@ -12,14 +16,16 @@ export function SearchInput() {
     "Search Electricians",
   ];
 
-  const [query, setQuery] = useState("");
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     setQuery(e.target.value);
   };
 
   const onSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
+
     if (query.trim() === "") return;
+
+    router.push(`/search?q=${encodeURIComponent(query)}`);
   };
 
   return (
