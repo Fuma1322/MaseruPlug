@@ -6,8 +6,8 @@ import { usePathname } from "next/navigation";
 import {
   IconHome,
   IconCategory,
-  IconBriefcase,
-  IconPhone
+  IconPhone,
+  IconStar
 } from "@tabler/icons-react";
 
 const navItems = [
@@ -22,9 +22,9 @@ const navItems = [
     icon: IconCategory,
   },
   {
-    label: "Businesses",
-    href: "#Featured",
-    icon: IconBriefcase,
+    label: "Featured",
+    href: "/#featured",
+    icon: IconStar,
   },
   {
     label: "Contact",
