@@ -53,6 +53,7 @@ export default async function Featured() {
               <div className="relative aspect-[16/10] overflow-hidden">
 
                 <Image
+                  priority
                   src={item.images?.[0] || "/lelo.jpg"}
                   alt={item.name}
                   fill

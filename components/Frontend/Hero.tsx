@@ -1,8 +1,11 @@
 "use client";
 
+import Image from "next/image";
 import Balancer from "react-wrap-balancer";
+
 import { Container } from "@/components/ui/craft";
 import { SearchInput } from "./SearchInput";
+
 import { BadgeCheck } from "lucide-react";
 
 const Hero = () => {
@@ -11,11 +14,15 @@ const Hero = () => {
 
       {/* BACKGROUND IMAGE */}
       <div className="absolute inset-0">
-        <div
-          className="h-full w-full bg-cover bg-center scale-105"
-          style={{
-            backgroundImage: `url("/hero4.png")`,
-          }}
+
+        <Image
+          src="/hero4.png"
+          alt="Maseru city services hero background"
+          fill
+          priority
+          quality={75}
+          sizes="100vw"
+          className="object-cover object-center scale-105"
         />
 
         {/* Cinematic Overlay */}
@@ -27,6 +34,7 @@ const Hero = () => {
 
       {/* FLOATING BLUR ORBS */}
       <div className="absolute top-20 left-10 h-72 w-72 rounded-full bg-[#25D366]/20 blur-3xl" />
+
       <div className="absolute bottom-10 right-10 h-96 w-96 rounded-full bg-[#25D366]/10 blur-3xl" />
 
       {/* CONTENT */}
