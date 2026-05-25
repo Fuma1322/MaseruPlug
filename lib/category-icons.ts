@@ -1,3 +1,4 @@
+import type { ComponentType, SVGProps } from "react";
 import {
   Scissors,
   Palette,
@@ -14,7 +15,9 @@ import {
   Shirt
 } from "lucide-react";
 
-export const categoryIconMap: Record<string, React.ComponentType<any>> = {
+export type CategoryIconComponent = ComponentType<SVGProps<SVGSVGElement>>;
+
+export const categoryIconMap: Record<string, CategoryIconComponent> = {
   Scissors,
   Palette,
   Wrench,
