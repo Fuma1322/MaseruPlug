@@ -48,7 +48,7 @@ export default async function Featured() {
           {featuredItems.map((item) => (
             <Card
               key={item.id}
-              className="group overflow-hidden rounded-3xl border border-[#25D366] bg-white shadow-sm transition-all duration-300 hover:-translate-y-2 hover:shadow-2xl"
+              className="group overflow-hidden rounded-3xl border border-[#25D366] bg-white shadow-lg transition-all duration-300 hover:-translate-y-2 hover:shadow-2xl"
             >
               <div className="relative aspect-[16/10] overflow-hidden">
 

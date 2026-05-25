@@ -10,6 +10,16 @@
   }
 }
 
+@keyframes fadeIn {
+  to {
+    opacity: 1;
+  }
+}
+
+.animate-fadeIn {
+  animation: fadeIn 1s ease forwards;
+}
+
 @layer base {
   .theme {
     --font-heading: var(--font-sans);
