@@ -23,7 +23,7 @@ const navItems = [
   },
   {
     label: "Businesses",
-    href: "/business",
+    href: "#Featured",
     icon: IconBriefcase,
   },
   {
