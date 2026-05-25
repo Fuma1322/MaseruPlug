@@ -47,7 +47,7 @@ export default function ContactPage() {
             alt="MaseruPlug"
             fill
             priority
-            className="object-cover"
+            className="object-cover opacity-0 animate-fadeIn"
             />
 
             {/* Overlay */}
