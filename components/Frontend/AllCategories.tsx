@@ -11,7 +11,7 @@ const iconMap: Record<string, React.ReactNode> = {
 
 export default async function CategoriesPage() {
   const categories = await prisma.category.findMany({
-    orderBy: { createdAt: "desc" },
+    orderBy: { createdAt: "asc" },
   });
 
   return (
