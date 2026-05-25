@@ -16,8 +16,8 @@ import {
 
 export const categoryIcons = [
   { key: "Scissors", label: "Hair Salon", icon: Scissors },
-  { key: "Palette", label: "Nail Tech", icon: Palette },
-  { key: "Wrench", label: "Plumber / Repairs", icon: Wrench },
+  { key: "Palette", label: "Nail Technician", icon: Palette },
+  { key: "Wrench", label: "Plumbers / Repairs", icon: Wrench },
   { key: "Hammer", label: "Carpentry", icon: Hammer },
   { key: "Brush", label: "Painters", icon: Brush },
   { key: "Car", label: "Mechanic", icon: Car },

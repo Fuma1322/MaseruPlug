@@ -9,7 +9,7 @@ export function SearchInput() {
   const [query, setQuery] = useState("");
 
   const placeholders = [
-    "Search Nail Techs",
+    "Search Nail Technicians",
     "Search Salons",
     "Search Plumbers",
     "Search Carpenters",
