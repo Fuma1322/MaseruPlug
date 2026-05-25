@@ -1,6 +1,6 @@
 import prisma from "@/lib/db";
 import Link from "next/link";
-import { ArrowRight, Palette } from "lucide-react";
+import { ArrowRight } from "lucide-react";
 import { getCategoryIcon } from "@/lib/category-icons";
 
 export default async function Categories() {

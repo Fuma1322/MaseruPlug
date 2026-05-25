@@ -11,6 +11,7 @@ import {
   Zap,
   Flame,
   ScissorsLineDashed,
+  Shirt
 } from "lucide-react";
 
 export const categoryIconMap: Record<string, React.ComponentType<any>> = {
@@ -26,6 +27,7 @@ export const categoryIconMap: Record<string, React.ComponentType<any>> = {
   Zap,
   Flame,
   ScissorsLineDashed,
+  Shirt
 };
 
 export function getCategoryIcon(iconKey?: string) {
