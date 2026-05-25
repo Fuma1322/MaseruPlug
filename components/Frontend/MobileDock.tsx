@@ -7,7 +7,7 @@ import {
   IconHome,
   IconCategory,
   IconBriefcase,
-  IconBrandWhatsapp,
+  IconPhone
 } from "@tabler/icons-react";
 
 const navItems = [
@@ -27,9 +27,9 @@ const navItems = [
     icon: IconBriefcase,
   },
   {
-    label: "WhatsApp",
-    href: "https://wa.me/26663272145",
-    icon: IconBrandWhatsapp,
+    label: "Contact",
+    href: "/contact",
+    icon: IconPhone,
   },
 ];
 
