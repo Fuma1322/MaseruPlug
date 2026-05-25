@@ -1,6 +1,6 @@
 "use client";
 
-import { categoryIcons } from "@/lib/category-icons";
+import { categoryIcons } from "@/lib/category-iconss";
 
 export default function IconPreview({ value }: { value: string }) {
   const found = categoryIcons.find((i) => i.key === value);
