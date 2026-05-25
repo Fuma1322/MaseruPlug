@@ -13,6 +13,20 @@ interface Props {
   };
 }
 
+export const revalidate = 3600;
+
+export async function generateStaticParams() {
+  const businesses = await prisma.business.findMany({
+    select: {
+      slug: true,
+    },
+  });
+
+  return businesses.map((business) => ({
+    slug: business.slug,
+  }));
+}
+
 export async function generateMetadata({
   params,
 }: Props): Promise<Metadata> {
@@ -87,8 +101,11 @@ export default async function BusinessProfilePage({
           {/* MAIN IMAGE */}
           <div className="overflow-hidden rounded-3xl shadow-xl">
             <Image
+              priority
               src={galleryImages[0]}
               alt={`${business.name} main image`}
+              placeholder="blur"
+              blurDataURL="/lelo.jpg"
               width={1200}
               height={800}
               className="w-full h-[400px] object-cover hover:scale-105 transition duration-500"
@@ -105,6 +122,8 @@ export default async function BusinessProfilePage({
                 <Image
                   src={image}
                   alt={`${business.name} gallery ${index + 1}`}
+                  placeholder="blur"
+                  blurDataURL="/lelo.jpg"
                   width={400}
                   height={300}
                   className="w-full h-24 md:h-28 object-cover hover:scale-110 transition duration-300"
@@ -183,6 +202,8 @@ export default async function BusinessProfilePage({
                 width={600}
                 height={500}
                 className="w-full h-[280px] object-cover transition duration-500 group-hover:scale-110"
+                placeholder="blur"
+                blurDataURL="/lelo.jpg"
               />
             </div>
           ))}

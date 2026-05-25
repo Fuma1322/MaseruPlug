@@ -20,6 +20,20 @@ interface Props {
   };
 }
 
+export const revalidate = 3600;
+
+export async function generateStaticParams() {
+const categories = await prisma.category.findMany({
+    select: {
+      slug: true,
+    },
+  });
+
+  return categories.map((category) => ({
+    slug: category.slug,
+  }));
+}
+
 export async function generateMetadata({
   params,
 }: Props): Promise<Metadata> {
