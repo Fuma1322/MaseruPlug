@@ -7,6 +7,10 @@ import {
   TrendingUp,
 } from "lucide-react";
 
+const message = encodeURIComponent(
+  "Hello MaseruPlug, I am interested in listing my business on your platform. Please share more details."
+);
+
 export default function ContactCTA() {
   return (
     <section className="relative py-24 overflow-hidden">
@@ -64,7 +68,8 @@ export default function ContactCTA() {
               {/* BUTTON */}
               <div className="mt-10">
                 <Link
-                  href="/list-business"
+                  href={`https://wa.me/26663272145?text=${message}`}
+                  target="_blank"
                   className="group inline-flex items-center gap-3 rounded-xl bg-[#25D366] hover:bg-[#1ebe5d] px-8 py-4 text-lg font-bold text-white transition-all duration-300 hover:scale-105 shadow-2xl"
                 >
                   List Your Business
