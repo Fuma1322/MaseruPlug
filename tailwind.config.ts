@@ -15,6 +15,10 @@ const config: Config = {
         background: "hsl(var(--background))",
         foreground: "hsl(var(--foreground))",
       },
+      fontFamily: {
+        sans: ["var(--font-inter)"],
+        heading: ["var(--font-poppins)"],
+      },
       animation: {
         shimmer: "shimmer 2s linear infinite"
       },
