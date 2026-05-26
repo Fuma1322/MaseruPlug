@@ -162,14 +162,12 @@ export default async function CategoryPage({ params }: Props) {
 
             {/* FOOTER */}
             <CardFooter>
-              <Button
-                asChild
-                className="w-full h-12 rounded-xl border-[#25D366] text-[#25D366] font-semibold shadow-sm hover:text-[#111111]"
+              <Link
+                href={`/business/${item.slug}`}
+                className="inline-flex h-12 w-full items-center justify-center rounded-xl border border-[#25D366] text-[#25D366] font-semibold shadow-sm hover:text-[#111111]"
               >
-                <Link href={`/business/${item.slug}`}>
-                  View Profile
-                </Link>
-              </Button>
+                View Profile
+              </Link>
             </CardFooter>
 
           </Card>
