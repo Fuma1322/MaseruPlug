@@ -12,6 +12,7 @@ import {
 } from "@/components/ui/card";
 
 import { MapPin } from "lucide-react";
+import BackButton from "@/components/Frontend/BackButton";
 
 interface Props {
   params: {
@@ -101,6 +102,10 @@ export default async function CategoryPage({ params }: Props) {
         <p className="text-lg md:text-xl font-semibold text-[#25D366] mt-5">
           Find the best {category.name.toLowerCase()} services near you in Maseru
         </p>
+      </div>
+
+      <div>
+        <BackButton />
       </div>
 
       {/* EMPTY STATE */}

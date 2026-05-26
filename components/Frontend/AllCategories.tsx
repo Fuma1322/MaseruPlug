@@ -1,6 +1,7 @@
 import Link from "next/link";
 import prisma from "@/lib/db";
 import { getCategoryIcon } from "@/lib/category-icons";
+import BackButton from "./BackButton";
 
 export default async function CategoriesPage() {
   const categories = await prisma.category.findMany({
@@ -11,11 +12,16 @@ export default async function CategoriesPage() {
     <div className="py-10">
       <div className="max-w-screen-xl mx-auto px-4 md:px-8">
 
+        <div>
+            <BackButton />
+        </div>
+
         {/* HEADER */}
         <div className="max-w-xl mx-auto text-center">
           <h3 className="text-[#111111] text-3xl font-bold sm:text-4xl">
             All Categories
           </h3>
+
           <p className="text-gray-500 mt-2">
             Browse all service categories on MaseruPlug
           </p>

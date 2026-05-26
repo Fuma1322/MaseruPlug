@@ -11,6 +11,7 @@ import {
 } from "@/components/ui/card";
 
 import { MapPin } from "lucide-react";
+import BackButton from "@/components/Frontend/BackButton";
 
 interface Props {
   searchParams: {
@@ -62,6 +63,11 @@ export default async function SearchPage({
 
   return (
     <div className="max-w-7xl mx-auto px-4 py-10">
+
+      {/* BACK BUTTON */}
+      <div className="mb-5">
+        <BackButton />
+      </div>
 
       {/* HEADER */}
       <div className="text-center mb-12">
@@ -137,9 +143,9 @@ export default async function SearchPage({
             <CardFooter>
               <Link
                 href={`/business/${item.slug}`}
-                className="inline-flex w-full h-12 items-center justify-center rounded-xl border border-[#25D366] text-[#25D366] font-semibold shadow-sm hover:text-[#111111]"
+                className="inline-flex w-full h-12 items-center justify-center rounded-xl bg-[#25D366] text-white font-semibold shadow-sm transition hover:bg-[#1ebe5d]"
               >
-                View Profile
+                Visit Business
               </Link>
             </CardFooter>
           </Card>
