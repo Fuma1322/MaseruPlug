@@ -15,6 +15,10 @@ interface Props {
 
 export const revalidate = 3600;
 
+const message = encodeURIComponent(
+    "Hello {name}, I found your business on MaseruPlug and I'm interested in learning more about your services. Could you please provide more details? Thank you!"
+    );
+
 export async function generateStaticParams() {
   const businesses = await prisma.business.findMany({
     select: {
@@ -156,7 +160,7 @@ export default async function BusinessProfilePage({
           <div className="flex flex-col sm:flex-row gap-4 mt-8">
 
             <Link
-              href={`https://wa.me/266${business.whatsapp}`}
+              href={`https://wa.me/266${business.whatsapp}text=${message}`}
               target="_blank"
               className="inline-flex items-center justify-center gap-2 rounded-xl bg-[#25D366] px-6 py-4 text-white font-semibold shadow-lg hover:scale-105 transition duration-300"
             >
