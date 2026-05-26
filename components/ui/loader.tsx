@@ -186,7 +186,7 @@ export const LoaderFour = ({ text = "Loading..." }: { text?: string }) => {
 
 export const LoaderFive = ({ text }: { text: string }) => {
   return (
-    <div className="font-sans sm:text-6xl font-bold text-[#25D366] [--shadow-color:var(--color-neutral-500)] dark:[--shadow-color:var(--color-neutral-100)] flex items-center justify-center py-44">
+    <div className="font-sans sm:text-6xl font-bold text-[#25D366] [--shadow-color:var(--color-neutral-500)] dark:[--shadow-color:var(--color-neutral-100)] flex items-center justify-center py-10">
       {text.split("").map((char, i) => (
         <motion.span
           key={i}

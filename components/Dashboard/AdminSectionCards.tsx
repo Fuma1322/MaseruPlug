@@ -30,14 +30,14 @@ export function SectionCards({
     <div className="grid grid-cols-1 gap-4 md:grid-cols-2 xl:grid-cols-4">
 
       {/* CARD TEMPLATE */}
-      <Card className="rounded-2xl border bg-white shadow-sm hover:shadow-lg transition">
+      <Card className="hover:shadow-lg transition max-w-xs rounded-2xl bg-white p-6 border border-neutral-200 shadow-xl">
         <CardHeader>
           <CardDescription>Total Businesses</CardDescription>
           <CardTitle className="text-3xl font-bold tabular-nums">
             {totalBusinesses}
           </CardTitle>
           <CardContent className="p-0">
-            <Badge className="mt-2 bg-green-50 text-green-600 border-green-200">
+            <Badge className="mt-2 bg-green-50 text-green-600 border-green-200 rounded-lg">
               <IconTrendingUp className="h-4 w-4 mr-1" />
               Live
             </Badge>
@@ -50,14 +50,14 @@ export function SectionCards({
       </Card>
 
       {/* FEATURED */}
-      <Card className="rounded-2xl border bg-white shadow-sm hover:shadow-lg transition">
+      <Card className="hover:shadow-lg transition max-w-xs rounded-2xl bg-white p-6 border border-neutral-200 shadow-xl">
         <CardHeader>
           <CardDescription>Featured</CardDescription>
           <CardTitle className="text-3xl font-bold tabular-nums">
             {featuredBusinesses}
           </CardTitle>
 
-          <Badge className="mt-2 bg-blue-50 text-blue-600 border-blue-200">
+          <Badge className="mt-2 bg-blue-50 text-blue-600 border-blue-200 rounded-lg">
             Premium visibility
           </Badge>
         </CardHeader>
@@ -68,14 +68,14 @@ export function SectionCards({
       </Card>
 
       {/* CATEGORIES */}
-      <Card className="rounded-2xl border bg-white shadow-sm hover:shadow-lg transition">
+      <Card className="hover:shadow-lg transition max-w-xs rounded-2xl bg-white p-6 border border-neutral-200 shadow-xl">
         <CardHeader>
           <CardDescription>Categories</CardDescription>
           <CardTitle className="text-3xl font-bold tabular-nums">
             {totalCategories}
           </CardTitle>
 
-          <Badge className="mt-2 bg-purple-50 text-purple-600 border-purple-200">
+          <Badge className="mt-2 bg-purple-50 text-purple-600 border-purple-200 rounded-lg">
             Structured data
           </Badge>
         </CardHeader>
@@ -86,7 +86,7 @@ export function SectionCards({
       </Card>
 
       {/* NEW */}
-      <Card className="rounded-2xl border bg-white shadow-sm hover:shadow-lg transition">
+      <Card className="hover:shadow-lg transition max-w-xs rounded-2xl bg-white p-6 border border-neutral-200 shadow-xl">
         <CardHeader>
           <CardDescription>New This Month</CardDescription>
           <CardTitle className="text-3xl font-bold tabular-nums">
@@ -96,7 +96,7 @@ export function SectionCards({
           <Badge
             className={
               newBusinesses > 0
-                ? "mt-2 bg-green-50 text-green-600 border-green-200"
+                ? "mt-2 bg-green-50 text-green-600 border-green-200 rounded-lg"
                 : "mt-2 bg-red-50 text-red-600 border-red-200"
             }
           >

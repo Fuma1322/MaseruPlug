@@ -1,6 +1,6 @@
 "use client";
 
-import { CategoryPieChart } from "./AdminChart";
+import { LoaderFive } from "../ui/loader";
 import { SectionCards } from "./AdminSectionCards";
 
 type Props = {
@@ -25,19 +25,16 @@ export default function AdminCards({
   return (
     <div className="space-y-8 p-4 lg:p-6">
 
-      {/* KPI CARDS */}
+      <div className="flex items-center justify-center">
+        <LoaderFive text="Welcome To MaseruPlug..." />
+      </div>
+      
       <SectionCards
         totalBusinesses={totalBusinesses}
         featuredBusinesses={featuredBusinesses}
         totalCategories={totalCategories}
         newBusinesses={newBusinesses}
       />
-
-      {/* PIE CHART */}
-      <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
-        <CategoryPieChart data={chartData} />
-      </div>
-
     </div>
   );
 }
