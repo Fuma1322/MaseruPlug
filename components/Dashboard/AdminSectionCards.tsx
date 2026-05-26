@@ -6,12 +6,14 @@ import {
 import { Badge } from "@/components/ui/badge";
 import {
   Card,
+  CardAction,
   CardContent,
   CardDescription,
   CardFooter,
   CardHeader,
   CardTitle,
 } from "@/components/ui/card";
+import { useTopSearches } from "@/lib/useTopSearches";
 
 type Props = {
   totalBusinesses: number;
@@ -26,6 +28,7 @@ export function SectionCards({
   totalCategories,
   newBusinesses,
 }: Props) {
+  const { searches, isLoading } = useTopSearches();
   return (
     <div className="grid grid-cols-1 gap-4 md:grid-cols-2 xl:grid-cols-4">
 
@@ -86,31 +89,51 @@ export function SectionCards({
       </Card>
 
       {/* NEW */}
-      <Card className="hover:shadow-lg transition max-w-xs rounded-2xl bg-white p-6 border border-neutral-200 shadow-xl">
-        <CardHeader>
-          <CardDescription>New This Month</CardDescription>
-          <CardTitle className="text-3xl font-bold tabular-nums">
-            {newBusinesses}
-          </CardTitle>
+        <Card className="hover:shadow-lg transition max-w-xs rounded-2xl bg-white p-6 border border-neutral-200 shadow-xl">
+          <CardHeader>
+            <CardDescription>New This Month</CardDescription>
+            <CardTitle className="text-3xl font-bold tabular-nums">
+              {newBusinesses}
+            </CardTitle>
 
-          <Badge
-            className={
-              newBusinesses > 0
-                ? "mt-2 bg-green-50 text-green-600 border-green-200 rounded-lg"
-                : "mt-2 bg-red-50 text-red-600 border-red-200"
-            }
-          >
-            {newBusinesses > 0 ? (
-              <IconTrendingUp className="h-4 w-4 mr-1" />
-            ) : (
-              <IconTrendingDown className="h-4 w-4 mr-1" />
-            )}
-            {newBusinesses > 0 ? "Growth" : "Low activity"}
-          </Badge>
+            <Badge
+              className={
+                newBusinesses > 0
+                  ? "mt-2 bg-green-50 text-green-600 border-green-200 rounded-lg"
+                  : "mt-2 bg-red-50 text-red-600 border-red-200"
+              }
+            >
+              {newBusinesses > 0 ? (
+                <IconTrendingUp className="h-4 w-4 mr-1" />
+              ) : (
+                <IconTrendingDown className="h-4 w-4 mr-1" />
+              )}
+              {newBusinesses > 0 ? "Growth" : "Low activity"}
+            </Badge>
+          </CardHeader>
+
+          <CardFooter className="text-sm text-muted-foreground">
+            Recent platform activity
+          </CardFooter>
+        </Card>
+
+        <Card className="hover:shadow-lg transition rounded-2xl bg-white p-6 border border-neutral-200 shadow-xl">
+        <CardHeader>
+          <CardDescription>Top Searches</CardDescription>
+
+          <CardTitle className="text-xl text-[#25D366] font-semibold">
+            {isLoading ? "Loading..." : searches?.[0]?.query || "No data"}
+          </CardTitle>
         </CardHeader>
 
-        <CardFooter className="text-sm text-muted-foreground">
-          Recent platform activity
+        <CardFooter className="flex-col items-start gap-1.5 text-sm">
+          <div className="font-medium">
+            Most searched service right now
+          </div>
+
+          <div className="text-muted-foreground">
+            {searches?.slice(0, 3).map((s: any) => s.query).join(", ")}
+          </div>
         </CardFooter>
       </Card>
 

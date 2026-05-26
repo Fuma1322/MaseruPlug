@@ -20,10 +20,15 @@ export function SearchInput() {
     setQuery(e.target.value);
   };
 
-  const onSubmit = (e: React.FormEvent<HTMLFormElement>) => {
+  const onSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
 
     if (query.trim() === "") return;
+
+    await fetch("/search/log/route", {
+    method: "POST",
+    body: JSON.stringify({ query }),
+  });
 
     router.push(`/search?q=${encodeURIComponent(query)}`);
   };
