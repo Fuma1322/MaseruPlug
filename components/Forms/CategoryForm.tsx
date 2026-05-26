@@ -89,11 +89,9 @@ export default function CategoryForm({
             {title}
           </h1>
 
-          <Button asChild type="button" variant="outline" size="icon">
             <Link href="/dashboard">
               <X className="h-4 w-4" />
             </Link>
-          </Button>
         </div>
       </div>
 
@@ -139,10 +137,8 @@ export default function CategoryForm({
 
         {/* Actions */}
         <div className="flex items-center justify-between gap-4 pt-4">
-          <Button asChild type="button" variant="outline">
-            <Link href="/dashboard">
-              Cancel
-            </Link>
+          <Button type="button" variant="outline" onClick={() => router.push('/dashboard')}>
+            Cancel
           </Button>
 
           <SubmitButton

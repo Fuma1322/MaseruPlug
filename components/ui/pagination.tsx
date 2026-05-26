@@ -4,6 +4,12 @@ import { cn } from "@/lib/utils"
 import { Button } from "@/components/ui/button"
 import { ChevronLeftIcon, ChevronRightIcon, MoreHorizontalIcon } from "lucide-react"
 
+type ButtonWithAsChildProps = React.ComponentProps<typeof Button> & {
+  asChild?: boolean
+}
+
+const ButtonWithAsChild = Button as React.ComponentType<ButtonWithAsChildProps>
+
 function Pagination({ className, ...props }: React.ComponentProps<"nav">) {
   return (
     <nav
@@ -45,7 +51,7 @@ function PaginationLink({
   ...props
 }: PaginationLinkProps) {
   return (
-    <Button
+    <ButtonWithAsChild
       asChild
       variant={isActive ? "outline" : "ghost"}
       size={size}
@@ -57,7 +63,7 @@ function PaginationLink({
         data-active={isActive}
         {...props}
       />
-    </Button>
+    </ButtonWithAsChild>
   )
 }
 

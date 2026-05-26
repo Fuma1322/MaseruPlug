@@ -11,7 +11,6 @@ import {
   CardTitle,
 } from "../ui/card";
 
-import { Button } from "../ui/button";
 
 export default async function Featured() {
   const featuredItems = await prisma.business.findMany({
@@ -80,15 +79,14 @@ export default async function Featured() {
                 </p>
               </CardContent>
 
-              <CardFooter> 
-                <Button asChild className="w-full h-12 rounded-xl 
-                 border-[#25D366] text-[#25D366] font-semibold shadow-sm 
-                 hover:text-[#111111]" > 
-                  <Link href={`/business/${item.slug}`}> 
+              <CardFooter>
+                <Link
+                  href={`/business/${item.slug}`}
+                  className="inline-flex w-full h-12 items-center justify-center rounded-xl border border-[#25D366] text-[#25D366] font-semibold shadow-sm transition hover:text-[#111111]"
+                >
                   View Profile
-                  </Link> 
-                </Button> 
-                </CardFooter>
+                </Link>
+              </CardFooter>
             </Card>
           ))}
         </div>
