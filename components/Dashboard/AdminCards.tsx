@@ -20,7 +20,6 @@ export default function AdminCards({
   featuredBusinesses,
   totalCategories,
   newBusinesses,
-  chartData,
 }: Props) {
   return (
     <div className="space-y-8 p-4 lg:p-6">
@@ -28,7 +27,7 @@ export default function AdminCards({
       <div className="flex items-center justify-center">
         <LoaderFive text="Welcome To MaseruPlug..." />
       </div>
-      
+
       <SectionCards
         totalBusinesses={totalBusinesses}
         featuredBusinesses={featuredBusinesses}

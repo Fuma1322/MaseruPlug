@@ -6,14 +6,12 @@ import {
 import { Badge } from "@/components/ui/badge";
 import {
   Card,
-  CardAction,
   CardContent,
   CardDescription,
   CardFooter,
   CardHeader,
   CardTitle,
 } from "@/components/ui/card";
-import { useTopSearches } from "@/lib/useTopSearches";
 
 type Props = {
   totalBusinesses: number;
@@ -28,7 +26,6 @@ export function SectionCards({
   totalCategories,
   newBusinesses,
 }: Props) {
-  const { searches, isLoading } = useTopSearches();
   return (
     <div className="grid grid-cols-1 gap-4 md:grid-cols-2 xl:grid-cols-4">
 
@@ -116,26 +113,6 @@ export function SectionCards({
             Recent platform activity
           </CardFooter>
         </Card>
-
-        <Card className="hover:shadow-lg transition rounded-2xl bg-white p-6 border border-neutral-200 shadow-xl">
-        <CardHeader>
-          <CardDescription>Top Searches</CardDescription>
-
-          <CardTitle className="text-xl text-[#25D366] font-semibold">
-            {isLoading ? "Loading..." : searches?.[0]?.query || "No data"}
-          </CardTitle>
-        </CardHeader>
-
-        <CardFooter className="flex-col items-start gap-1.5 text-sm">
-          <div className="font-medium">
-            Most searched service right now
-          </div>
-
-          <div className="text-muted-foreground">
-            {searches?.slice(0, 3).map((s: any) => s.query).join(", ")}
-          </div>
-        </CardFooter>
-      </Card>
 
     </div>
   );
