@@ -10,7 +10,6 @@ import {
   CardTitle,
 } from "@/components/ui/card";
 
-import { Button } from "@/components/ui/button";
 import { MapPin } from "lucide-react";
 
 interface Props {
@@ -136,14 +135,12 @@ export default async function SearchPage({
 
             {/* FOOTER */}
             <CardFooter>
-              <Button
-                asChild
-                className="w-full h-12 rounded-xl border-[#25D366] text-[#25D366] font-semibold shadow-sm hover:text-[#111111]"
+              <Link
+                href={`/business/${item.slug}`}
+                className="inline-flex w-full h-12 items-center justify-center rounded-xl border border-[#25D366] text-[#25D366] font-semibold shadow-sm hover:text-[#111111]"
               >
-                <Link href={`/business/${item.slug}`}>
-                  View Profile
-                </Link>
-              </Button>
+                View Profile
+              </Link>
             </CardFooter>
           </Card>
         ))}
