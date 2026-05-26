@@ -1,7 +1,8 @@
+// app/layout.tsx
+
 import "./globals.css";
 import { cn } from "@/lib/utils";
 import type { Metadata } from "next";
-
 import { Inter, Poppins } from "next/font/google";
 
 import { ToastProvider } from "./ToastProvider";
@@ -23,38 +24,88 @@ const poppins = Poppins({
   display: "swap",
 });
 
-
 export const metadata: Metadata = {
+  metadataBase: new URL("https://maseru-plug.vercel.app"),
+
+  title: {
+    default: "MaseruPlug — Discover Trusted Businesses In Maseru",
+    template: "%s | MaseruPlug",
+  },
+
+  description:
+    "MaseruPlug helps people in Lesotho discover trusted local businesses including nail techs, salons, plumbers, electricians, restaurants, mechanics, welders, and more.",
+
+  keywords: [
+    "Maseru businesses",
+    "Lesotho businesses",
+    "Maseru directory",
+    "business directory Lesotho",
+    "nail techs in Maseru",
+    "salons in Maseru",
+    "plumbers in Maseru",
+    "electricians in Maseru",
+    "restaurants in Maseru",
+    "MaseruPlug",
+  ],
+
+  authors: [
+    {
+      name: "Tankiso Fuma",
+    },
+    {
+      name: "Lemohang Makintane",
+    },
+  ],
+
+  creator: "Tankiso Fuma",
+
+  applicationName: "MaseruPlug",
+
+  category: "Business Directory",
+
+  alternates: {
+    canonical: "https://maseru-plug.vercel.app",
+  },
 
   openGraph: {
-    title: "MaseruPlug | Discover Trusted Businesses in Maseru",
+    title: "MaseruPlug — Discover Trusted Businesses In Maseru",
     description:
-      "Find trusted local businesses and services in Maseru, Lesotho with MaseruPlug.",
+      "Find trusted businesses and services in Maseru, Lesotho.",
+
     url: "https://maseru-plug.vercel.app",
+
     siteName: "MaseruPlug",
+
     locale: "en_US",
+
     type: "website",
+
     images: [
       {
-        url: "/hero4.png",
+        url: "/og-image.png",
         width: 1200,
         height: 630,
-        alt: "MaseruPlug - Local Business Directory",
+        alt: "MaseruPlug",
       },
     ],
   },
 
   twitter: {
     card: "summary_large_image",
-    title: "MaseruPlug | Local Businesses in Maseru",
+
+    title: "MaseruPlug",
+
     description:
-      "Discover trusted local services and businesses in Maseru, Lesotho.",
-    images: ["/hero4.png"],
+      "Discover trusted businesses and local services in Maseru, Lesotho.",
+
+    images: ["/og-image.png"],
   },
+
 
   robots: {
     index: true,
     follow: true,
+
     googleBot: {
       index: true,
       follow: true,
@@ -63,7 +114,6 @@ export const metadata: Metadata = {
       "max-snippet": -1,
     },
   },
-
   icons: {
     icon: "/favicon.ico",
     shortcut: "/favicon.ico",
@@ -79,10 +129,10 @@ export default function RootLayout({
   return (
     <html
       lang="en"
-      className={cn(inter.variable, poppins.variable)}
       suppressHydrationWarning
+      className={cn(inter.variable, poppins.variable)}
     >
-      <body className="font-sans antialiased bg-white text-[#111111]">
+      <body className="min-h-screen bg-white font-sans antialiased">
         <ToastProvider />
 
         {children}
