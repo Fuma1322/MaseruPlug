@@ -160,8 +160,9 @@ export default async function BusinessProfilePage({
           <div className="flex flex-col sm:flex-row gap-4 mt-8">
 
             <Link
-              href={`https://wa.me/266${business.whatsapp}text=${message}`}
+              href={`https://wa.me/266${business.whatsapp}?text=${message}`}
               target="_blank"
+              rel="noopener noreferrer"
               className="inline-flex items-center justify-center gap-2 rounded-xl bg-[#25D366] px-6 py-4 text-white font-semibold shadow-lg hover:scale-105 transition duration-300"
             >
               <FaWhatsapp className="w-5 h-5" />
