@@ -27,12 +27,12 @@ export default function CTA() {
         <div className="relative flex flex-col md:flex-row items-center justify-between gap-10 px-8 py-10 md:px-12 md:py-14">
 
           <div className="flex items-center gap-5 text-center md:text-left">
-            <div className="flex h-20 w-20 items-center justify-center">
-              <FaWhatsapp className="h-10 w-10 text-[#25D366]" />
+            <div className="flex items-center justify-center">
+              <FaWhatsapp className="h-24 w-24 text-[#25D366]" />
             </div>
 
             <div>
-              <h3 className="text-2xl md:text-4xl font-extrabold text-[#111111] leading-tight">
+              <h3 className="text-4xl md:text-6xl font-extrabold text-[#111111] leading-tight">
                 Are you a business owner?
               </h3>
 
