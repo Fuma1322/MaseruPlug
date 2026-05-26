@@ -12,7 +12,7 @@ export default async function CategoriesPage() {
     <div className="py-10">
       <div className="max-w-screen-xl mx-auto px-4 md:px-8">
 
-        <div>
+        <div className="mb-3">
             <BackButton />
         </div>
 
