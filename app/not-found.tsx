@@ -31,9 +31,9 @@ export default function NotFound() {
         </h1>
 
         <p className="mt-6 text-lg md:text-xl text-gray-600 leading-relaxed">
-          The page you’re looking for doesn’t exist or has been moved.
+          The page you&apos;re looking for doesn&apos;t exist or has been moved.
           <br />
-          Let’s get you back to discovering local businesses.
+          Let&apos;s get you back to discovering local businesses.
         </p>
 
         <div className="mt-10 flex flex-col sm:flex-row items-center justify-center gap-4">
