@@ -33,7 +33,7 @@ export const metadata: Metadata = {
   },
 
   description:
-    "MaseruPlug helps people in Lesotho discover trusted local businesses including nail techs, salons, plumbers, electricians, restaurants, mechanics, welders, and more.",
+    "MaseruPlug helps people in Lesotho discover trusted local businesses including nail techs, salons, plumbers, electricians, mechanics, welders, and more.",
 
   keywords: [
     "Maseru businesses",
@@ -44,7 +44,9 @@ export const metadata: Metadata = {
     "salons in Maseru",
     "plumbers in Maseru",
     "electricians in Maseru",
-    "restaurants in Maseru",
+    "tatto parlours in Maseru",
+    "lash technicians in Maseru",
+    "mechanica in Maseru",
     "MaseruPlug",
   ],
 
@@ -82,7 +84,7 @@ export const metadata: Metadata = {
 
     images: [
       {
-        url: "/og-image.png",
+        url: "/hero4.jpg",
         width: 1200,
         height: 630,
         alt: "MaseruPlug",
