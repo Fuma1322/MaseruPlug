@@ -31,6 +31,11 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
       url: "https://maseru-plug.vercel.app",
       lastModified: new Date(),
     },
+    {
+      url:
+"https://maseru-plug.vercel.app/business",
+      lastModified: new Date(),
+    },
 
     {
       url: "https://maseru-plug.vercel.app/categories",
