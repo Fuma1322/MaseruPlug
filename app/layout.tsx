@@ -85,7 +85,7 @@ export const metadata: Metadata = {
 
     images: [
       {
-        url: "/hero4.jpg",
+        url: "/hero4.png",
         width: 1200,
         height: 630,
         alt: "MaseruPlug",
@@ -101,7 +101,7 @@ export const metadata: Metadata = {
     description:
       "Discover trusted businesses and local services in Maseru, Lesotho.",
 
-    images: ["/og-image.png"],
+    images: ["/hero4.png"],
   },
 
 
