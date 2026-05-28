@@ -46,7 +46,8 @@ export const metadata: Metadata = {
     "electricians in Maseru",
     "tatto parlours in Maseru",
     "lash technicians in Maseru",
-    "mechanica in Maseru",
+    "mechanics in Maseru",
+    "barbers in Maseru",
     "MaseruPlug",
   ],
 
