@@ -44,7 +44,7 @@ export default function CTA() {
 
           <div className="w-full md:w-auto">
             <Button
-              className="group w-full md:w-auto h-12 px-8 animate-shimmer rounded-xl bg-[#25D366] hover:bg-[#1ebe5d] text-white font-semibold shadow-lg transition-all duration-300 hover:scale-[1.03]"
+              className="inline-flex h-12 lg:w-[210px] animate-shimmer items-center justify-center rounded-md bg-[linear-gradient(110deg,#25D366_20%,#13a047_50%,#25D366_80%)] bg-[length:200%_100%] px-6 font-bold text-[#111111]"
             >
               <a
                 href={`https://wa.me/26663272145?text=${message}`}
