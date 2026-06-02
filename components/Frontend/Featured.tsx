@@ -1,6 +1,6 @@
-import Image from "next/image";
 import Link from "next/link";
 import prisma from "@/lib/db";
+import Image from "next/image";
 import { MapPin } from "lucide-react";
 
 import {
