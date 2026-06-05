@@ -1,6 +1,6 @@
+import Link from "next/link";
 import prisma from "@/lib/db";
 import Image from "next/image";
-import Link from "next/link";
 import type { Metadata } from "next";
 
 import {
@@ -12,7 +12,6 @@ import {
 } from "@/components/ui/card";
 
 import { MapPin } from "lucide-react";
-import BackButton from "@/components/Frontend/BackButton";
 
 interface Props {
   params: {
@@ -104,22 +103,42 @@ export default async function CategoryPage({ params }: Props) {
         </p>
       </div>
 
-      <div>
-        <BackButton />
-      </div>
-
       {/* EMPTY STATE */}
       {category.businesses.length === 0 && (
-        <div className="text-center py-20">
-          <h2 className="text-2xl font-bold text-[#111111]">
-            No businesses found
+        <div className="max-w-2xl mx-auto text-center py-12">
+
+          <h2 className="text-3xl font-bold text-[#111111]">
+            No {category.name.toLowerCase()} businesses found yet
           </h2>
 
-          <p className="text-muted-foreground mt-3">
-            Be the first to list a {category.name.toLowerCase()} service in this category.
+          <p className="mt-4 text-muted-foreground text-lg">
+            We're still growing this category on MaseruPlug.
+            Explore other categories or recommend a great business that belongs here.
           </p>
+
+          <div className="mt-8 flex flex-col sm:flex-row items-center justify-center gap-4">
+
+            <Link
+              href="/categories"
+              className="h-12 px-6 rounded-xl border border-[#25D366]
+              flex items-center justify-center font-semibold
+              hover:bg-[#25D366] hover:text-white transition"
+            >
+              Browse Categories
+            </Link>
+
+            <Link
+              href="/contact"
+              className="h-12 px-6 rounded-xl bg-[#25D366]
+              text-white flex items-center justify-center
+              font-semibold hover:bg-[#1ebe5d] transition"
+            >
+              Recommend a Business
+            </Link>
+
+          </div>
         </div>
-      )}
+        )}
 
       {/* GRID */}
       <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-8">

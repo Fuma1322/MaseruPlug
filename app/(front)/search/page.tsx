@@ -11,7 +11,6 @@ import {
 } from "@/components/ui/card";
 
 import { MapPin } from "lucide-react";
-import BackButton from "@/components/Frontend/BackButton";
 
 interface Props {
   searchParams: {
