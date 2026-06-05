@@ -64,11 +64,6 @@ export default async function SearchPage({
   return (
     <div className="max-w-7xl mx-auto px-4 py-10">
 
-      {/* BACK BUTTON */}
-      <div className="mb-5">
-        <BackButton />
-      </div>
-
       {/* HEADER */}
       <div className="text-center mb-12">
         <h1 className="text-4xl md:text-5xl font-black text-[#111111]">
@@ -86,14 +81,26 @@ export default async function SearchPage({
 
       {/* EMPTY STATE */}
       {businesses.length === 0 && (
-        <div className="text-center py-24">
+        <div className="text-center py-10">
           <h2 className="text-3xl font-bold text-[#111111]">
-            No businesses found
+             We couldn't find any businesses matching "{query}"
           </h2>
 
           <p className="mt-4 text-gray-500">
-            Try searching for another service or location.
+            The service you're looking for may not be listed yet.
+            Try another search term or browse our categories instead.
           </p>
+
+          {/* CTA BUTTON */}
+          <div className="flex flex-col sm:flex-row gap-4 justify-center mt-8">
+            <Link
+              href="/categories"
+              className="h-12 px-6 rounded-xl border border-[#25D366]
+                        flex items-center justify-center font-semibold"
+            >
+              Browse Categories
+            </Link>
+          </div>
         </div>
       )}
 
