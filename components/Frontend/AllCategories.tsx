@@ -14,7 +14,6 @@ export default async function CategoriesPage() {
     <div className="py-10">
       <div className="max-w-screen-xl mx-auto px-4 md:px-8">
 
-        {/* HEADER */}
           <div className="max-w-3xl mx-auto text-center">
             <h3 className="text-[#111111] text-3xl font-bold sm:text-4xl">
               All Categories
@@ -24,7 +23,6 @@ export default async function CategoriesPage() {
               Browse all service categories on MaseruPlug
             </p>
 
-            {/* STATS */}
             <div className="flex items-center justify-center gap-10 mt-8">
               <div>
                 <p className="text-3xl font-extrabold text-[#25D366]">
@@ -48,7 +46,6 @@ export default async function CategoriesPage() {
             </div>
           </div>
 
-        {/* GRID */}
         <div className="mt-12 flex justify-center">
           <ul className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-x-4 gap-y-8">
 
@@ -71,16 +68,13 @@ export default async function CategoriesPage() {
                           {category.description}
                         </p>
                       )}
-
                     </div>
                   </Link>
                 </li>
               );
             })}
-
           </ul>
         </div>
-
       </div>
     </div>
   );
