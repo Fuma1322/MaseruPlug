@@ -95,7 +95,8 @@ export default async function SearchPage({
             <Link
               href="/categories"
               className="h-12 px-6 rounded-xl border border-[#25D366]
-                        flex items-center justify-center font-semibold"
+              flex items-center justify-center font-semibold
+              hover:bg-[#25D366] hover:text-white transition"
             >
               Browse Categories
             </Link>

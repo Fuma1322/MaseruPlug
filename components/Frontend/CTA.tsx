@@ -28,11 +28,11 @@ export default function CTA() {
 
           <div className="flex items-center gap-5 text-center md:text-left">
             <div className="flex items-center justify-center">
-              <FaWhatsapp className="h-24 w-24 text-[#25D366]" />
+              <FaWhatsapp className="h-20 w-20 text-[#25D366]" />
             </div>
 
             <div>
-              <h3 className="text-4xl md:text-6xl font-extrabold text-[#111111] leading-tight">
+              <h3 className="text-3xl md:text-6xl font-extrabold text-[#111111] leading-tight">
                 Are you a business owner?
               </h3>
 

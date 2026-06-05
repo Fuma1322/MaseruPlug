@@ -131,7 +131,7 @@ export default async function CategoryPage({ params }: Props) {
               href="/contact"
               className="h-12 px-6 rounded-xl bg-[#25D366]
               text-white flex items-center justify-center
-              font-semibold hover:bg-[#1ebe5d] transition"
+              font-semibold hover:bg-transparent hover:text-[#25D366] hover:border hover:border-[#25D366] transition"
             >
               Recommend a Business
             </Link>
