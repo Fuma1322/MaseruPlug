@@ -13,15 +13,21 @@ import {
 
 
 export default async function Featured() {
-  const featuredItems = await prisma.business.findMany({
-    where: {
-      isFeatured: true,
-    },
-    orderBy: {
-      createdAt: "desc",
-    },
-    take: 6,
-  });
+  const totalFeatured = await prisma.business.count({
+  where: {
+    isFeatured: true,
+  },
+});
+
+const featuredItems = await prisma.business.findMany({
+  where: {
+    isFeatured: true,
+  },
+  orderBy: {
+    createdAt: "desc",
+  },
+  take: 6,
+});
 
   return (
     <section className="py-16 md:py-24 px-4" id="featured">
@@ -50,7 +56,6 @@ export default async function Featured() {
               className="group overflow-hidden rounded-3xl border border-[#25D366] bg-white shadow-lg transition-all duration-300 hover:-translate-y-2 hover:shadow-2xl"
             >
               <div className="relative aspect-[16/10] overflow-hidden">
-
                 <Image
                   priority
                   src={item.images?.[0] || "/lelo.jpg"}
@@ -90,6 +95,18 @@ export default async function Featured() {
             </Card>
           ))}
         </div>
+
+        {/* View All CTA */}
+        {totalFeatured > 6 && (
+          <div className="mt-12 flex justify-center">
+            <Link
+              href="/featured"
+              className="inline-flex items-center justify-center h-12 px-8 rounded-xl bg-transparent text-[#25D366] font-semibold shadow-lg transition hover:bg-[#25D366] hover:text-white hover:scale-105"
+            >
+              View All Featured Businesses
+            </Link>
+          </div>
+        )}
       </div>
     </section>
   );
