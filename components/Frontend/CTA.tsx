@@ -1,7 +1,7 @@
 import React from "react";
-import { FaWhatsapp } from "react-icons/fa";
 import { Button } from "../ui/button";
 import { ArrowRight } from "lucide-react";
+import { FaWhatsapp } from "react-icons/fa";
 
 const message = encodeURIComponent(
   "Hello MaseruPlug, I am interested in listing my business on your platform. Please share more details."
@@ -62,8 +62,4 @@ export default function CTA() {
       </div>
     </section>
   );
-<<<<<<< HEAD
 }
-=======
-}
->>>>>>> 708e1945e055d13ae8bb26cc8abd7f300eb8f998
