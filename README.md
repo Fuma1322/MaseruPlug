@@ -96,11 +96,17 @@ Our mission is simple:
 
 ```bash
 app/
-├── (public)
+├── (back)
 ├── dashboard
+
+├── (front)
 ├── business
 ├── categories
+├── contact
+├── search
+
 ├── api
+├── fonts
 
 components/
 ├── ui
@@ -237,8 +243,6 @@ Founder & Lead Developer of MaseruPlug
 **Lemohang Makintane**
 
 Head Backend Engineer
-
-Building technology that helps local businesses grow through digital visibility and customer acquisition.
 
 ---
 
