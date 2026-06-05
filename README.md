@@ -1,36 +1,253 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# MaseruPlug
 
-## Getting Started
+**Connecting Customers to Local Businesses Across Lesotho**
 
-First, run the development server:
+MaseruPlug is a digital business discovery platform designed to help small businesses increase their online visibility and attract more customers. The platform enables customers to discover trusted local service providers while giving businesses a professional online presence without the cost and complexity of managing a full website.
+
+---
+
+## 🌍 About The Project
+
+Many businesses in Lesotho rely primarily on word-of-mouth referrals and social media to attract customers. While effective, these channels often make it difficult for potential customers to discover businesses when actively searching online.
+
+MaseruPlug solves this problem by providing:
+
+* Professional business profiles
+* Search engine optimized listings
+* Business categorization and discovery
+* Direct customer contact options
+* Business image galleries
+* Local search visibility
+
+Our mission is simple:
+
+> Help local businesses become easier to find online and connect them with more customers.
+
+---
+
+## ✨ Features
+
+### Business Discovery
+
+* Browse businesses by category
+* Search businesses by name or location
+* View detailed business profiles
+
+### Business Profiles
+
+* Business information
+* Contact details
+* WhatsApp integration
+* Social media links
+* Business galleries
+
+### SEO Optimization
+
+* Search engine friendly URLs
+* Dynamic metadata
+* Sitemap generation
+* Google Search Console integration
+
+### Dashboard Management
+
+* Category management
+* Business management
+* Image uploads
+* Content management
+
+---
+
+## 🛠️ Tech Stack
+
+### Frontend
+
+* Next.js 14
+* React
+* TypeScript
+* Tailwind CSS
+* shadcn/ui
+
+### Backend
+
+* Next.js Server Actions
+* Prisma ORM
+* MongoDB
+
+### Authentication
+
+* Next Auth
+
+### File Storage
+
+* UploadThing
+
+### Analytics & SEO
+
+* Google Analytics
+* Google Search Console
+
+### Deployment
+
+* Vercel
+
+---
+
+## 📂 Project Structure
+
+```bash
+app/
+├── (public)
+├── dashboard
+├── business
+├── categories
+├── api
+
+components/
+├── ui
+├── Forms
+├── Frontend
+├── Dashboard
+├── FormInputs
+
+actions/
+├── businesses.ts
+├── categories.ts
+
+lib/
+├── db.ts
+├── utils.ts
+
+prisma/
+├── schema.prisma
+```
+
+---
+
+## 🚀 Getting Started
+
+### Prerequisites
+
+* Node.js 18+
+* MongoDB Database
+* Next Auth Account
+* UploadThing Account
+
+### Installation
+
+Clone the repository:
+
+```bash
+git clone https://github.com/Fuma1322/maseruplug.git
+```
+
+Navigate to the project directory:
+
+```bash
+cd maseruplug
+```
+
+Install dependencies:
+
+```bash
+npm install
+```
+
+Create your environment variables:
+
+```env
+DATABASE_URL=
+
+NEXT_PUBLIC_CLERK_PUBLISHABLE_KEY=
+NEXT_AUTH_SECRET=
+
+UPLOADTHING_SECRET=
+UPLOADTHING_APP_ID=
+```
+
+Run Prisma:
+
+```bash
+npx prisma generate
+```
+
+Start the development server:
 
 ```bash
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Open:
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+```bash
+http://localhost:3000
+```
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+---
 
-## Learn More
+## 📈 Roadmap
 
-To learn more about Next.js, take a look at the following resources:
+### Phase 1
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+* Business Listings
+* Categories
+* SEO Foundation
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+### Phase 2
 
-## Deploy on Vercel
+* Featured Businesses
+* Business Verification
+* Analytics Dashboard
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+### Phase 3
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+* Reviews & Ratings
+* Customer Recommendations
+
+### Phase 4
+
+* Online Bookings
+* Lead Tracking
+
+### Phase 5
+
+* Marketplace Expansion
+* Advertising Platform
+
+---
+
+## 🤝 Contributing
+
+Contributions, ideas, and feedback are welcome.
+
+If you would like to contribute:
+
+1. Fork the repository
+2. Create a feature branch
+3. Commit your changes
+4. Open a pull request
+
+---
+
+## 👨‍💻 Founders
+
+**Tankiso Leonard Fuma**
+
+Founder & Lead Developer of MaseruPlug
+
+**Lemohang Makintane**
+
+Head Backend Engineer
+
+Building technology that helps local businesses grow through digital visibility and customer acquisition.
+
+---
+
+## 📜 License
+
+This project is licensed under the MIT License.
+
+---
+
+## 🇱🇸 Built in Lesotho
+
+MaseruPlug is proudly built in Lesotho with a vision to empower local businesses and strengthen the country's digital economy.
