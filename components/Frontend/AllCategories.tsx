@@ -1,27 +1,52 @@
 import Link from "next/link";
 import prisma from "@/lib/db";
 import { getCategoryIcon } from "@/lib/category-icons";
-import BackButton from "./BackButton";
 
 export default async function CategoriesPage() {
-  const categories = await prisma.category.findMany({
+  const [categories, businessesCount] = await Promise.all([
+  prisma.category.findMany({
     orderBy: { createdAt: "asc" },
-  });
+  }),
+  prisma.business.count(),
+]);
 
   return (
     <div className="py-10">
       <div className="max-w-screen-xl mx-auto px-4 md:px-8">
 
         {/* HEADER */}
-        <div className="max-w-xl mx-auto text-center">
-          <h3 className="text-[#111111] text-3xl font-bold sm:text-4xl">
-            All Categories
-          </h3>
+          <div className="max-w-3xl mx-auto text-center">
+            <h3 className="text-[#111111] text-3xl font-bold sm:text-4xl">
+              All Categories
+            </h3>
 
-          <p className="text-gray-500 mt-2">
-            Browse all service categories on MaseruPlug
-          </p>
-        </div>
+            <p className="text-gray-500 mt-2">
+              Browse all service categories on MaseruPlug
+            </p>
+
+            {/* STATS */}
+            <div className="flex items-center justify-center gap-10 mt-8">
+              <div>
+                <p className="text-3xl font-extrabold text-[#25D366]">
+                  {categories.length}
+                </p>
+                <p className="text-sm text-muted-foreground">
+                  Categories
+                </p>
+              </div>
+
+              <div className="h-10 w-px bg-gray-200" />
+
+              <div>
+                <p className="text-3xl font-extrabold text-[#25D366]">
+                  {businessesCount}
+                </p>
+                <p className="text-sm text-muted-foreground">
+                  Businesses
+                </p>
+              </div>
+            </div>
+          </div>
 
         {/* GRID */}
         <div className="mt-12 flex justify-center">
