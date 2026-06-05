@@ -81,13 +81,16 @@ export default async function SearchPage({
       {/* EMPTY STATE */}
       {businesses.length === 0 && (
         <div className="text-center py-10">
-          <h2 className="text-3xl font-bold text-[#111111]">
-             We couldn&apos;t find any businesses matching &quot;{query}&quot;
-          </h2>
+          <p className="mt-4 text-lg font-medium text-gray-500 max-w-lg mx-auto">
+            We couldn&apos;t find anything matching
+            <span className="font-semibold text-[#25D366]">
+              {" "}“{query}”
+            </span>.
+            Try searching by business name, category, service, or location.
+          </p>
 
-          <p className="mt-4 text-gray-500">
-            The service you&apos;re looking for may not be listed yet.
-            Try another search term or browse our categories instead.
+          <p className="mt-3 text-sm text-muted-foreground">
+            Examples: Nail Technician, Carpenter, Tattoo Studio, Maseru West
           </p>
 
           {/* CTA BUTTON */}
