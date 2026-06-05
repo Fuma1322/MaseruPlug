@@ -112,7 +112,7 @@ export default async function CategoryPage({ params }: Props) {
           </h2>
 
           <p className="mt-4 text-muted-foreground text-lg">
-            We're still growing this category on MaseruPlug.
+            We&apos;re still growing this category on MaseruPlug.
             Explore other categories or recommend a great business that belongs here.
           </p>
 
