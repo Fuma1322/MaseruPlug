@@ -82,7 +82,7 @@ export default async function SearchPage({
       {businesses.length === 0 && (
         <div className="text-center py-10">
           <h2 className="text-3xl font-bold text-[#111111]">
-             We couldn&apos;t find any businesses matching "{query}"
+             We couldn&apos;t find any businesses matching &quot;{query}&quot;
           </h2>
 
           <p className="mt-4 text-gray-500">

@@ -12,10 +12,6 @@ export default async function CategoriesPage() {
     <div className="py-10">
       <div className="max-w-screen-xl mx-auto px-4 md:px-8">
 
-        <div className="mb-3">
-            <BackButton />
-        </div>
-
         {/* HEADER */}
         <div className="max-w-xl mx-auto text-center">
           <h3 className="text-[#111111] text-3xl font-bold sm:text-4xl">
