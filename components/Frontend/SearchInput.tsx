@@ -9,12 +9,15 @@ export function SearchInput() {
   const [query, setQuery] = useState("");
 
   const placeholders = [
-    "Search Nail Technicians",
-    "Search Salons",
-    "Search Plumbers",
-    "Search Carpenters",
-    "Search Electricians",
-  ];
+  "Find trusted local businesses...",
+  "Search services in Maseru...",
+  "Looking for a nail technician?",
+  "Need a plumber today?",
+  "Find a carpenter near you...",
+  "Search electricians...",
+  "Discover salons and beauty experts...",
+  "Find trusted professionals...",
+];
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     setQuery(e.target.value);

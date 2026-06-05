@@ -235,7 +235,7 @@ export function PlaceholdersAndVanishInput({
         strokeWidth="2"
         strokeLinecap="round"
         strokeLinejoin="round"
-        className="text-gray-950 h-4 w-4"
+        className="text-[#25D366] h-4 w-4"
       >
         {/* Search icon: magnifying glass */}
         <circle cx="11" cy="11" r="8" />
@@ -264,7 +264,7 @@ export function PlaceholdersAndVanishInput({
                 duration: 0.3,
                 ease: "linear",
               }}
-              className="dark:text-zinc-500 text-sm sm:text-base font-normal text-neutral-600 pl-4 sm:pl-12 text-left w-[calc(100%-2rem)] truncate"
+              className="text-sm sm:text-base font-normal text-neutral-600 pl-4 sm:pl-12 text-left w-[calc(100%-2rem)] truncate"
             >
               {placeholders[currentPlaceholder]}
             </motion.p>
