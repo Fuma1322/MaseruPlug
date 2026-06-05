@@ -122,6 +122,8 @@ actions/
 lib/
 ├── db.ts
 ├── utils.ts
+├── category-icons.ts
+├── uploadthing.ts
 
 prisma/
 ├── schema.prisma
