@@ -25,7 +25,7 @@ export default function MeetTheTeam () {
     name: "Tankiso Fuma",
     role: "Founder & Lead Developer",
     image:
-      "https://images.unsplash.com/photo-1502685104226-ee32379fefbe?q=80&w=1288&auto=format&fit=crop",
+      "/stash.jpeg",
     bio: "Founder of MaseruPlug and lead developer behind the platform, focused on building scalable local tech infrastructure in Lesotho.",
     whatsapp: "https://wa.me/26656120463",
     instagram: "https://instagram.com/tankiso",
@@ -47,7 +47,7 @@ export default function MeetTheTeam () {
     name: "Bokang Matsoso",
     role: "Operations Manager",
     image:
-      "https://images.unsplash.com/photo-1544005313-94ddf0286df2?q=80&w=1288&auto=format&fit=crop",
+      "/chommy.jpeg",
     bio: "Oversees daily operations, business onboarding, and ensures smooth coordination between users and service providers.",
     whatsapp: "https://wa.me/26657677241",
     instagram: "https://instagram.com/bokang",
