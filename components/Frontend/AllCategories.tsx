@@ -50,7 +50,7 @@ export default async function CategoriesPage() {
 
         {/* GRID */}
         <div className="mt-12 flex justify-center">
-          <ul className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-x-4 gap-y-8">
+          <ul className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-x-4 gap-y-8">
 
             {categories.map((category) => {
               const Icon = getCategoryIcon(category.icon ?? undefined);
