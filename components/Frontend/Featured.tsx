@@ -1,6 +1,6 @@
-import Image from "next/image";
 import Link from "next/link";
 import prisma from "@/lib/db";
+import Image from "next/image";
 import { MapPin } from "lucide-react";
 
 import {
@@ -74,7 +74,7 @@ export default async function Featured() {
               </CardHeader>
 
               <CardContent className="pb-6">
-                <p className="text-sm text-muted-foreground">
+                <p className="text-sm text-muted-foreground line-clamp-3">
                   {item.description}
                 </p>
               </CardContent>

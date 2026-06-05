@@ -62,4 +62,8 @@ export default function CTA() {
       </div>
     </section>
   );
+<<<<<<< HEAD
 }
+=======
+}
+>>>>>>> 708e1945e055d13ae8bb26cc8abd7f300eb8f998
