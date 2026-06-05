@@ -3,11 +3,19 @@
 import { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { FaWhatsapp, FaInstagram, FaFacebook } from "react-icons/fa";
+import { Button } from "../ui/button";
+
+interface TeamMember {
+  name: string;
+  role: string;
+  image: string;
+  bio: string;
+}
 
 export default function MeetTheTeam () {
-  const [selected, setSelected] = useState<any>(null);
+  const [selected, setSelected] = useState<TeamMember | null>(null);
 
- const team = [
+ const team: TeamMember[] = [
   {
     name: "Tankiso Fuma",
     role: "Founder & Lead Developer",
@@ -113,9 +121,9 @@ export default function MeetTheTeam () {
               </div>
 
               {/* Button */}
-              <button className="mt-6 w-full h-11 rounded-lg bg-[#25D366] text-black font-semibold">
+              <Button className="mt-6 w-full h-11 rounded-lg bg-[#25D366] text-black font-semibold">
                 Chat on WhatsApp
-              </button>
+              </Button>
             </motion.div>
           </motion.div>
         )}
