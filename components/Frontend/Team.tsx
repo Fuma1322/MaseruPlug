@@ -2,14 +2,19 @@
 
 import { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import { FaWhatsapp, FaInstagram, FaFacebook } from "react-icons/fa";
+import {  FaInstagram, FaFacebook, FaLinkedin, FaWhatsapp } from "react-icons/fa";
 import { Button } from "../ui/button";
+import Link from "next/link";
 
 interface TeamMember {
   name: string;
   role: string;
   image: string;
   bio: string;
+  whatsapp: string;
+  instagram: string;
+  facebook: string;
+  linkedin: string;
 }
 
 export default function MeetTheTeam () {
@@ -22,6 +27,10 @@ export default function MeetTheTeam () {
     image:
       "https://images.unsplash.com/photo-1502685104226-ee32379fefbe?q=80&w=1288&auto=format&fit=crop",
     bio: "Founder of MaseruPlug and lead developer behind the platform, focused on building scalable local tech infrastructure in Lesotho.",
+    whatsapp: "https://wa.me/26656120463",
+    instagram: "https://instagram.com/tankiso",
+    facebook: "https://facebook.com/tankiso",
+    linkedin: "https://linkedin.com/in/tankisofuma",
   },
   {
     name: "Lemohang Makintane",
@@ -29,6 +38,10 @@ export default function MeetTheTeam () {
     image:
       "https://images.unsplash.com/photo-1524504388940-b1c1722653e1?q=80&w=1288&auto=format&fit=crop",
     bio: "Responsible for backend architecture, APIs, database systems, and ensuring system reliability across MaseruPlug services.",
+    whatsapp: "https://wa.me/26600000002",
+    instagram: "https://instagram.com/lemohang",
+    facebook: "https://facebook.com/lemohang",
+    linkedin: "https://linkedin.com/in/lemohangmakintane",
   },
   {
     name: "Bokang Matsoso",
@@ -36,25 +49,26 @@ export default function MeetTheTeam () {
     image:
       "https://images.unsplash.com/photo-1544005313-94ddf0286df2?q=80&w=1288&auto=format&fit=crop",
     bio: "Oversees daily operations, business onboarding, and ensures smooth coordination between users and service providers.",
+    whatsapp: "https://wa.me/26657677241",
+    instagram: "https://instagram.com/bokang",
+    facebook: "https://facebook.com/bokang",
+    linkedin: "https://linkedin.com/in/bokangmatsoso",
   },
 ];
 
   return (
     <>
-    <div className="text-center space-y-2">
-        <p className="text-[#25D366] font-semibold tracking-wide text-md">
+      {/* HEADER */}
+      <div className="text-center space-y-2">
+        <p className="text-[#25D366] font-semibold tracking-wide text-4xl">
           MaseruPlug Team
         </p>
-
-        <h2 className="text-xl md:text-2xl font-bold text-neutral-900 dark:text-white">
-          Meet The Team
-        </h2>
-
         <p className="text-xs p-1 text-neutral-500 max-w-md mx-auto">
           Trusted professionals dedicated to connecting you with the best local businesses in Maseru.
         </p>
       </div>
-      {/* GRID CARDS */}
+
+      {/* GRID */}
       <motion.div className="flex flex-col md:flex-row flex-1 w-full h-full p-4 min-h-[18rem] bg-dot-black/[0.2] dark:bg-dot-white/[0.2] gap-4">
         {team.map((member, i) => (
           <motion.div
@@ -66,7 +80,9 @@ export default function MeetTheTeam () {
             <img
               src={member.image}
               className="h-20 w-20 rounded-full object-cover"
+              alt={member.name}
             />
+
             <p className="mt-3 text-lg font-semibold">{member.name}</p>
             <p className="text-md text-neutral-500">{member.role}</p>
 
@@ -94,13 +110,14 @@ export default function MeetTheTeam () {
               exit={{ scale: 0.8, opacity: 0 }}
               onClick={(e) => e.stopPropagation()}
             >
-              {/* Image */}
+              {/* IMAGE */}
               <img
                 src={selected.image}
                 className="w-24 h-24 rounded-full mx-auto object-cover"
+                alt={selected.name}
               />
 
-              {/* Info */}
+              {/* INFO */}
               <h2 className="text-xl font-bold text-center mt-4">
                 {selected.name}
               </h2>
@@ -113,21 +130,32 @@ export default function MeetTheTeam () {
                 {selected.bio}
               </p>
 
-              {/* Socials */}
+              {/* SOCIALS (NOW DYNAMIC) */}
               <div className="flex justify-center gap-4 mt-5 text-xl">
-                <FaWhatsapp className="text-[#25D366] cursor-pointer" />
-                <FaInstagram className="text-pink-500 cursor-pointer" />
-                <FaFacebook className="text-blue-500 cursor-pointer" />
+                <Link href={selected.linkedin} target="_blank">
+                  <FaLinkedin className="text-blue-600 cursor-pointer" />
+                </Link>
+
+                <Link href={selected.instagram} target="_blank">
+                  <FaInstagram className="text-pink-500 cursor-pointer" />
+                </Link>
+
+                <Link href={selected.facebook} target="_blank">
+                  <FaFacebook className="text-blue-500 cursor-pointer" />
+                </Link>
               </div>
 
-              {/* Button */}
-              <Button className="mt-6 w-full h-11 rounded-lg bg-[#25D366] text-black font-semibold">
-                Chat on WhatsApp
-              </Button>
+              {/* WHATSAPP BUTTON (NOW PERSONAL PER MEMBER) */}
+              <Link href={selected.whatsapp} target="_blank">
+                <Button className="mt-6 w-full h-11 rounded-lg bg-[#25D366] text-black font-semibold flex items-center gap-2 justify-center">
+                  <FaWhatsapp />
+                  Chat on WhatsApp
+                </Button>
+              </Link>
             </motion.div>
           </motion.div>
         )}
       </AnimatePresence>
     </>
   );
-};
+}
