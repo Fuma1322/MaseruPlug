@@ -36,7 +36,7 @@ export default function MeetTheTeam () {
     name: "Lemohang Makintane",
     role: "Head of Backend Engineering",
     image:
-      "https://images.unsplash.com/photo-1524504388940-b1c1722653e1?q=80&w=1288&auto=format&fit=crop",
+      "/chief.jpeg",
     bio: "Responsible for backend architecture, APIs, database systems, and ensuring system reliability across MaseruPlug services.",
     whatsapp: "https://wa.me/26600000002",
     instagram: "https://instagram.com/lemohang",
