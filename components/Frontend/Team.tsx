@@ -50,7 +50,7 @@ export default function MeetTheTeam () {
       "/chommy.jpeg",
     bio: "Oversees daily operations, business onboarding, and ensures smooth coordination between users and service providers.",
     whatsapp: "https://wa.me/26657677241",
-    instagram: "https://instagram.com/bokang",
+    instagram: "https://www.instagram.com/pat_matsoso7?igsh=MWNyOXpvZTVqMWEwMQ==",
     facebook: "https://www.facebook.com/share/1HPHE62WTC/",
     linkedin: "https://linkedin.com/in/bokangmatsoso",
   },
