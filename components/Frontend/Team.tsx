@@ -28,9 +28,9 @@ export default function MeetTheTeam () {
       "/stash.jpeg",
     bio: "Founder of MaseruPlug and lead developer behind the platform, focused on building scalable local tech infrastructure in Lesotho.",
     whatsapp: "https://wa.me/26656120463",
-    instagram: "https://instagram.com/tankiso",
+    instagram: "https://www.instagram.com/tequila.stash/",
     facebook: "https://www.facebook.com/share/1GKuWt1QyT/",
-    linkedin: "https://linkedin.com/in/tankisofuma",
+    linkedin: "https://www.linkedin.com/in/tankiso-leonard-fuma-2b16352a5",
   },
   {
     name: "Lemohang Makintane",
@@ -41,7 +41,7 @@ export default function MeetTheTeam () {
     whatsapp: "https://wa.me/26657294698",
     instagram: "https://instagram.com/lemohang",
     facebook: "https://www.facebook.com/share/1HBER4iDLt/",
-    linkedin: "https://linkedin.com/in/lemohangmakintane",
+    linkedin: "https://www.linkedin.com/in/lemohang-makintane-078b7b24a",
   },
   {
     name: "Bokang Matsoso",
