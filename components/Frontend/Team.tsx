@@ -29,7 +29,7 @@ export default function MeetTheTeam () {
     bio: "Founder of MaseruPlug and lead developer behind the platform, focused on building scalable local tech infrastructure in Lesotho.",
     whatsapp: "https://wa.me/26656120463",
     instagram: "https://instagram.com/tankiso",
-    facebook: "https://facebook.com/tankiso",
+    facebook: "https://www.facebook.com/share/1GKuWt1QyT/",
     linkedin: "https://linkedin.com/in/tankisofuma",
   },
   {
@@ -38,9 +38,9 @@ export default function MeetTheTeam () {
     image:
       "/chief.jpeg",
     bio: "Responsible for backend architecture, APIs, database systems, and ensuring system reliability across MaseruPlug services.",
-    whatsapp: "https://wa.me/26600000002",
+    whatsapp: "https://wa.me/26657294698",
     instagram: "https://instagram.com/lemohang",
-    facebook: "https://facebook.com/lemohang",
+    facebook: "https://www.facebook.com/share/1HBER4iDLt/",
     linkedin: "https://linkedin.com/in/lemohangmakintane",
   },
   {
@@ -51,7 +51,7 @@ export default function MeetTheTeam () {
     bio: "Oversees daily operations, business onboarding, and ensures smooth coordination between users and service providers.",
     whatsapp: "https://wa.me/26657677241",
     instagram: "https://instagram.com/bokang",
-    facebook: "https://facebook.com/bokang",
+    facebook: "https://www.facebook.com/share/1HPHE62WTC/",
     linkedin: "https://linkedin.com/in/bokangmatsoso",
   },
 ];
