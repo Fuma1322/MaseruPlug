@@ -52,14 +52,12 @@ const router = useRouter();
             setError(null);
 
             startTransition(async () => {
-            const res = await loginAdmin(formData);
-
-            if (res?.error) {
-                setError(res.error);
-                return;
-            }
-
-            router.push("/dashboard");
+              try {
+                await loginAdmin(formData);
+                router.push("/dashboard");
+              } catch (err) {
+                setError(err instanceof Error ? err.message : "Login failed");
+              }
             });
         }}
         >
@@ -99,6 +97,12 @@ const router = useRouter();
               </motion.div>
 
               {/* BUTTON */}
+              {error ? (
+                <motion.div variants={item} className="mt-4 rounded-lg border border-red-200 bg-red-50 px-4 py-3 text-sm text-red-700">
+                  {error}
+                </motion.div>
+              ) : null}
+
               <motion.div
                 variants={item}
                 whileHover={{ scale: 1.02 }}
@@ -107,9 +111,10 @@ const router = useRouter();
                 <Field>
                   <Button
                     type="submit"
+                    disabled={isPending}
                     className="w-full h-12 mt-6 text-base font-semibold bg-[#25D366] hover:bg-[#1ebe5d] rounded-lg"
                   >
-                    Login
+                    {isPending ? "Logging in..." : "Login"}
                   </Button>
                 </Field>
               </motion.div>
