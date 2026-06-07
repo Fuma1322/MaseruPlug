@@ -112,7 +112,7 @@ const router = useRouter();
                   <Button
                     type="submit"
                     disabled={isPending}
-                    className="w-full h-12 mt-6 text-base font-semibold bg-[#25D366] hover:bg-[#1ebe5d] rounded-lg"
+                    className="w-full h-12 mt-6 text-base font-semibold bg-[#25D366] hover:bg-transparent hover:border hover:border-[#25D366] rounded-lg"
                   >
                     {isPending ? "Logging in..." : "Login"}
                   </Button>
