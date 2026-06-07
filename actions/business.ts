@@ -5,18 +5,17 @@ import { BusinessProps } from "@/types/types";
 import generateSlug from "@/utils/generateSlug";
 import { revalidatePath } from "next/cache";
 import { BusinessSchema } from "./zod";
+import { verifyAdmin } from "@/lib/admin";
 
 /**
  * Create a new business*/
 export async function createBusiness(data: BusinessProps) {
   try {
-    console.log("🚀 RAW INPUT:", data);
-
-    // 1. VALIDATE WITH ZOD
+    await verifyAdmin();
     const parsed = BusinessSchema.safeParse(data);
 
     if (!parsed.success) {
-      console.log("❌ VALIDATION ERROR:", parsed.error.flatten());
+      console.log(" VALIDATION ERROR:", parsed.error.flatten());
 
       return {
         data: null,
@@ -29,7 +28,7 @@ export async function createBusiness(data: BusinessProps) {
 
     const slug = validData.slug || generateSlug(validData.name);
 
-    console.log("🔍 Using slug:", slug);
+    console.log("Using slug:", slug);
 
     const existingBusiness = await prisma.business.findUnique({
       where: { slug },
@@ -43,7 +42,21 @@ export async function createBusiness(data: BusinessProps) {
       };
     }
 
-    console.log("🆕 Creating business...");
+    console.log("Creating business...");
+
+    const category = await prisma.category.findUnique({
+      where: {
+        id: validData.categoryId,
+      },
+    });
+
+    if (!category) {
+      return {
+        data: null,
+        status: 404,
+        error: "Category not found",
+      };
+    }
 
     const newBusiness = await prisma.business.create({
       data: {
@@ -78,7 +91,7 @@ export async function createBusiness(data: BusinessProps) {
       },
     });
 
-    console.log("✅ BUSINESS CREATED:", newBusiness.id);
+    console.log("BUSINESS CREATED:", newBusiness.id);
 
     revalidatePath("/dashboard/businesses");
     revalidatePath("/");
@@ -90,7 +103,7 @@ export async function createBusiness(data: BusinessProps) {
       error: null,
     };
   } catch (error) {
-    console.error("🔥 CREATE BUSINESS ERROR:", error);
+    console.error("CREATE BUSINESS ERROR:", error);
 
     return {
       data: null,

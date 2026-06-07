@@ -5,6 +5,7 @@ import prisma from "@/lib/db";
 import { CategoryProps } from "@/types/types";
 import generateSlug from "@/utils/generateSlug";
 import { CategorySchema } from "./zod";
+import { verifyAdmin } from "@/lib/admin";
 
 /**
  * CREATE CATEGORY
@@ -12,7 +13,7 @@ import { CategorySchema } from "./zod";
 
 export async function createCategory(data: unknown) {
   try {
-    // ✅ Validate FIRST
+    await verifyAdmin();
     const parsed = CategorySchema.safeParse(data);
 
     if (!parsed.success) {
@@ -25,6 +26,18 @@ export async function createCategory(data: unknown) {
     const validData = parsed.data;
 
     const slug = generateSlug(validData.name);
+
+    const existingCategory =
+      await prisma.category.findUnique({
+        where: { slug },
+      });
+
+    if (existingCategory) {
+      return {
+        success: false,
+        error: "Category already exists",
+      };
+    }
 
     const category = await prisma.category.create({
       data: {
