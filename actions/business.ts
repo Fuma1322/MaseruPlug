@@ -91,8 +91,6 @@ export async function createBusiness(data: BusinessProps) {
       },
     });
 
-    console.log("BUSINESS CREATED:", newBusiness.id);
-
     revalidatePath("/dashboard/businesses");
     revalidatePath("/");
     revalidatePath(`/business/${newBusiness.slug}`);

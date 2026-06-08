@@ -73,16 +73,13 @@ export default function BusinessForm({
   async function onSubmit(data: BusinessProps) {
   try {
     setIsLoading(true);
-
-    console.log("🚀 FORM SUBMIT:", data);
-
     data.slug = generateSlug(data.name);
     data.images = images;
     data.isFeatured = isFeatured;
 
     const response = await createBusiness(data);
 
-    console.log("📡 RESPONSE:", response);
+    console.log("RESPONSE:", response);
 
     if (response?.status === 400) {
     toast.error("Please fix form errors");
@@ -101,8 +98,6 @@ export default function BusinessForm({
     setIsLoading(false);
   }
 }
-
-console.log("DESCRIPTION VALUE:", watch("description"));
 
   return (
     <div className="w-full max-w-5xl mx-auto m-3 rounded-xl border border-gray-200 bg-white shadow-sm">

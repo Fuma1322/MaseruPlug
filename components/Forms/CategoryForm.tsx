@@ -50,9 +50,6 @@ export default function CategoryForm({
   async function onSubmit(data: CategoryProps) {
     try {
       setIsLoading(true);
-
-      console.log("SUBMITTED DATA:", data);
-
       data.slug = generateSlug(data.name);
 
       const response = await createCategory(data);
