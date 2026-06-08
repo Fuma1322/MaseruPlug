@@ -1,21 +1,21 @@
 "use client";
 
 import { useState } from "react";
-import { useForm} from "react-hook-form";
-import { BusinessStatus, Category } from "@prisma/client";
-import { useRouter } from "next/navigation";
 import toast from "react-hot-toast";
+import { useForm} from "react-hook-form";
+import { useRouter } from "next/navigation";
+import { BusinessStatus, Category } from "@prisma/client";
 
-import { createBusiness } from "@/actions/business";
 import generateSlug from "@/utils/generateSlug";
+import { createBusiness } from "@/actions/business";
 
 import TextInput from "@/components/FormInputs/TextInput";
-import { TextAreaInput } from "@/components/FormInputs/TextAreaInput";
 import SubmitButton from "@/components/FormInputs/SubmitButton";
+import { TextAreaInput } from "@/components/FormInputs/TextAreaInput";
 
+import ToggleInput from "../FormInputs/ToggleInput";
 import SelectInput from "../FormInputs/SelectInput";
 import MultipleImageInput from "../FormInputs/MultipleImageInput";
-import ToggleInput from "../FormInputs/ToggleInput";
 
 export type BusinessProps = {
   name: string;
