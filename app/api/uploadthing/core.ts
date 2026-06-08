@@ -7,9 +7,8 @@ const f = createUploadthing();
 // FileRouter for your app, can contain multiple FileRoutes
 export const ourFileRouter = {
   // Define as many FileRoutes as you like, each with a unique routeSlug
-    businessImages: f({ image: { maxFileSize: "4MB" } })
-    .onUploadComplete(async ({ file }) => {
-      console.log("file url", file.url);
+    businessImages: f({ image: { maxFileSize: "4MB", maxFileCount: 12, } })
+    .onUploadComplete(async ({ }) => {
       // !!! Whatever is returned here is sent to the clientside `onClientUploadComplete` callback
       return { uploadedBy: "MaseruPlug" };
     }),
