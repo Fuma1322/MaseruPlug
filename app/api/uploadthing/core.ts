@@ -1,23 +1,40 @@
 import { createUploadthing, type FileRouter } from "uploadthing/next";
-// import { UploadThingError } from "uploadthing/server";
- 
+import { cookies } from "next/headers";
+import { verifyAdmin } from "@/lib/admin";
+
 const f = createUploadthing();
- 
- 
-// FileRouter for your app, can contain multiple FileRoutes
+
 export const ourFileRouter = {
-  // Define as many FileRoutes as you like, each with a unique routeSlug
-    businessImages: f({ image: { maxFileSize: "4MB", maxFileCount: 12, } })
-    .onUploadComplete(async ({ }) => {
-      // !!! Whatever is returned here is sent to the clientside `onClientUploadComplete` callback
-      return { uploadedBy: "MaseruPlug" };
+  businessImages: f({
+    image: {
+      maxFileSize: "4MB",
+      maxFileCount: 12,
+    },
+  })
+
+    .middleware(async () => {
+      const cookieStore = await cookies();
+      await verifyAdmin();
+      const adminAuth = cookieStore.get("admin-auth");
+
+      if (!adminAuth) {
+        throw new Error("Unauthorized");
+      }
+
+      return {
+        role: "admin",
+      };
+    })
+
+    .onUploadComplete(async ({ metadata }) => {
+      console.log(
+        `Upload completed by ${metadata.role}`
+      );
+
+      return {
+        uploadedBy: "MaseruPlug",
+      };
     }),
-    // additionalDocs: f({ pdf: { maxFileSize: "4MB", maxFileCount:4 }, })
-    // .onUploadComplete(async ({ file }) => {
-    //   console.log("file url", file.url);
-    //   // !!! Whatever is returned here is sent to the clientside `onClientUploadComplete` callback
-    //   return { uploadedBy: "MaseruPlug" };
-    // }),
 } satisfies FileRouter;
- 
+
 export type OurFileRouter = typeof ourFileRouter;
