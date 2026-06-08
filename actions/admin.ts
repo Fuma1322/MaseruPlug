@@ -1,4 +1,4 @@
-"use server";
+"use server"
 
 import { cookies } from "next/headers";
 import { redirect } from "next/navigation";
@@ -20,6 +20,9 @@ export async function loginAdmin(formData: FormData) {
     secure: process.env.NODE_ENV === "production",
     sameSite: "strict",
     path: "/",
+
+    // Expires after 24 hours
+    maxAge: 60 * 60 * 24,
   });
 
   return {
@@ -28,12 +31,9 @@ export async function loginAdmin(formData: FormData) {
 }
 
 export async function logoutAdmin() {
-  const cookieStore =
-    await cookies();
+  const cookieStore = await cookies();
 
-  cookieStore.delete(
-    "admin-auth"
-  );
+  cookieStore.delete("admin-auth");
 
   redirect("/mplug-login");
 }
