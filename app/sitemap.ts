@@ -17,33 +17,33 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
   });
 
   const businessUrls = businesses.map((business) => ({
-    url: `https://maseru-plug.vercel.app/business/${business.slug}`,
+    url: `https://mplug.com.ls/business/${business.slug}`,
     lastModified: business.updatedAt,
   }));
 
   const categoryUrls = categories.map((category) => ({
-    url: `https://maseru-plug.vercel.app/categories/${category.slug}`,
+    url: `https://mplug.com.ls/categories/${category.slug}`,
     lastModified: category.updatedAt,
   }));
 
   return [
     {
-      url: "https://maseru-plug.vercel.app",
+      url: "https://mplug.com.ls",
       lastModified: new Date(),
     },
     {
       url:
-"https://maseru-plug.vercel.app/business",
+      "https://mplug.com.ls/business",
       lastModified: new Date(),
     },
 
     {
-      url: "https://maseru-plug.vercel.app/categories",
+      url: "https://mplug.com.ls/categories",
       lastModified: new Date(),
     },
 
     {
-      url: "https://maseru-plug.vercel.app/contact",
+      url: "https://mplug.com.ls/contact",
       lastModified: new Date(),
     },
 

@@ -25,7 +25,7 @@ const poppins = Poppins({
 });
 
 export const metadata: Metadata = {
-  metadataBase: new URL("https://maseru-plug.vercel.app"),
+  metadataBase: new URL("https://mplug.com.ls"),
 
   title: {
     default: "MaseruPlug — Discover Trusted Businesses In Maseru",
@@ -67,7 +67,7 @@ export const metadata: Metadata = {
   category: "Business Directory",
 
   alternates: {
-    canonical: "https://maseru-plug.vercel.app",
+    canonical: "https://mplug.com.ls",
   },
 
   openGraph: {
@@ -75,7 +75,7 @@ export const metadata: Metadata = {
     description:
       "Find trusted businesses and services in Maseru, Lesotho.",
 
-    url: "https://maseru-plug.vercel.app",
+    url: "https://mplug.com.ls",
 
     siteName: "MaseruPlug",
 
