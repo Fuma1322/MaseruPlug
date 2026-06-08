@@ -4,27 +4,11 @@ const nextConfig = {
     remotePatterns: [
       {
         protocol: "https",
-        hostname: "tailwindui.com",
-      },
-      {
-        protocol: "https",
-        hostname: "flowbite.s3.amazonaws.com",
-      },
-      {
-        protocol: "https",
-        hostname: "assets.aceternity.com",
-      },
-      {
-        protocol: "https",
         hostname: "utfs.io",
       },
       {
         protocol: "https",
         hostname: "ufs.sh",
-      },
-      {
-        protocol: "https",
-        hostname: "images.unsplash.com",
       },
       {
         protocol: "https",
