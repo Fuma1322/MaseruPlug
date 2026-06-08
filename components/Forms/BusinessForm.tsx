@@ -51,7 +51,6 @@ export default function BusinessForm({
   register,
   handleSubmit,
   reset,
-  watch,
   formState: { errors },
 } = useForm<BusinessProps>({
   defaultValues: {
