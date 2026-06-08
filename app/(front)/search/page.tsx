@@ -21,7 +21,8 @@ interface Props {
 export default async function SearchPage({
   searchParams,
 }: Props) {
-  const query = searchParams.q || "";
+  const query =
+  (searchParams.q || "").trim().slice(0, 100);
 
   const businesses = await prisma.business.findMany({
     where: {
