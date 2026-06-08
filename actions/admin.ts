@@ -15,7 +15,7 @@ export async function loginAdmin(formData: FormData) {
 
   const cookieStore = await cookies();
 
-  cookieStore.set("admin-auth", "true", {
+  cookieStore.set("admin-auth", process.env.ADMIN_SESSION_SECRET!, {
     httpOnly: true,
     secure: process.env.NODE_ENV === "production",
     sameSite: "strict",
