@@ -59,7 +59,7 @@ export default function MeetTheTeam () {
   return (
     <>
       <div className="text-center space-y-2">
-        <p className="text-[#111111] font-semibold tracking-wide text-4xl">
+        <p className="text-[#111111] font-bold tracking-wide text-4xl">
           MaseruPlug Team
         </p>
         <p className="text-xs p-1 text-neutral-500 max-w-md mx-auto">
