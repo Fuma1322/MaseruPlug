@@ -48,7 +48,7 @@ export default function Error({
         <p className="mt-6 text-lg md:text-xl text-gray-600 leading-relaxed">
           We encountered an unexpected issue while loading this page.
           <br />
-          Don't worry, our systems are still running and you can try again.
+          Don&apos;t worry, our systems are still running and you can try again.
         </p>
 
         {/* Actions */}
