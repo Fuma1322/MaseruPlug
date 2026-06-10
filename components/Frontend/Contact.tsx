@@ -1,13 +1,11 @@
-"use client";
+"use client"
 
-import Image from "next/image";
 import Link from "next/link";
-import {
-  Phone
-} from "lucide-react";
-import { FaFacebook, FaWhatsapp } from "react-icons/fa";
+import Image from "next/image";
+import { Phone } from "lucide-react";
 import ContactCTA from "./ContactCTA";
 import { Button } from "../ui/button";
+import { FaFacebook, FaWhatsapp } from "react-icons/fa";
 
 const contactMethods = [
   {

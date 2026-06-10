@@ -1,5 +1,5 @@
-import prisma from "@/lib/db";
 import Link from "next/link";
+import prisma from "@/lib/db";
 import { ArrowRight } from "lucide-react";
 import { getCategoryIcon } from "@/lib/category-icons";
 

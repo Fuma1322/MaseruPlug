@@ -1,4 +1,4 @@
-"use client";
+"use client"
 
 import Link from "next/link";
 import { Home, RefreshCw } from "lucide-react";
@@ -51,7 +51,6 @@ export default function Error({
           Don&apos;t worry, our systems are still running and you can try again.
         </p>
 
-        {/* Actions */}
         <div className="mt-10 flex flex-col sm:flex-row items-center justify-center gap-4">
 
           <button
@@ -72,7 +71,6 @@ export default function Error({
 
         </div>
 
-        {/* Footer Hint */}
         <p className="mt-10 text-sm text-gray-400">
           MaseruPlug — connecting you to trusted local services
         </p>

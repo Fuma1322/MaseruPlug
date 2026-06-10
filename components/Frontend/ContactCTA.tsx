@@ -1,11 +1,11 @@
-"use client";
+"use client"
 
-import Link from "next/link";
 import {
   Eye,
   Users,
   TrendingUp,
 } from "lucide-react";
+import Link from "next/link";
 
 const message = encodeURIComponent(
   "Hello MaseruPlug, I am interested in listing my business on your platform. Please share more details."

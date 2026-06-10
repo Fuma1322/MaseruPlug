@@ -1,6 +1,6 @@
 import * as Icons from "lucide-react";
-import type { LucideProps } from "lucide-react";
 import type { ComponentType } from "react";
+import type { LucideProps } from "lucide-react";
 
 interface Props {
   name: string;
