@@ -1,12 +1,10 @@
-"use client";
+"use client"
 
 import Image from "next/image";
-import Balancer from "react-wrap-balancer";
-
-import { Container } from "@/components/ui/craft";
-import { SearchInput } from "./SearchInput";
-
 import { BadgeCheck } from "lucide-react";
+import Balancer from "react-wrap-balancer";
+import { SearchInput } from "./SearchInput";
+import { Container } from "@/components/ui/craft";
 
 const Hero = () => {
   return (

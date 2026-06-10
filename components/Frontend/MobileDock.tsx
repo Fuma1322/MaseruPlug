@@ -1,14 +1,13 @@
-"use client";
+"use client"
 
 import Link from "next/link";
-import { usePathname } from "next/navigation";
-
 import {
   IconHome,
   IconCategory,
   IconPhone,
   IconStar
 } from "@tabler/icons-react";
+import { usePathname } from "next/navigation";
 
 const navItems = [
   {
