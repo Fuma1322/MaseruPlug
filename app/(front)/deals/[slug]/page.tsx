@@ -8,7 +8,7 @@ const deal = {
   image: "/french2.jpg",
   description:
     "Get professional French braids completely FREE. Limited to the first 10 customers through MaseruPlug.",
-  originalPrice: 10,
+  originalPrice: 30,
   offerPrice: 0,
   spotsLeft: 10,
 };
