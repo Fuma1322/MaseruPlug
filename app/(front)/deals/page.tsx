@@ -84,7 +84,7 @@ export default function DealsPage() {
                     </span>
 
                     <span className="text-2xl font-black text-[#25D366]">
-                      M10
+                      FREE
                     </span>
                   </div>
 
