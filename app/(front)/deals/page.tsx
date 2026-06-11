@@ -93,7 +93,7 @@ export default function DealsPage() {
 
                   <div className="mt-12 flex justify-center">
                     <Link
-                    href="/featured"
+                    href="#"
                     className="inline-flex items-center justify-center h-12 px-8 rounded-xl bg-transparent text-[#25D366] font-semibold shadow-lg transition hover:bg-[#25D366] hover:text-white hover:scale-105"
                     >
                     Claim Deal <ArrowRight className="w-4 h-4 ml-2" />
