@@ -67,10 +67,13 @@ export async function generateMetadata({
         __html: JSON.stringify(structuredData),
       }}
     />
-    
+
   return {
     title,
     description,
+    alternates: {
+      canonical: `https://mplug.com.ls/categories/${category.slug}`,
+    },
     openGraph: {
       title,
       description,

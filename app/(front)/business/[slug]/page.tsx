@@ -57,6 +57,9 @@ export async function generateMetadata({
   return {
     title,
     description,
+    alternates: {
+      canonical: `https://mplug.com.ls/business/${business.slug}`,
+    },
     openGraph: {
       title,
       description,
