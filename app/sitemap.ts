@@ -1,5 +1,5 @@
-import type { MetadataRoute } from "next";
 import prisma from "@/lib/db";
+import type { MetadataRoute } from "next";
 
 export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
   const businesses = await prisma.business.findMany({
@@ -32,16 +32,14 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
       lastModified: new Date(),
     },
     {
+      url: "https://mplug.com.ls/categories",
+      lastModified: new Date(),
+    },
+    {
       url:
       "https://mplug.com.ls/business",
       lastModified: new Date(),
     },
-
-    {
-      url: "https://mplug.com.ls/categories",
-      lastModified: new Date(),
-    },
-
     {
       url: "https://mplug.com.ls/contact",
       lastModified: new Date(),

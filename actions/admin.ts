@@ -11,7 +11,6 @@ const loginAttempts = new Map<
 
 function getClientIp(): string {
   // Vercel / Next.js headers fallback
-  // We keep it simple for MVP
   return "global";
 }
 
