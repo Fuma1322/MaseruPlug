@@ -28,28 +28,34 @@ export const metadata: Metadata = {
   metadataBase: new URL("https://mplug.com.ls"),
 
   title: {
-    default: "MaseruPlug — Discover Trusted Businesses In Maseru",
+    default:
+    "MaseruPlug | Find Trusted Local Businesses & Services In Lesotho",
     template: "%s | MaseruPlug",
   },
 
   description:
-    "MaseruPlug helps people in Lesotho discover trusted local businesses including nail techs, salons, plumbers, electricians, mechanics, welders, and more.",
+  "Find trusted nail technicians, tattoo artists, carpenters, welders, plumbers, salons, and other local businesses across Lesotho. MaseruPlug connects customers with verified service providers.",
+
+  other: {
+    "geo.region": "LS",
+    "geo.placename": "Maseru, Lesotho",
+    "geo.position": "-29.3158;27.4869",
+    "ICBM": "-29.3158, 27.4869",
+  },
 
   keywords: [
-    "Maseru businesses",
-    "Lesotho businesses",
-    "Maseru directory",
-    "business directory Lesotho",
-    "nail techs in Maseru",
-    "salons in Maseru",
-    "plumbers in Maseru",
-    "electricians in Maseru",
-    "tattoo parlours in Maseru",
-    "lash technicians in Maseru",
-    "mechanics in Maseru",
-    "barbers in Maseru",
-    "MaseruPlug",
-  ],
+  "find businesses in Lesotho",
+  "local services Lesotho",
+  "Maseru businesses",
+  "nail technicians in Lesotho",
+  "tattoo artists in Lesotho",
+  "carpenters in Lesotho",
+  "crochet businesses in Lesotho",
+  "welders in Lesotho",
+  "small businesses in Lesotho",
+  "business directory Lesotho",
+  "MaseruPlug",
+],
 
   authors: [
     {
@@ -85,7 +91,7 @@ export const metadata: Metadata = {
 
     images: [
       {
-        url: "/hero4.png",
+        url: "/og-image.png",
         width: 1200,
         height: 630,
         alt: "MaseruPlug",
@@ -101,7 +107,7 @@ export const metadata: Metadata = {
     description:
       "Discover trusted businesses and local services in Maseru, Lesotho.",
 
-    images: ["/hero4.png"],
+    images: ["/og-image.png"],
   },
 
 

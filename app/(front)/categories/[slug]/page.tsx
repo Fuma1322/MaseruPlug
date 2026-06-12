@@ -49,10 +49,25 @@ export async function generateMetadata({
 
   const title = `${category.name} in Maseru | MaseruPlug`;
 
+  const structuredData = {
+    "@context": "https://schema.org",
+    "@type": "CollectionPage",
+    name: category.name,
+    description: category.description,
+    url: `https://mplug.com.ls/categories/${category.slug}`,
+  };
+
   const description =
     category.description ||
     `Find trusted ${category.name.toLowerCase()} services in Maseru. Browse verified local businesses on MaseruPlug.`;
 
+    <script
+      type="application/ld+json"
+      dangerouslySetInnerHTML={{
+        __html: JSON.stringify(structuredData),
+      }}
+    />
+    
   return {
     title,
     description,
@@ -99,7 +114,7 @@ export default async function CategoryPage({ params }: Props) {
         </h1>
 
         <p className="text-lg md:text-xl font-semibold text-[#25D366] mt-5">
-          Find the best {category.name.toLowerCase()} services near you in Maseru
+          {category.businesses.length} verified businesses available
         </p>
       </div>
 
