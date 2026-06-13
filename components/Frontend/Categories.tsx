@@ -5,8 +5,17 @@ import { getCategoryIcon } from "@/lib/category-icons";
 
 export default async function Categories() {
   const categories = await prisma.category.findMany({
-    orderBy: { createdAt: "asc" },
     take: 4,
+    orderBy: {
+      createdAt: "asc",
+    },
+    include: {
+      _count: {
+        select: {
+          businesses: true,
+        },
+      },
+    },
   });
 
   return (
@@ -31,10 +40,15 @@ export default async function Categories() {
                 <li key={category.id}>
                   <Link href={`/categories/${category.slug}`}>
                     <div className="h-full w-full max-w-xs rounded-2xl bg-white p-6 border border-neutral-200 shadow-xl flex flex-col items-center justify-center hover:scale-105 transition">
-                      <Icon className="h-32 w-32 text-[#25D366]" />
 
-                      <p className="text-lg text-center font-bold text-neutral-500 mt-4">
+                      <Icon className="h-20 w-20 text-[#25D366]" />
+
+                      <p className="text-lg text-center font-bold text-[#111111] mt-4">
                         {category.name}
+                      </p>
+
+                      <p className="text-sm text-muted-foreground mt-1">
+                        {category._count.businesses} businesses
                       </p>
 
                     </div>

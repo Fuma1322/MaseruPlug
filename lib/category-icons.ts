@@ -1,6 +1,5 @@
 import type { ComponentType, SVGProps } from "react";
 import {
-  Scissors,
   Palette,
   Wrench,
   Hammer,
@@ -8,7 +7,6 @@ import {
   Car,
   Utensils,
   Camera,
-  Eye,
   Zap,
   Flame,
   ScissorsLineDashed,
@@ -19,7 +17,6 @@ import {
 export type CategoryIconComponent = ComponentType<SVGProps<SVGSVGElement>>;
 
 export const categoryIconMap: Record<string, CategoryIconComponent> = {
-  Scissors,
   Palette,
   Wrench,
   Hammer,
@@ -27,7 +24,6 @@ export const categoryIconMap: Record<string, CategoryIconComponent> = {
   Car,
   Utensils,
   Camera,
-  Eye,
   Zap,
   Flame,
   ScissorsLineDashed,
