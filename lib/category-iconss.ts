@@ -12,7 +12,8 @@ import {
   Flame,
   ScissorsLineDashed,
   Shirt,
-  Paintbrush
+  Paintbrush,
+  HardHat
 } from "lucide-react";
 
 export const categoryIcons = [
@@ -29,5 +30,6 @@ export const categoryIcons = [
   { key: "Flame", label: "Welders", icon: Flame },
   { key: "ScissorsLineDashed", label: "Barber", icon: ScissorsLineDashed },
   { key: "Shirt", label: "Clothing", icon: Shirt },
-  { key: "Brush", label: "Tattoo Artists", icon: Brush }
+  { key: "Brush", label: "Tattoo Artists", icon: Brush },
+  { key: "HardHat", label: "Building & Renovation", icon: HardHat }
 ];
