@@ -1,79 +1,143 @@
 import Link from "next/link";
 import prisma from "@/lib/db";
+import { ArrowRight } from "lucide-react";
 import { getCategoryIcon } from "@/lib/category-icons";
 
-export default async function CategoriesPage() {
+export default async function AllCategories() {
   const [categories, businessesCount] = await Promise.all([
-  prisma.category.findMany({
-    orderBy: { createdAt: "asc" },
-  }),
-  prisma.business.count(),
-]);
+    prisma.category.findMany({
+      orderBy: { createdAt: "asc" },
+      include: {
+        _count: {
+          select: {
+            businesses: true,
+          },
+        },
+      },
+    }),
+    prisma.business.count(),
+  ]);
 
   return (
-    <div className="py-10">
+    <div className="py-12">
       <div className="max-w-screen-xl mx-auto px-4 md:px-8">
 
-          <div className="max-w-3xl mx-auto text-center">
-            <h3 className="text-[#111111] text-3xl font-bold sm:text-4xl">
-              All Categories
-            </h3>
+        {/* HERO */}
+        <div className="max-w-3xl mx-auto text-center">
 
-            <p className="text-gray-500 mt-2">
-              Browse all service categories on MaseruPlug
-            </p>
-
-            <div className="flex items-center justify-center gap-10 mt-8">
-              <div>
-                <p className="text-3xl font-extrabold text-[#25D366]">
-                  {categories.length}
-                </p>
-                <p className="text-sm text-muted-foreground">
-                  Categories
-                </p>
-              </div>
-
-              <div className="h-10 w-px bg-gray-200" />
-
-              <div>
-                <p className="text-3xl font-extrabold text-[#25D366]">
-                  {businessesCount}
-                </p>
-                <p className="text-sm text-muted-foreground">
-                  Businesses
-                </p>
-              </div>
-            </div>
+          <div className="inline-flex items-center gap-2 rounded-full bg-[#25D366]/10 px-4 py-2 text-sm font-medium text-[#25D366]">
+            Discover Local Businesses
           </div>
 
-        <div className="mt-12 flex justify-center">
-          <ul className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-x-4 gap-y-8">
+          <h1 className="mt-6 text-4xl md:text-5xl font-extrabold tracking-tight text-[#111111]">
+            Browse Business Categories
+          </h1>
 
-            {categories.map((category) => {
-              const Icon = getCategoryIcon(category.icon ?? undefined);
+          <p className="mt-4 text-lg text-muted-foreground">
+            Explore trusted businesses and service providers across Lesotho.
+            Find professionals, artisans, creatives, and local entrepreneurs
+            all in one place.
+          </p>
 
-              return (
-                <li key={category.id}>
-                  <Link href={`/categories/${category.slug}`}>
-                    <div className="h-full w-full max-w-xs rounded-2xl bg-white p-6 border border-neutral-200 shadow-xl flex flex-col items-center justify-center hover:scale-105 transition">
+          {/* STATS */}
+          <div className="flex items-center justify-center gap-10 mt-10">
 
-                      <Icon className="h-24 w-24 text-[#25D366]" />
+            <div>
+              <p className="text-4xl font-black text-[#25D366]">
+                {categories.length}
+              </p>
+              <p className="text-sm text-muted-foreground">
+                Categories
+              </p>
+            </div>
 
-                      <p className="text-lg text-center font-bold text-neutral-500 mt-4">
+            <div className="h-12 w-px bg-gray-200" />
+
+            <div>
+              <p className="text-4xl font-black text-[#25D366]">
+                {businessesCount}
+              </p>
+              <p className="text-sm text-muted-foreground">
+                Businesses
+              </p>
+            </div>
+
+          </div>
+        </div>
+
+        {/* CATEGORY GRID */}
+        <div className="mt-14 grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-6">
+
+          {categories.map((category) => {
+            const Icon = getCategoryIcon(category.icon ?? "");
+
+            return (
+              <Link
+                key={category.id}
+                href={`/categories/${category.slug}`}
+                className="group"
+              >
+                <div
+                  className="
+                  h-full
+                  rounded-3xl
+                  border
+                  border-neutral-200
+                  bg-white
+                  p-6
+                  shadow-sm
+                  transition-all
+                  duration-300
+                  hover:-translate-y-1
+                  hover:border-[#25D366]
+                  hover:shadow-xl
+                "
+                >
+                  {/* TOP */}
+                  <div className="flex items-start gap-4">
+
+                    <div
+                      className="
+                      rounded-2xl
+                      bg-[#25D366]/10
+                      p-4
+                      flex-shrink-0
+                    "
+                    >
+                      <Icon className="h-8 w-8 text-[#25D366]" />
+                    </div>
+
+                    <div className="flex-1">
+
+                      <h2 className="text-xl font-bold text-[#111111] group-hover:text-[#25D366] transition-colors">
                         {category.name}
+                      </h2>
+
+                      <p className="mt-2 text-sm text-muted-foreground line-clamp-3">
+                        {category.description}
                       </p>
 
-                      {category.description && (
-                        <p className="text-sm text-center text-neutral-400 mt-2">
-                          {category.description}
-                        </p>
-                      )}
                     </div>
-                  </Link>
-                </li>
-              );
-            })}
-          </ul>
+
+                  </div>
+
+                  {/* BOTTOM */}
+                  <div className="mt-6 flex items-center justify-between">
+
+                    <span className="inline-flex rounded-full bg-[#25D366]/10 px-3 py-1 text-sm font-semibold text-[#25D366]">
+                      {category._count.businesses} businesses
+                    </span>
+
+                    <span className="inline-flex items-center gap-1 text-sm font-semibold text-[#25D366]">
+                      Explore
+                      <ArrowRight className="h-4 w-4 transition-transform group-hover:translate-x-1" />
+                    </span>
+
+                  </div>
+                </div>
+              </Link>
+            );
+          })}
         </div>
       </div>
     </div>
