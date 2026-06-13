@@ -12,7 +12,8 @@ import {
   Zap,
   Flame,
   ScissorsLineDashed,
-  Shirt
+  Shirt,
+  HardHat
 } from "lucide-react";
 
 export type CategoryIconComponent = ComponentType<SVGProps<SVGSVGElement>>;
@@ -30,7 +31,8 @@ export const categoryIconMap: Record<string, CategoryIconComponent> = {
   Zap,
   Flame,
   ScissorsLineDashed,
-  Shirt
+  Shirt,
+  HardHat
 };
 
 export function getCategoryIcon(iconKey?: string) {
