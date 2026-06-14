@@ -17,6 +17,7 @@ export function SearchInput() {
   "Search electricians...",
   "Discover salons and beauty experts...",
   "Find trusted professionals...",
+  "Discover verified businesses...",
 ];
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
