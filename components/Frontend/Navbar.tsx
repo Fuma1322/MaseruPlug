@@ -14,7 +14,8 @@ export default function Navbar () {
     const navigation = [
         { title: "Home", path: "/" },
         { title: "Categories", path: "/categories" },
-        { title: "List Your Business", path: "/contact" },
+        { title: "About Us", path: "/about" },
+        { title: "Join The Plug", path: "/contact" },
     ]
 
     return (

@@ -1,17 +1,21 @@
 import React from 'react'
 import Link from 'next/link'
-import { FaWhatsapp, FaFacebook } from 'react-icons/fa'
+import { FaWhatsapp, FaFacebook, FaInstagram } from 'react-icons/fa'
 
 export default function Footer() {
 
     const quickLinks = [
+        {
+            href: '/about',
+            name: 'About Us'
+        },
         {
             href: '/categories',
             name: 'Categories'
         },
         {
             href: '/contact',
-            name: 'List Your Business'
+            name: 'Join The Plug'
         },
     ]
 
@@ -25,6 +29,11 @@ export default function Footer() {
             href: 'https://facebook.com/maseruplug',
             name: 'Facebook',
             icon: FaFacebook
+        },
+        {
+            href: 'https://instagram.com/maseruplug',
+            name: 'Instagram',
+            icon: FaInstagram
         },
     ]
     return (
@@ -64,7 +73,7 @@ export default function Footer() {
                                             return (
                                                 <li key={idx}>
                                                     <Link href={item.href} className="inline-flex items-center gap-2 text-[#111111] hover:text-[#25D366] transition-colors duration-150">
-                                                        {Icon ? <Icon className={`h-4 w-4 ${item.name === 'Facebook' ? 'text-blue-600' : item.name === 'WhatsApp' ? 'text-[#25D366]' : ''}`} /> : null}
+                                                        {Icon ? <Icon className={`h-4 w-4 ${item.name === 'Facebook' ? 'text-blue-600' : item.name === 'Instagram' ? 'text-pink-500' : item.name === 'WhatsApp' ? 'text-[#25D366]' : ''}`} /> : null}
                                                         {item.name}
                                                     </Link>
                                                 </li>
