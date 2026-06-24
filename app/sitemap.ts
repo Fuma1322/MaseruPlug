@@ -53,6 +53,12 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
       priority: 0.5,
     },
     {
+      url: "https://mplug.com.ls/about",
+      lastModified: new Date(),
+      changeFrequency: "weekly",
+      priority: 0.5,
+    },
+    {
       url: "https://mplug.com.ls/contact",
       lastModified: new Date(),
       changeFrequency: "weekly",
