@@ -5,9 +5,9 @@ import {
   IconHome,
   IconCategory,
   IconPhone,
-  IconStar
 } from "@tabler/icons-react";
 import { usePathname } from "next/navigation";
+import { CircleHelp } from "lucide-react";
 
 const navItems = [
   {
@@ -21,9 +21,9 @@ const navItems = [
     icon: IconCategory,
   },
   {
-    label: "Featured",
-    href: "/#featured",
-    icon: IconStar,
+    label: "About",
+    href: "/about",
+    icon: CircleHelp,
   },
   {
     label: "Contact",
