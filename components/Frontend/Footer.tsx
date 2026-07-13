@@ -85,7 +85,7 @@ export default function Footer() {
                         </div>
                     </div>
                     <div className="mt-10 pt-6 text-center text-sm text-[#6b7280]">
-                        © {new Date().getFullYear()} MaseruPlug. All rights reserved.
+                        © {new Date().getFullYear()} MPLUG PTY LTD. All rights reserved.
                     </div>
                 </div>
             </div>
