@@ -1,74 +1,243 @@
-'use client'
+"use client";
 
-import Link from 'next/link'
-import { useState } from 'react'
-import { Button } from '../ui/button'
+import Link from "next/link";
+import { usePathname } from "next/navigation";
 
-export default function Navbar () {
+import { cn } from "@/lib/utils";
 
-    const [state, setState] = useState(false)
-    const message = encodeURIComponent(
-    "Hello MaseruPlug, I am interested in listing my business on your platform. Please share more details."
-    );
+import { Button } from "@/components/ui/button";
 
-    const navigation = [
-        { title: "Home", path: "/" },
-        { title: "Categories", path: "/categories" },
-        { title: "About Us", path: "/about" },
-        { title: "Join The Plug", path: "/contact" },
-    ]
+import {
+  Sheet,
+  SheetContent,
+  SheetTrigger,
+} from "@/components/ui/sheet";
 
-    return (
-        <nav className="sticky top-0 z-50 bg-white w-full md:text-sm md:border-none m-0 p-0">
-            <div className="items-center px-4 max-w-screen-xl mx-auto md:flex md:px-8">
-                <div className="flex items-center justify-between py-3 md:py-5 md:block">
-                    <Link href="/">
-                        <h2 className="font-extrabold text-2xl"><span className='text-[#25D366]'>Maseru</span>Plug</h2>
-                    </Link>
-                    <div className="hidden">
-                        <button className="text-gray-500 hover:text-gray-800"
-                            onClick={() => setState(!state)}
-                        >
-                            {
-                                state ? (
-                                    <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6" viewBox="0 0 20 20" fill="currentColor">
-                                        <path fillRule="evenodd" d="M4.293 4.293a1 1 0 011.414 0L10 8.586l4.293-4.293a1 1 0 111.414 1.414L11.414 10l4.293 4.293a1 1 0 01-1.414 1.414L10 11.414l-4.293 4.293a1 1 0 01-1.414-1.414L8.586 10 4.293 5.707a1 1 0 010-1.414z" clipRule="evenodd" />
-                                    </svg>
-                                ) : (
-                                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="w-6 h-6">
-                                        <path strokeLinecap="round" strokeLinejoin="round" d="M3.75 6.75h16.5M3.75 12h16.5m-16.5 5.25h16.5" />
-                                    </svg>
-                                )
-                            }
-                        </button>
-                    </div>
-                </div>
-                <div className="hidden md:block flex-1 pb-3 mt-8 md:pb-0 md:mt-0">
-                    <ul className="justify-end items-center space-y-10 md:flex md:space-x-6 md:space-y-0">
-                        {
-                            navigation.map((item, idx) => {
-                                return (
-                                    <li key={idx} className="text-black font-semibold hover:text-gray-600">
-                                        <Link href={item.path} className="block mr-20">
-                                            {item.title}
-                                        </Link>
-                                    </li>
-                                )
-                            })
-                        }
-                        <div className="flex flex-col gap-y-4 gap-x-6 md:flex-row md:space-y-0">
-                            <Button className="inline-flex h-12 lg:w-[210px] animate-shimmer items-center justify-center rounded-md bg-[linear-gradient(110deg,#25D366_20%,#13a047_50%,#25D366_80%)] bg-[length:200%_100%] px-6 font-bold text-[#111111]">
-                                <Link 
-                                    href={`https://wa.me/26663272145?text=${message}`}
-                                    target="_blank"
-                                    >
-                                    Contact On WhatsApp
-                                </Link>
-                            </Button>
-                        </div>
-                    </ul>
-                </div>
-            </div>
-        </nav>
-    )
+
+import {
+  Activity,
+  Home,
+  Menu,
+  MonitorSmartphone,
+  Power,
+  University,
+  Users,
+} from "lucide-react";
+
+
+import { logoutAdmin } from "@/actions/admin";
+
+
+export default function NavBar() {
+
+  const pathname = usePathname();
+
+
+  const links = [
+    {
+      title: "Home",
+      path: "/",
+      icon: Home,
+    },
+    {
+      title: "Dashboard",
+      path: "/dashboard",
+      icon: Activity,
+    },
+    {
+      title: "Categories",
+      path: "/dashboard/categories",
+      icon: Users,
+    },
+    {
+      title: "Businesses",
+      path: "/dashboard/business",
+      icon: University,
+    },
+  ];
+
+
+
+  return (
+
+    <header className="flex h-16 items-center justify-between border-b border-neutral-200 bg-white px-6">
+
+
+      {/* MOBILE MENU */}
+
+      <Sheet>
+
+        <SheetTrigger asChild>
+
+          <Button
+            variant="ghost"
+            size="icon"
+            className="md:hidden"
+          >
+            <Menu className="h-5 w-5" />
+          </Button>
+
+        </SheetTrigger>
+
+
+        <SheetContent
+          side="left"
+          className="w-72 bg-white p-0"
+        >
+
+
+          {/* MOBILE BRAND */}
+
+          <div className="border-b border-neutral-200 p-6">
+
+            <Link
+              href="/dashboard"
+              className="flex items-center gap-3"
+            >
+
+              <div className="h-10 w-10 rounded-xl bg-[#25D366]/10 flex items-center justify-center">
+
+                <MonitorSmartphone
+                  className="h-5 w-5 text-[#25D366]"
+                />
+
+              </div>
+
+
+              <div>
+
+                <h1 className="text-xl font-extrabold text-[#111111]">
+                  Maseru<span className="text-[#25D366]">Plug</span>
+                </h1>
+
+
+                <p className="text-xs text-neutral-500">
+                  Admin Control Center
+                </p>
+
+              </div>
+
+
+            </Link>
+
+          </div>
+
+
+
+          <nav className="space-y-2 p-4">
+
+
+            {links.map((item)=>{
+
+              const Icon=item.icon;
+
+              const active =
+                pathname === item.path ||
+                pathname.startsWith(item.path + "/");
+
+
+              return (
+
+                <Link
+
+                  key={item.path}
+
+                  href={item.path}
+
+                  className={cn(
+
+                    "flex items-center gap-3 rounded-xl px-4 py-3 transition-all",
+
+                    active
+                      ? "border border-[#25D366] bg-[#25D366]/10 text-[#111111]"
+                      : "text-neutral-600 hover:bg-neutral-100"
+
+                  )}
+
+                >
+
+                  <Icon size={18}/>
+
+
+                  <span className="text-sm font-medium">
+                    {item.title}
+                  </span>
+
+
+                  {active && (
+                    <span className="ml-auto h-2 w-2 rounded-full bg-[#25D366]" />
+                  )}
+
+
+                </Link>
+
+              );
+
+            })}
+
+
+          </nav>
+
+
+        </SheetContent>
+
+
+      </Sheet>
+
+
+
+      {/* PAGE TITLE */}
+
+      <div>
+
+        <h2 className="text-sm font-semibold text-[#111111]">
+          Admin Panel
+        </h2>
+
+      </div>
+
+
+
+      <div className="flex-1"/>
+
+
+
+      {/* STATUS + LOGOUT */}
+
+      <div className="flex items-center gap-4">
+
+
+        <span className="flex items-center gap-2 text-xs text-neutral-500">
+
+          <span className="h-2 w-2 rounded-full bg-[#25D366]" />
+
+          Online
+
+        </span>
+
+
+
+        <Button
+
+          onClick={() => logoutAdmin()}
+
+          variant="ghost"
+
+          className="rounded-xl hover:bg-red-50 hover:text-red-600"
+
+        >
+
+          <Power className="mr-2 h-4 w-4"/>
+
+          Logout
+
+        </Button>
+
+
+      </div>
+
+
+    </header>
+
+  );
 }

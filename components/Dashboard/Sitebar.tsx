@@ -1,9 +1,9 @@
 "use client";
 
-import React from "react";
 import Link from "next/link";
-import { cn } from "@/lib/utils";
 import { usePathname } from "next/navigation";
+import { cn } from "@/lib/utils";
+
 import {
   Activity,
   Home,
@@ -15,46 +15,132 @@ import {
 export default function Sidebar() {
   const pathname = usePathname();
 
-  const sideBarLinks = [
-    { title: "Home", path: "/", icon: Home },
-    { title: "Dashboard", path: "/dashboard", icon: Activity },
-    { title: "Categories", path: "/dashboard/categories", icon: Users },
-    { title: "Businesses", path: "/dashboard/business", icon: University },
+  const links = [
+    {
+      title: "Home",
+      path: "/",
+      icon: Home,
+    },
+    {
+      title: "Dashboard",
+      path: "/dashboard",
+      icon: Activity,
+    },
+    {
+      title: "Categories",
+      path: "/dashboard/categories",
+      icon: Users,
+    },
+    {
+      title: "Businesses",
+      path: "/dashboard/business",
+      icon: University,
+    },
   ];
 
   return (
-    <div className="hidden border-r bg-muted/40 md:block">
-      <div className="flex h-full max-h-screen flex-col gap-2">
-        {/* Header */}
-        <div className="flex h-14 items-center border-b px-4 lg:h-[60px] lg:px-6">
-          <Link href="/" className="flex items-center gap-2 font-semibold">
-            <MonitorSmartphone className="text-[#25D366] h-5 w-5" />
-            <span>MaseruPlug</span>
-          </Link>
-        </div>
+    <aside className="hidden md:flex w-72 flex-col border-r border-neutral-200 bg-white p-6">
 
-        {/* Navigation */}
-        <div className="flex-1">
-          <nav className="grid items-start px-2 text-sm font-medium lg:px-4">
-            {sideBarLinks.map((item, i) => {
-              const Icon = item.icon;
-              return (
-                <Link
-                  key={i}
-                  href={item.path}
-                  className={cn(
-                    "flex items-center gap-3 rounded-lg px-3 py-2 text-muted-foreground transition-all hover:text-primary",
-                    pathname === item.path && "bg-muted text-primary"
-                  )}
-                >
-                  <Icon className="h-4 w-4" />
-                  {item.title}
-                </Link>
-              );
-            })}
-          </nav>
-        </div>
+      {/* BRAND */}
+
+      <div className="mb-10">
+
+        <Link
+          href="/dashboard"
+          className="flex items-center gap-3"
+        >
+
+          <div className="h-10 w-10 rounded-xl bg-[#25D366]/10 flex items-center justify-center">
+            <MonitorSmartphone className="h-5 w-5 text-[#25D366]" />
+          </div>
+
+
+          <div>
+
+            <h1 className="text-2xl font-extrabold text-[#111111]">
+              Maseru<span className="text-[#25D366]">Plug</span>
+            </h1>
+
+          </div>
+
+        </Link>
+
+
+        <p className="mt-1 text-xs text-neutral-500">
+          Admin Control Center
+        </p>
+
       </div>
-    </div>
+
+
+      {/* NAVIGATION */}
+
+      <nav className="flex-1 space-y-2">
+
+        {links.map((item) => {
+
+          const Icon = item.icon;
+
+          const active =
+            pathname === item.path ||
+            pathname.startsWith(item.path + "/");
+
+
+          return (
+
+            <Link
+              key={item.path}
+              href={item.path}
+              className={cn(
+
+                "group flex items-center gap-3 rounded-xl px-4 py-3 transition-all",
+
+                active
+                  ? "border border-[#25D366] bg-[#25D366]/10 text-[#111111]"
+                  : "text-neutral-600 hover:bg-neutral-100"
+
+              )}
+            >
+
+              <Icon
+                size={18}
+                className={cn(
+                  active
+                    ? "text-[#25D366]"
+                    : "text-neutral-500 group-hover:text-[#25D366]"
+                )}
+              />
+
+
+              <span className="text-sm font-medium">
+                {item.title}
+              </span>
+
+
+              {active && (
+                <span className="ml-auto h-2 w-2 rounded-full bg-[#25D366]" />
+              )}
+
+
+            </Link>
+
+          );
+
+        })}
+
+
+      </nav>
+
+
+      {/* FOOTER */}
+
+      <div className="border-t border-neutral-200 pt-6 text-xs text-neutral-500">
+
+        © {new Date().getFullYear()} MaseruPlug ERP
+
+      </div>
+
+
+    </aside>
   );
 }
