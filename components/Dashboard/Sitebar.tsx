@@ -56,7 +56,7 @@ export default function Sidebar() {
         {links.map((item) => {
           const Icon = item.icon;
 
-          const active = pathname === item.path || pathname.startsWith(item.path + '/');
+          const active = pathname === item.path;
 
           return (
             <Link
