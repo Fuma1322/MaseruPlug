@@ -6,7 +6,6 @@ import type { Metadata } from 'next';
 import { Card, CardContent, CardFooter, CardHeader, CardTitle } from '@/components/ui/card';
 
 import { MapPin } from 'lucide-react';
-import { SearchInput } from '@/components/Frontend/SearchInput';
 
 interface Props {
   params: {
