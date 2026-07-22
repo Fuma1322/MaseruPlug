@@ -4,7 +4,14 @@ import Link from 'next/link';
 import { usePathname } from 'next/navigation';
 import { cn } from '@/lib/utils';
 
-import { Activity, Home, MonitorSmartphone, University, Users } from 'lucide-react';
+import {
+  Activity,
+  Home,
+  LayoutDashboard,
+  MonitorSmartphone,
+  University,
+  Users,
+} from 'lucide-react';
 
 export default function Sidebar() {
   const pathname = usePathname();
@@ -18,7 +25,7 @@ export default function Sidebar() {
     {
       title: 'Dashboard',
       path: '/dashboard',
-      icon: Activity,
+      icon: LayoutDashboard,
     },
     {
       title: 'Categories',
@@ -29,6 +36,11 @@ export default function Sidebar() {
       title: 'Businesses',
       path: '/dashboard/business',
       icon: University,
+    },
+    {
+      title: 'Analytics',
+      path: '/dashboard/analytics',
+      icon: Activity,
     },
   ];
 

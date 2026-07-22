@@ -53,6 +53,8 @@ model Business {
   categoryId      String          @db.ObjectId
   category        Category        @relation(fields: [categoryId], references: [id])
 
+  analytics BusinessEvent[]
+
   createdAt       DateTime        @default(now())
   updatedAt       DateTime        @updatedAt
 }
@@ -64,4 +66,27 @@ model SearchQuery {
 
   @@index([query])
   @@index([createdAt])
+}
+
+model BusinessEvent {
+  id         String   @id @default(auto()) @map("_id") @db.ObjectId
+
+  businessId String   @db.ObjectId
+  business   Business @relation(fields: [businessId], references: [id], onDelete: Cascade)
+
+  event       AnalyticsEvent
+
+  userAgent   String?
+
+  createdAt   DateTime @default(now())
+}
+
+enum AnalyticsEvent {
+  PROFILE_VIEW
+  WHATSAPP_CLICK
+  PHONE_CLICK
+  FACEBOOK_CLICK
+  WEBSITE_CLICK
+  DIRECTIONS_CLICK
+  SHARE_CLICK
 }

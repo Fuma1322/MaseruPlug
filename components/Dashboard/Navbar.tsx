@@ -8,7 +8,16 @@ import { cn } from '@/lib/utils';
 import { Button } from '@/components/ui/button';
 import { Sheet, SheetContent, SheetTrigger } from '@/components/ui/sheet';
 
-import { Activity, Home, Menu, MonitorSmartphone, University, Users, Power } from 'lucide-react';
+import {
+  Activity,
+  Home,
+  Menu,
+  MonitorSmartphone,
+  University,
+  Users,
+  Power,
+  LayoutDashboard,
+} from 'lucide-react';
 
 import { logoutAdmin } from '@/actions/admin';
 
@@ -24,7 +33,7 @@ export default function NavBar() {
     {
       title: 'Dashboard',
       path: '/dashboard',
-      icon: Activity,
+      icon: LayoutDashboard,
     },
     {
       title: 'Categories',
@@ -35,6 +44,11 @@ export default function NavBar() {
       title: 'Businesses',
       path: '/dashboard/business',
       icon: University,
+    },
+    {
+      title: 'Analytics',
+      path: '/dashboard/analytics',
+      icon: Activity,
     },
   ];
 
