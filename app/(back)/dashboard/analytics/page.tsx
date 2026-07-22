@@ -1,7 +1,7 @@
+import { TrendingUp, Store } from 'lucide-react';
 import { getAnalyticsOverview } from '@/actions/getAnalytics';
 import AnalyticsCard from '@/components/Dashboard/AnalyticsCard';
 import BusinessAnalyticsTable from '@/components/Dashboard/BusinessAnalyticsTable';
-import { TrendingUp, Store } from 'lucide-react';
 
 export default async function AnalyticsPage() {
   const data = await getAnalyticsOverview();
