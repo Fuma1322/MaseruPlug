@@ -1,10 +1,10 @@
 'use client';
 
+import { AnalyticsBusiness } from '@/types/analytics';
 import { X, Eye, MessageCircle, Phone } from 'lucide-react';
 
 interface Props {
-  business: any;
-
+  business: AnalyticsBusiness;
   close: () => void;
 }
 

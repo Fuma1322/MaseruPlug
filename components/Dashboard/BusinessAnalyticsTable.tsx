@@ -2,13 +2,14 @@
 
 import { useState } from 'react';
 import BusinessAnalyticsModal from './BusinessAnalyticsModal';
+import { AnalyticsBusiness } from '@/types/analytics';
 
 interface Props {
-  businesses: any[];
+  businesses: AnalyticsBusiness[];
 }
 
 export default function BusinessAnalyticsTable({ businesses }: Props) {
-  const [selectedBusiness, setSelectedBusiness] = useState<any>(null);
+  const [selectedBusiness, setSelectedBusiness] = useState<AnalyticsBusiness | null>(null);
 
   return (
     <>
