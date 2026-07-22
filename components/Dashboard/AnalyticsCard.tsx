@@ -1,6 +1,6 @@
 interface Props {
   title: string;
-  value: number;
+  value: number | string;
   description: string;
 }
 
