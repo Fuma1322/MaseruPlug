@@ -25,5 +25,5 @@ export type BusinessProps = {
   metaDescription?: string;
 
   isFeatured?: boolean;
-  status?: "PENDING" | "ACTIVE" | "INACTIVE";
+  status?: 'PENDING' | 'ACTIVE' | 'INACTIVE';
 };

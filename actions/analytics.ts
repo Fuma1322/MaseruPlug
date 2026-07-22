@@ -1,7 +1,15 @@
 'use server';
 
 import prisma from '@/lib/db';
-import { AnalyticsEvent } from '@prisma/client';
+
+type AnalyticsEvent =
+  | 'PROFILE_VIEW'
+  | 'WHATSAPP_CLICK'
+  | 'PHONE_CLICK'
+  | 'FACEBOOK_CLICK'
+  | 'WEBSITE_CLICK'
+  | 'DIRECTIONS_CLICK'
+  | 'SHARE_CLICK';
 
 export async function trackBusinessEvent(
   businessId: string,
