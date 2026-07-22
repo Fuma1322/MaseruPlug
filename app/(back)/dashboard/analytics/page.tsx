@@ -1,9 +1,9 @@
 import { TrendingUp, Store } from 'lucide-react';
+import { formatNumber } from '@/lib/formatNumber';
 import { getAnalyticsOverview } from '@/actions/getAnalytics';
 import AnalyticsCard from '@/components/Dashboard/AnalyticsCard';
-import BusinessAnalyticsTable from '@/components/Dashboard/BusinessAnalyticsTable';
-import { formatNumber } from '@/lib/formatNumber';
 import AnalyticsDashboard from '@/components/Dashboard/AnalyticsDashboard';
+import BusinessAnalyticsTable from '@/components/Dashboard/BusinessAnalyticsTable';
 
 export default async function AnalyticsPage() {
   const data = await getAnalyticsOverview();
@@ -58,8 +58,6 @@ export default async function AnalyticsPage() {
           description="Conversion Rate"
         />
       </div>
-
-      {/* BUSINESS PERFORMANCE */}
 
       {/* BUSINESS PERFORMANCE */}
 
