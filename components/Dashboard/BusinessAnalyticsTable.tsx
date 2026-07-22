@@ -35,7 +35,7 @@ export default function BusinessAnalyticsTable({ businesses }: Props) {
             </div>
 
             <div className="rounded-full bg-green-50 px-4 py-2 text-sm font-semibold text-[#25D366]">
-              {business.analytics.length} events
+              {business.analytics.length} interactions
             </div>
           </button>
         ))}
