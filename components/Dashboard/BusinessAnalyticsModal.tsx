@@ -9,11 +9,11 @@ interface Props {
 }
 
 export default function BusinessAnalyticsModal({ business, close }: Props) {
-  const views = business.analytics.filter((e: any) => e.event === 'PROFILE_VIEW').length;
+  const views = business.analytics.filter((event) => event.event === 'PROFILE_VIEW').length;
 
-  const whatsapp = business.analytics.filter((e: any) => e.event === 'WHATSAPP_CLICK').length;
+  const whatsapp = business.analytics.filter((event) => event.event === 'WHATSAPP_CLICK').length;
 
-  const phone = business.analytics.filter((e: any) => e.event === 'PHONE_CLICK').length;
+  const phone = business.analytics.filter((event) => event.event === 'PHONE_CLICK').length;
 
   return (
     <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/40 backdrop-blur-sm">
