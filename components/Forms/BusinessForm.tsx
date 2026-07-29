@@ -1,21 +1,21 @@
-"use client";
+'use client';
 
-import { useState } from "react";
-import toast from "react-hot-toast";
-import { useForm} from "react-hook-form";
-import { useRouter } from "next/navigation";
-import { BusinessStatus, Category } from "@prisma/client";
+import { useState } from 'react';
+import toast from 'react-hot-toast';
+import { useForm } from 'react-hook-form';
+import { useRouter } from 'next/navigation';
+import { BusinessStatus, Category } from '@prisma/client';
 
-import generateSlug from "@/utils/generateSlug";
-import { createBusiness } from "@/actions/business";
+import generateSlug from '@/utils/generateSlug';
+import { createBusiness } from '@/actions/business';
 
-import TextInput from "@/components/FormInputs/TextInput";
-import SubmitButton from "@/components/FormInputs/SubmitButton";
-import { TextAreaInput } from "@/components/FormInputs/TextAreaInput";
+import TextInput from '@/components/FormInputs/TextInput';
+import SubmitButton from '@/components/FormInputs/SubmitButton';
+import { TextAreaInput } from '@/components/FormInputs/TextAreaInput';
 
-import ToggleInput from "../FormInputs/ToggleInput";
-import SelectInput from "../FormInputs/SelectInput";
-import MultipleImageInput from "../FormInputs/MultipleImageInput";
+import ToggleInput from '../FormInputs/ToggleInput';
+import SelectInput from '../FormInputs/SelectInput';
+import MultipleImageInput from '../FormInputs/MultipleImageInput';
 
 export type BusinessProps = {
   name: string;
@@ -48,15 +48,15 @@ export default function BusinessForm({
   const [isFeatured, setIsFeatured] = useState(false);
 
   const {
-  register,
-  handleSubmit,
-  reset,
-  formState: { errors },
-} = useForm<BusinessProps>({
-  defaultValues: {
-    description: "",
-  },
-});;
+    register,
+    handleSubmit,
+    reset,
+    formState: { errors },
+  } = useForm<BusinessProps>({
+    defaultValues: {
+      description: '',
+    },
+  });
 
   const categoryOptions = categories.map((category) => ({
     label: category.name,
@@ -64,169 +64,191 @@ export default function BusinessForm({
   }));
 
   const statusOptions = [
-    { label: "Pending", value: "PENDING" },
-    { label: "Active", value: "ACTIVE" },
-    { label: "Inactive", value: "INACTIVE" },
+    { label: 'Pending', value: 'PENDING' },
+    { label: 'Active', value: 'ACTIVE' },
+    { label: 'Inactive', value: 'INACTIVE' },
   ];
 
   async function onSubmit(data: BusinessProps) {
-  try {
-    setIsLoading(true);
-    data.slug = generateSlug(data.name);
-    data.images = images;
-    data.isFeatured = isFeatured;
+    try {
+      setIsLoading(true);
+      data.slug = generateSlug(data.name);
+      data.images = images;
+      data.isFeatured = isFeatured;
 
-    const response = await createBusiness(data);
+      const response = await createBusiness(data);
 
-    console.log("RESPONSE:", response);
+      console.log('RESPONSE:', response);
 
-    if (response?.status === 400) {
-    toast.error("Please fix form errors");
-    console.log(response.error);
-    return;
+      if (response?.status === 400) {
+        toast.error('Please fix form errors');
+        console.log(response.error);
+        return;
+      }
+
+      toast.success('Business created successfully');
+
+      reset();
+      router.push('/dashboard');
+      router.refresh();
+    } catch {
+      toast.error('Something went wrong');
+    } finally {
+      setIsLoading(false);
     }
-
-    toast.success("Business created successfully");
-
-    reset();
-    router.push("/dashboard");
-    router.refresh();
-  } catch {
-    toast.error("Something went wrong");
-  } finally {
-    setIsLoading(false);
   }
-}
 
   return (
-    <div className="w-full max-w-5xl mx-auto m-3 rounded-xl border border-gray-200 bg-white shadow-sm">
-      {/* Header */}
-      <div className="border-b px-6 py-4">
-        <h1 className="text-2xl font-bold tracking-tight">{title}</h1>
-      </div>
+    <div className="w-full">
+      <form onSubmit={handleSubmit(onSubmit)} className="space-y-10">
+        {/* BUSINESS INFORMATION */}
 
-      {/* Form */}
-      <form onSubmit={handleSubmit(onSubmit)} className="space-y-8 px-6 py-6">
-        
-        {/* Basic Info */}
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-          <TextInput
-            label="Business Name"
-            name="name"
-            register={register}
-            errors={errors}
-            placeholder="e.g. Nails by Lelo"
-            isRequired
+        <section>
+          <h3 className="mb-4 text-sm font-semibold uppercase tracking-wide text-gray-500">
+            Business Information
+          </h3>
+
+          <div className="grid grid-cols-1 gap-6 md:grid-cols-2">
+            <TextInput
+              label="Business Name"
+              name="name"
+              register={register}
+              errors={errors}
+              placeholder="e.g. Nails by Lelo"
+              isRequired
+            />
+
+            <SelectInput
+              label="Category"
+              name="categoryId"
+              register={register}
+              errors={errors}
+              options={categoryOptions}
+            />
+          </div>
+
+          <div className="mt-6">
+            <TextAreaInput<BusinessProps>
+              label="Description"
+              name="description"
+              register={register}
+              errors={errors}
+              placeholder="Describe the business"
+              isRequired
+            />
+          </div>
+        </section>
+
+        {/* CONTACT */}
+
+        <section>
+          <h3 className="mb-4 text-sm font-semibold uppercase tracking-wide text-gray-500">
+            Contact Information
+          </h3>
+
+          <div className="grid grid-cols-1 gap-6 md:grid-cols-2">
+            <TextInput
+              label="Location"
+              name="location"
+              register={register}
+              errors={errors}
+              placeholder="Maseru West"
+              isRequired
+            />
+
+            <TextInput
+              label="Phone"
+              name="phone"
+              register={register}
+              errors={errors}
+              placeholder="+266 5800 0000"
+              isRequired
+            />
+
+            <TextInput
+              label="WhatsApp"
+              name="whatsapp"
+              register={register}
+              errors={errors}
+              placeholder="+266 5800 0000"
+            />
+
+            <TextInput
+              label="Facebook URL"
+              name="facebookUrl"
+              register={register}
+              errors={errors}
+              placeholder="https://facebook.com/..."
+            />
+
+            <TextInput
+              label="Website URL"
+              name="websiteUrl"
+              register={register}
+              errors={errors}
+              placeholder="https://example.com"
+            />
+          </div>
+        </section>
+
+        {/* GALLERY */}
+
+        <section>
+          <h3 className="mb-4 text-sm font-semibold uppercase tracking-wide text-gray-500">
+            Business Gallery
+          </h3>
+
+          <MultipleImageInput
+            label="Upload Business Images (up to 12)"
+            images={images}
+            setImages={setImages}
+            endpoint="businessImages"
           />
+        </section>
 
-          <SelectInput
-            label="Category"
-            name="categoryId"
-            register={register}
-            errors={errors}
-            options={categoryOptions}
-          />
-        </div>
+        {/* SEO */}
 
-        {/* Description */}
-        <TextAreaInput<BusinessProps>
-          label="Description"
-          name="description"
-          register={register}
-          errors={errors}
-          placeholder="Describe the business"
-          isRequired
-        />
+        <section>
+          <h3 className="mb-4 text-sm font-semibold uppercase tracking-wide text-gray-500">
+            SEO & Visibility
+          </h3>
 
-        {/* Contact Info */}
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-          <TextInput
-            label="Location"
-            name="location"
-            register={register}
-            errors={errors}
-            placeholder="e.g. Maseru West"
-            isRequired
-          />
+          <div className="grid grid-cols-1 gap-6 md:grid-cols-2">
+            <TextInput
+              label="Meta Title"
+              name="metaTitle"
+              register={register}
+              errors={errors}
+              placeholder="SEO title"
+            />
 
-          <TextInput
-            label="Phone"
-            name="phone"
-            register={register}
-            errors={errors}
-            placeholder="+266 5800 0000"
-            isRequired
-          />
+            <SelectInput
+              label="Status"
+              name="status"
+              register={register}
+              errors={errors}
+              options={statusOptions}
+            />
+          </div>
 
-          <TextInput
-            label="WhatsApp"
-            name="whatsapp"
-            register={register}
-            errors={errors}
-            placeholder="+266 5800 0000"
-          />
+          <div className="mt-6">
+            <TextAreaInput
+              label="Meta Description"
+              name="metaDescription"
+              register={register}
+              errors={errors}
+              placeholder="SEO description"
+            />
+          </div>
 
-          <TextInput
-            label="Facebook URL"
-            name="facebookUrl"
-            register={register}
-            errors={errors}
-            placeholder="https://facebook.com/..."
-          />
+          <div className="mt-6">
+            <ToggleInput label="Featured Business" value={isFeatured} setValue={setIsFeatured} />
+          </div>
+        </section>
 
-          <TextInput
-            label="Website URL"
-            name="websiteUrl"
-            register={register}
-            errors={errors}
-            placeholder="https://example.com"
-          />
-        </div>
+        {/* ACTION */}
 
-        {/* Images */}
-        <MultipleImageInput
-          label="Business Images (up to 12)"
-          images={images}
-          setImages={setImages}
-          endpoint="businessImages"
-        />
-
-        {/* SEO + Status */}
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-          <TextInput
-            label="Meta Title"
-            name="metaTitle"
-            register={register}
-            errors={errors}
-            placeholder="SEO title"
-          />
-
-          <SelectInput
-            label="Status"
-            name="status"
-            register={register}
-            errors={errors}
-            options={statusOptions}
-          />
-        </div>
-
-        <TextAreaInput
-          label="Meta Description"
-          name="metaDescription"
-          register={register}
-          errors={errors}
-          placeholder="SEO description"
-        />
-
-        {/* Featured Toggle */}
-        <ToggleInput
-          label="Featured Business"
-          value={isFeatured}
-          setValue={setIsFeatured}
-        />
-
-        {/* Actions */}
-        <div className="flex justify-end pt-4">
+        <div className="flex justify-end border-t pt-6">
           <SubmitButton
             title="Create Business"
             isLoading={isLoading}
