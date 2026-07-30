@@ -1,7 +1,7 @@
 'use client';
 
 import Image from 'next/image';
-import { Pencil, Trash2, MapPin, Loader2 } from 'lucide-react';
+import { Trash2, MapPin, Loader2 } from 'lucide-react';
 import { useState } from 'react';
 import toast from 'react-hot-toast';
 import { useRouter } from 'next/navigation';
@@ -19,20 +19,16 @@ import {
   AlertDialogTitle,
   AlertDialogTrigger,
 } from '@/components/ui/alert-dialog';
+import EditBusinessDialog from './EditBusinessDialog';
+import { Category } from '@prisma/client';
+import { BusinessWithCategory } from '@/types/business';
 
 type BusinessCardProps = {
-  business: {
-    id: string;
-    name: string;
-    location: string;
-    images: string[];
-    category: {
-      name: string;
-    };
-  };
+  business: BusinessWithCategory;
+  categories: Category[];
 };
 
-export default function BusinessCard({ business }: BusinessCardProps) {
+export default function BusinessCard({ business, categories }: BusinessCardProps) {
   const router = useRouter();
 
   const [deleting, setDeleting] = useState(false);
@@ -90,10 +86,7 @@ export default function BusinessCard({ business }: BusinessCardProps) {
         </span>
 
         <div className="flex justify-between border-t pt-4">
-          <button className="flex items-center gap-2 text-sm text-gray-600 transition hover:text-[#25D366]">
-            <Pencil size={16} />
-            Edit
-          </button>
+          <EditBusinessDialog business={business} categories={categories} />
 
           <AlertDialog>
             <AlertDialogTrigger asChild>

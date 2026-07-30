@@ -4,10 +4,10 @@ import { useState } from 'react';
 import toast from 'react-hot-toast';
 import { useForm } from 'react-hook-form';
 import { useRouter } from 'next/navigation';
-import { BusinessStatus, Category } from '@prisma/client';
+import { BusinessStatus, Category, Business } from '@prisma/client';
 
 import generateSlug from '@/utils/generateSlug';
-import { createBusiness } from '@/actions/business';
+import { createBusiness, updateBusiness } from '@/actions/business';
 
 import TextInput from '@/components/FormInputs/TextInput';
 import SubmitButton from '@/components/FormInputs/SubmitButton';
@@ -34,12 +34,19 @@ export type BusinessProps = {
   status?: BusinessStatus;
 };
 
-export default function BusinessForm({ categories }: { categories: Category[] }) {
+type Props = {
+  categories: Category[];
+  business?: Business | null;
+  onSuccess?: () => void;
+};
+
+export default function BusinessForm({ categories, business, onSuccess }: Props) {
   const router = useRouter();
 
   const [isLoading, setIsLoading] = useState(false);
-  const [images, setImages] = useState<string[]>([]);
-  const [isFeatured, setIsFeatured] = useState(false);
+  const [images, setImages] = useState<string[]>(business?.images ?? []);
+
+  const [isFeatured, setIsFeatured] = useState(business?.isFeatured ?? false);
 
   const {
     register,
@@ -48,7 +55,17 @@ export default function BusinessForm({ categories }: { categories: Category[] })
     formState: { errors },
   } = useForm<BusinessProps>({
     defaultValues: {
-      description: '',
+      name: business?.name ?? '',
+      description: business?.description ?? '',
+      location: business?.location ?? '',
+      phone: business?.phone ?? '',
+      whatsapp: business?.whatsapp ?? '',
+      categoryId: business?.categoryId ?? '',
+      facebookUrl: business?.facebookUrl ?? '',
+      websiteUrl: business?.websiteUrl ?? '',
+      metaTitle: business?.metaTitle ?? '',
+      metaDescription: business?.metaDescription ?? '',
+      status: business?.status ?? BusinessStatus.PENDING,
     },
   });
 
@@ -66,32 +83,36 @@ export default function BusinessForm({ categories }: { categories: Category[] })
   async function onSubmit(data: BusinessProps) {
     try {
       setIsLoading(true);
+
       data.slug = generateSlug(data.name);
       data.images = images;
       data.isFeatured = isFeatured;
 
-      const response = await createBusiness(data);
+      const response = business
+        ? await updateBusiness(business.id, data)
+        : await createBusiness(data);
 
-      console.log('RESPONSE:', response);
-
-      if (response?.status === 400) {
-        toast.error('Please fix form errors');
-        console.log(response.error);
+      if (!response) {
+        toast.error('Something went wrong');
         return;
       }
 
-      toast.success('Business created successfully');
+      toast.success(business ? 'Business updated successfully' : 'Business created successfully');
 
       reset();
-      router.push('/dashboard');
+
+      if (onSuccess) {
+        onSuccess();
+      }
+
       router.refresh();
-    } catch {
+    } catch (error) {
+      console.error(error);
       toast.error('Something went wrong');
     } finally {
       setIsLoading(false);
     }
   }
-
   return (
     <div className="w-full">
       <form onSubmit={handleSubmit(onSubmit)} className="space-y-10">
@@ -244,9 +265,9 @@ export default function BusinessForm({ categories }: { categories: Category[] })
 
         <div className="flex justify-end border-t pt-6">
           <SubmitButton
-            title="Create Business"
+            title={business ? 'Update Business' : 'Create Business'}
             isLoading={isLoading}
-            LoadingTitle="Creating business..."
+            LoadingTitle={business ? 'Updating business...' : 'Creating business...'}
           />
         </div>
       </form>

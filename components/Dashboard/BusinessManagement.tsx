@@ -31,7 +31,7 @@ export default function BusinessManagement({ categories, businesses }: Props) {
 
       <div className="grid gap-6 sm:grid-cols-2 xl:grid-cols-3">
         {businesses.map((business) => (
-          <BusinessCard key={business.id} business={business} />
+          <BusinessCard key={business.id} business={business} categories={categories} />
         ))}
       </div>
     </div>
