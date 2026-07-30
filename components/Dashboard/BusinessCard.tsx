@@ -3,10 +3,22 @@
 import Image from 'next/image';
 import { Pencil, Trash2, MapPin, Loader2 } from 'lucide-react';
 import { useState } from 'react';
-import { toast } from 'sonner';
+import toast from 'react-hot-toast';
 import { useRouter } from 'next/navigation';
 
 import { deleteBusiness } from '@/actions/business';
+
+import {
+  AlertDialog,
+  AlertDialogAction,
+  AlertDialogCancel,
+  AlertDialogContent,
+  AlertDialogDescription,
+  AlertDialogFooter,
+  AlertDialogHeader,
+  AlertDialogTitle,
+  AlertDialogTrigger,
+} from '@/components/ui/alert-dialog';
 
 type BusinessCardProps = {
   business: {
@@ -28,10 +40,6 @@ export default function BusinessCard({ business }: BusinessCardProps) {
   const image = business.images?.[0] || '/lelo.jpg';
 
   async function handleDelete() {
-    const confirmed = window.confirm(`Are you sure you want to delete ${business.name}?`);
-
-    if (!confirmed) return;
-
     try {
       setDeleting(true);
 
@@ -39,7 +47,6 @@ export default function BusinessCard({ business }: BusinessCardProps) {
 
       if (!response.ok) {
         toast.error(response.error || 'Failed to delete business');
-
         return;
       }
 
@@ -48,7 +55,6 @@ export default function BusinessCard({ business }: BusinessCardProps) {
       router.refresh();
     } catch (error) {
       console.error(error);
-
       toast.error('Something went wrong');
     } finally {
       setDeleting(false);
@@ -58,7 +64,6 @@ export default function BusinessCard({ business }: BusinessCardProps) {
   return (
     <div className="overflow-hidden rounded-3xl border border-[#25D366] bg-white shadow-sm transition hover:-translate-y-1 hover:shadow-xl">
       {/* IMAGE */}
-
       <div className="h-48 overflow-hidden">
         <Image
           src={image}
@@ -70,25 +75,19 @@ export default function BusinessCard({ business }: BusinessCardProps) {
       </div>
 
       {/* CONTENT */}
-
       <div className="space-y-4 p-5">
         <div>
           <h2 className="text-xl font-bold text-[#111111]">{business.name}</h2>
 
           <div className="mt-2 flex items-center gap-2 text-sm text-gray-500">
             <MapPin size={15} />
-
             {business.location}
           </div>
         </div>
 
-        {/* CATEGORY */}
-
         <span className="inline-flex rounded-full bg-[#25D366]/10 px-3 py-1 text-xs font-semibold text-[#25D366]">
-          {business.category?.name}
+          {business.category.name}
         </span>
-
-        {/* ACTIONS */}
 
         <div className="flex justify-between border-t pt-4">
           <button className="flex items-center gap-2 text-sm text-gray-600 transition hover:text-[#25D366]">
@@ -96,23 +95,48 @@ export default function BusinessCard({ business }: BusinessCardProps) {
             Edit
           </button>
 
-          <button
-            onClick={handleDelete}
-            disabled={deleting}
-            className="flex items-center gap-2 text-sm text-red-500 transition hover:text-red-600 disabled:cursor-not-allowed disabled:opacity-50"
-          >
-            {deleting ? (
-              <>
-                <Loader2 size={16} className="animate-spin" />
-                Deleting...
-              </>
-            ) : (
-              <>
-                <Trash2 size={16} />
-                Delete
-              </>
-            )}
-          </button>
+          <AlertDialog>
+            <AlertDialogTrigger asChild>
+              <button
+                disabled={deleting}
+                className="flex items-center gap-2 text-sm text-red-500 transition hover:text-red-600 disabled:opacity-50"
+              >
+                {deleting ? (
+                  <>
+                    <Loader2 size={16} className="animate-spin" />
+                    Deleting...
+                  </>
+                ) : (
+                  <>
+                    <Trash2 size={16} />
+                    Delete
+                  </>
+                )}
+              </button>
+            </AlertDialogTrigger>
+
+            <AlertDialogContent className="rounded-3xl">
+              <AlertDialogHeader>
+                <AlertDialogTitle>Delete "{business.name}"?</AlertDialogTitle>
+
+                <AlertDialogDescription>
+                  This action cannot be undone. The business profile and all of its analytics data
+                  will be permanently deleted from MaseruPlug.
+                </AlertDialogDescription>
+              </AlertDialogHeader>
+
+              <AlertDialogFooter>
+                <AlertDialogCancel className="rounded-xl">Cancel</AlertDialogCancel>
+
+                <AlertDialogAction
+                  onClick={handleDelete}
+                  className="rounded-xl bg-red-600 hover:bg-red-700"
+                >
+                  Delete Business
+                </AlertDialogAction>
+              </AlertDialogFooter>
+            </AlertDialogContent>
+          </AlertDialog>
         </div>
       </div>
     </div>
