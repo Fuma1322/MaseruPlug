@@ -1,6 +1,6 @@
 'use client';
 
-import { Pencil, X } from 'lucide-react';
+import { Pencil } from 'lucide-react';
 
 import {
   Dialog,
