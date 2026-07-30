@@ -3,6 +3,22 @@
 import BusinessCard from './BusinessCard';
 import AddBusinessDialog from './AddBusinessDialog';
 
+type Category = {
+  id: string;
+  name: string;
+  slug: string;
+};
+
+type Business = {
+  id: string;
+  name: string;
+  location: string;
+  images: string[];
+  category: {
+    name: string;
+  };
+};
+
 type Props = {
   categories: any[];
   businesses: any[];

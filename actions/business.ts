@@ -1,11 +1,11 @@
-"use server";
+'use server';
 
-import prisma from "@/lib/db";
-import { BusinessProps } from "@/types/types";
-import generateSlug from "@/utils/generateSlug";
-import { revalidatePath } from "next/cache";
-import { BusinessSchema } from "./zod";
-import { verifyAdmin } from "@/lib/admin";
+import prisma from '@/lib/db';
+import { BusinessProps } from '@/types/types';
+import generateSlug from '@/utils/generateSlug';
+import { revalidatePath } from 'next/cache';
+import { BusinessSchema } from './zod';
+import { verifyAdmin } from '@/lib/admin';
 
 /**
  * Create a new business*/
@@ -15,7 +15,7 @@ export async function createBusiness(data: BusinessProps) {
     const parsed = BusinessSchema.safeParse(data);
 
     if (!parsed.success) {
-      console.log(" VALIDATION ERROR:", parsed.error.flatten());
+      console.log(' VALIDATION ERROR:', parsed.error.flatten());
 
       return {
         data: null,
@@ -28,7 +28,7 @@ export async function createBusiness(data: BusinessProps) {
 
     const slug = validData.slug || generateSlug(validData.name);
 
-    console.log("Using slug:", slug);
+    console.log('Using slug:', slug);
 
     const existingBusiness = await prisma.business.findUnique({
       where: { slug },
@@ -38,11 +38,11 @@ export async function createBusiness(data: BusinessProps) {
       return {
         data: null,
         status: 409,
-        error: "Business already exists",
+        error: 'Business already exists',
       };
     }
 
-    console.log("Creating business...");
+    console.log('Creating business...');
 
     const category = await prisma.category.findUnique({
       where: {
@@ -54,7 +54,7 @@ export async function createBusiness(data: BusinessProps) {
       return {
         data: null,
         status: 404,
-        error: "Category not found",
+        error: 'Category not found',
       };
     }
 
@@ -78,7 +78,7 @@ export async function createBusiness(data: BusinessProps) {
         metaDescription: validData.metaDescription || null,
 
         isFeatured: validData.isFeatured ?? false,
-        status: validData.status ?? "PENDING",
+        status: validData.status ?? 'PENDING',
 
         category: {
           connect: {
@@ -91,8 +91,8 @@ export async function createBusiness(data: BusinessProps) {
       },
     });
 
-    revalidatePath("/dashboard/businesses");
-    revalidatePath("/");
+    revalidatePath('/dashboard/businesses');
+    revalidatePath('/');
     revalidatePath(`/business/${newBusiness.slug}`);
 
     return {
@@ -101,12 +101,12 @@ export async function createBusiness(data: BusinessProps) {
       error: null,
     };
   } catch (error) {
-    console.error("CREATE BUSINESS ERROR:", error);
+    console.error('CREATE BUSINESS ERROR:', error);
 
     return {
       data: null,
       status: 500,
-      error: "Business not created",
+      error: 'Business not created',
     };
   }
 }
@@ -121,7 +121,7 @@ export async function getBusinesses() {
         category: true,
       },
       orderBy: {
-        createdAt: "desc",
+        createdAt: 'desc',
       },
     });
 
@@ -131,12 +131,12 @@ export async function getBusinesses() {
       error: null,
     };
   } catch (error) {
-    console.error("Error fetching businesses:", error);
+    console.error('Error fetching businesses:', error);
 
     return {
       data: null,
       status: 500,
-      error: "Failed to fetch businesses",
+      error: 'Failed to fetch businesses',
     };
   }
 }
@@ -149,13 +149,13 @@ export async function getFeaturedBusinesses() {
     const businesses = await prisma.business.findMany({
       where: {
         isFeatured: true,
-        status: "ACTIVE",
+        status: 'ACTIVE',
       },
       include: {
         category: true,
       },
       orderBy: {
-        createdAt: "desc",
+        createdAt: 'desc',
       },
       take: 6,
     });
@@ -166,12 +166,12 @@ export async function getFeaturedBusinesses() {
       error: null,
     };
   } catch (error) {
-    console.error("Error fetching featured businesses:", error);
+    console.error('Error fetching featured businesses:', error);
 
     return {
       data: null,
       status: 500,
-      error: "Failed to fetch featured businesses",
+      error: 'Failed to fetch featured businesses',
     };
   }
 }
@@ -196,12 +196,12 @@ export async function getBusinessBySlug(slug: string) {
       error: null,
     };
   } catch (error) {
-    console.error("Error fetching business:", error);
+    console.error('Error fetching business:', error);
 
     return {
       data: null,
       status: 500,
-      error: "Failed to fetch business",
+      error: 'Failed to fetch business',
     };
   }
 }
@@ -226,12 +226,12 @@ export async function getBusinessById(id: string) {
       error: null,
     };
   } catch (error) {
-    console.error("Error fetching business by ID:", error);
+    console.error('Error fetching business by ID:', error);
 
     return {
       data: null,
       status: 500,
-      error: "Failed to fetch business",
+      error: 'Failed to fetch business',
     };
   }
 }
@@ -243,7 +243,7 @@ export async function getBusinessesByCategory(categorySlug: string) {
   try {
     const businesses = await prisma.business.findMany({
       where: {
-        status: "ACTIVE",
+        status: 'ACTIVE',
         category: {
           slug: categorySlug,
         },
@@ -253,10 +253,10 @@ export async function getBusinessesByCategory(categorySlug: string) {
       },
       orderBy: [
         {
-          isFeatured: "desc",
+          isFeatured: 'desc',
         },
         {
-          createdAt: "desc",
+          createdAt: 'desc',
         },
       ],
     });
@@ -267,12 +267,12 @@ export async function getBusinessesByCategory(categorySlug: string) {
       error: null,
     };
   } catch (error) {
-    console.error("Error fetching businesses by category:", error);
+    console.error('Error fetching businesses by category:', error);
 
     return {
       data: null,
       status: 500,
-      error: "Failed to fetch businesses",
+      error: 'Failed to fetch businesses',
     };
   }
 }
@@ -280,10 +280,7 @@ export async function getBusinessesByCategory(categorySlug: string) {
 /**
  * Update a business
  */
-export async function updateBusiness(
-  id: string,
-  data: BusinessProps
-) {
+export async function updateBusiness(id: string, data: BusinessProps) {
   try {
     // Check if business exists
     const existingBusiness = await prisma.business.findUnique({
@@ -296,7 +293,7 @@ export async function updateBusiness(
       return {
         data: null,
         status: 404,
-        error: "Business not found",
+        error: 'Business not found',
       };
     }
 
@@ -309,7 +306,7 @@ export async function updateBusiness(
         ...data,
         images: data.images || [],
         isFeatured: data.isFeatured ?? false,
-        status: data.status ?? "PENDING",
+        status: data.status ?? 'PENDING',
       },
       include: {
         category: true,
@@ -317,8 +314,8 @@ export async function updateBusiness(
     });
 
     // Revalidate pages
-    revalidatePath("/dashboard/businesses");
-    revalidatePath("/");
+    revalidatePath('/dashboard/business');
+    revalidatePath('/');
     revalidatePath(`/business/${updatedBusiness.slug}`);
 
     return {
@@ -327,12 +324,12 @@ export async function updateBusiness(
       error: null,
     };
   } catch (error) {
-    console.error("Error updating business:", error);
+    console.error('Error updating business:', error);
 
     return {
       data: null,
       status: 500,
-      error: "Business not updated",
+      error: 'Business not updated',
     };
   }
 }
@@ -352,7 +349,7 @@ export async function deleteBusiness(id: string) {
       return {
         ok: false,
         status: 404,
-        error: "Business not found",
+        error: 'Business not found',
       };
     }
 
@@ -363,8 +360,8 @@ export async function deleteBusiness(id: string) {
     });
 
     // Revalidate pages
-    revalidatePath("/dashboard/businesses");
-    revalidatePath("/");
+    revalidatePath('/dashboard/businesses');
+    revalidatePath('/');
     revalidatePath(`/business/${existingBusiness.slug}`);
 
     return {
@@ -373,12 +370,12 @@ export async function deleteBusiness(id: string) {
       error: null,
     };
   } catch (error) {
-    console.error("Error deleting business:", error);
+    console.error('Error deleting business:', error);
 
     return {
       ok: false,
       status: 500,
-      error: "Business not deleted",
+      error: 'Business not deleted',
     };
   }
 }

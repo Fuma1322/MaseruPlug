@@ -34,13 +34,7 @@ export type BusinessProps = {
   status?: BusinessStatus;
 };
 
-export default function BusinessForm({
-  title,
-  categories,
-}: {
-  title: string;
-  categories: Category[];
-}) {
+export default function BusinessForm({ categories }: { categories: Category[] }) {
   const router = useRouter();
 
   const [isLoading, setIsLoading] = useState(false);

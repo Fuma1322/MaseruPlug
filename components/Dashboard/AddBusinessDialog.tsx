@@ -51,7 +51,7 @@ export default function AddBusinessDialog({ categories }: Props) {
         {/* FORM */}
 
         <div className="max-h-[75vh] overflow-y-auto bg-[#fafafa] px-6 py-6">
-          <BusinessForm title="" categories={categories} />
+          <BusinessForm categories={categories} />
         </div>
       </AlertDialogContent>
     </AlertDialog>
