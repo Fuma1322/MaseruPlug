@@ -1,4 +1,4 @@
-import type { ComponentType, SVGProps } from "react";
+import type { ComponentType, SVGProps } from 'react';
 import {
   Palette,
   Wrench,
@@ -12,8 +12,9 @@ import {
   ScissorsLineDashed,
   Shirt,
   HardHat,
-  Paintbrush
-} from "lucide-react";
+  Paintbrush,
+  Book,
+} from 'lucide-react';
 
 export type CategoryIconComponent = ComponentType<SVGProps<SVGSVGElement>>;
 
@@ -30,7 +31,8 @@ export const categoryIconMap: Record<string, CategoryIconComponent> = {
   Flame,
   ScissorsLineDashed,
   Shirt,
-  HardHat
+  HardHat,
+  Book,
 };
 
 export function getCategoryIcon(iconKey?: string) {
