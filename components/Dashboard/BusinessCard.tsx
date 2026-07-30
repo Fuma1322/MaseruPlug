@@ -56,7 +56,7 @@ export default function BusinessCard({ business }: BusinessCardProps) {
   }
 
   return (
-    <div className="overflow-hidden rounded-3xl border border-gray-100 bg-white shadow-sm transition hover:-translate-y-1 hover:shadow-xl">
+    <div className="overflow-hidden rounded-3xl border border-[#25D366] bg-white shadow-sm transition hover:-translate-y-1 hover:shadow-xl">
       {/* IMAGE */}
 
       <div className="h-48 overflow-hidden">
