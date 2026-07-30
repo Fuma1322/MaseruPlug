@@ -117,7 +117,7 @@ export default function BusinessCard({ business }: BusinessCardProps) {
 
             <AlertDialogContent className="rounded-3xl">
               <AlertDialogHeader>
-                <AlertDialogTitle>Delete "{business.name}"?</AlertDialogTitle>
+                <AlertDialogTitle>Delete &quot;{business.name}&quot;?</AlertDialogTitle>
 
                 <AlertDialogDescription>
                   This action cannot be undone. The business profile and all of its analytics data
