@@ -1,6 +1,5 @@
 'use client';
 
-import { TrendingUp } from 'lucide-react';
 import { Bar, BarChart, CartesianGrid, XAxis } from 'recharts';
 
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
@@ -28,17 +27,13 @@ const chartConfig = {
 
 export default function BusinessGrowthChart({ data }: Props) {
   return (
-    <Card className="rounded-3xl border border-gray-200 bg-white shadow-sm transition hover:shadow-lg">
+    <Card className="rounded-3xl border border-gray-200 bg-white py-4 shadow-sm transition hover:shadow-lg">
       <CardHeader>
         <div className="flex items-center justify-between">
           <div>
             <CardTitle className="text-xl font-bold text-[#111111]">Business Growth</CardTitle>
 
             <CardDescription>New businesses registered over time</CardDescription>
-          </div>
-
-          <div className="flex h-10 w-10 items-center justify-center rounded-xl bg-green-50">
-            <TrendingUp className="text-[#25D366]" size={20} />
           </div>
         </div>
       </CardHeader>

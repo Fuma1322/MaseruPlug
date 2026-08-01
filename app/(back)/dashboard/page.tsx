@@ -1,12 +1,14 @@
 import prisma from '@/lib/db';
 import AdminCards from '@/components/Dashboard/AdminCards';
 import BusinessGrowthChart from '@/components/Dashboard/BusinessGrowthChart';
-import { getDashboardAnalytics } from '@/actions/analytics';
+import { getCustomerEngagement, getDashboardAnalytics } from '@/actions/analytics';
 import CategoryDistributionChart from '@/components/Dashboard/CategoryDistributionChart';
+import CustomerEngagementChart from '@/components/Dashboard/CustomerEngagementChart';
 
 export default async function Page() {
   const growth = await getDashboardAnalytics();
   const totalBusinesses = await prisma.business.count();
+  const engagement = await getCustomerEngagement();
 
   const featuredBusinesses = await prisma.business.count({
     where: { isFeatured: true },
@@ -46,13 +48,12 @@ export default async function Page() {
         chartData={chartData}
       />
 
-      <div className="grid gap-6 lg:grid-cols-3">
+      <div className="grid grid-cols-1 gap-6 lg:grid-cols-2 xl:grid-cols-3">
         <BusinessGrowthChart data={growth} />
 
         <CategoryDistributionChart data={chartData} />
 
-        {/* Future */}
-        <div className="rounded-3xl border bg-white p-6 shadow-sm">Customer Engagement Chart</div>
+        <CustomerEngagementChart data={engagement} />
       </div>
     </div>
   );
