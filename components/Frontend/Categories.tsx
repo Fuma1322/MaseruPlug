@@ -1,7 +1,7 @@
 import Link from 'next/link';
 import prisma from '@/lib/db';
-import { ArrowRight } from 'lucide-react';
 import { getCategoryIcon } from '@/lib/category-icons';
+import DrawOutlineButton from './MoreBusinessButton';
 
 export default async function Categories() {
   const categories = await prisma.category.findMany({
@@ -43,7 +43,8 @@ export default async function Categories() {
                       </p>
 
                       <p className="text-muted-foreground mt-1 text-sm">
-                        {category._count.businesses} businesses
+                        {category._count.businesses}{' '}
+                        {category._count.businesses === 1 ? 'business' : 'businesses'}
                       </p>
                     </div>
                   </Link>
@@ -55,13 +56,8 @@ export default async function Categories() {
 
         {/* Browse More */}
         <div className="mt-10 flex justify-center">
-          <Link
-            href="/categories"
-            className="group relative inline-flex items-center gap-3 overflow-hidden rounded-full bg-[#25D366] px-8 py-4 text-lg font-bold text-white shadow-lg shadow-green-200 transition-all duration-300 hover:-translate-y-1 hover:shadow-2xl hover:shadow-green-300"
-          >
-            <span className="absolute inset-0 -translate-x-full bg-gradient-to-r from-transparent via-white/30 to-transparent transition-transform duration-700 group-hover:translate-x-full" />
-
-            <span className="relative">Discover More Businesses</span>
+          <Link href="/categories" className="bg-[#25D366]/10">
+            <DrawOutlineButton>Discover More Businesses →</DrawOutlineButton>
           </Link>
         </div>
       </div>
