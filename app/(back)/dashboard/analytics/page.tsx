@@ -2,8 +2,7 @@ import { TrendingUp, Store } from 'lucide-react';
 import { formatNumber } from '@/lib/formatNumber';
 import { getAnalyticsOverview } from '@/actions/getAnalytics';
 import AnalyticsCard from '@/components/Dashboard/AnalyticsCard';
-import AnalyticsDashboard from '@/components/Dashboard/AnalyticsDashboard';
-import BusinessAnalyticsTable from '@/components/Dashboard/BusinessAnalyticsTable';
+import AnalyticsContent from '@/components/Dashboard/AnalyticsContent';
 
 export default async function AnalyticsPage() {
   const data = await getAnalyticsOverview();
@@ -81,16 +80,10 @@ export default async function AnalyticsPage() {
           </div>
         </div>
 
-        {/* ANALYTICS CHARTS */}
-
-        <div className="mt-8">
-          <AnalyticsDashboard />
-        </div>
-
         {/* BUSINESS TABLE */}
 
-        <div className="mt-10 divide-y">
-          <BusinessAnalyticsTable businesses={data.businesses} />
+        <div className="mt-10">
+          <AnalyticsContent businesses={data.businesses} />
         </div>
       </div>
     </div>

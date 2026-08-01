@@ -27,18 +27,16 @@ export default function AnalyticsFilter({ value, onChange }: Props) {
   ];
 
   return (
-    <div className="mt-8 flex flex-wrap gap-3">
+    <div className="inline-flex rounded-xl border bg-white p-1 shadow-sm">
       {filters.map((filter) => (
         <button
           key={filter.value}
-
           onClick={() => onChange(filter.value)}
-
-          className={`rounded-full px-5 py-2 text-sm font-semibold transition ${
+          className={`rounded-lg px-4 py-2 text-sm font-medium transition ${
             value === filter.value
-              ? 'bg-[#25D366] text-white shadow-lg'
-              : 'border bg-white text-gray-600 hover:border-[#25D366]'
-          } `}
+              ? 'bg-[#25D366] text-white shadow'
+              : 'text-gray-600 hover:bg-gray-100'
+          }`}
         >
           {filter.label}
         </button>

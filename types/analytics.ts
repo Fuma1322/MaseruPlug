@@ -10,5 +10,9 @@ export type AnalyticsBusiness = {
   id: string;
   name: string;
   location: string;
-  analytics: BusinessAnalytics[];
+  analytics: {
+    id: string;
+    event: string;
+    createdAt: Date;
+  }[];
 };
