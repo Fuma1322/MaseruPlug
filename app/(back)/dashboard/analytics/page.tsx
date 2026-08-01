@@ -16,8 +16,8 @@ export default async function AnalyticsPage() {
 
       <div className="flex flex-col gap-3">
         <div className="flex items-center gap-3">
-          <div className="flex h-12 w-12 items-center justify-center rounded-2xl bg-[#25D366] shadow-lg shadow-green-200">
-            <TrendingUp className="text-white" size={26} />
+          <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-xl bg-[#25D366] shadow-lg shadow-green-200 sm:h-12 sm:w-12 sm:rounded-2xl">
+            <TrendingUp className="h-5 w-5 text-white sm:h-6 sm:w-6" />
           </div>
 
           <div>
