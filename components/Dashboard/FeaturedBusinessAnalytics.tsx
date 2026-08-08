@@ -55,7 +55,7 @@ export default function FeaturedBusinessAnalytics() {
   }, [analytics]);
 
   return (
-    <div className="rounded-3xl border border-neutral-200 bg-white p-6">
+    <div className="rounded-3xl border border-neutral-200 bg-white p-6 shadow-xl">
       {/* HEADER */}
       <div className="flex flex-col gap-4 sm:flex-row sm:items-start sm:justify-between">
         <div>
