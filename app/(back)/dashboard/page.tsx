@@ -8,6 +8,7 @@ import {
   getDailyAnalytics,
   getDashboardAnalytics,
 } from '@/actions/analytics';
+import FeaturedBusinessAnalytics from '@/components/Dashboard/FeaturedBusinessAnalytics';
 
 export default async function Page() {
   const growth = await getDashboardAnalytics();
@@ -58,6 +59,8 @@ export default async function Page() {
       {/* CUSTOMER ENGAGEMENT */}
 
       <DailyAnalyticsChart initialData={dailyAnalytics} initialRange="30D" />
+
+      <FeaturedBusinessAnalytics />
 
       {/* BUSINESS / CATEGORY ANALYTICS */}
 

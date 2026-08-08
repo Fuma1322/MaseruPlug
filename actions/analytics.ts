@@ -321,3 +321,78 @@ export async function getDailyAnalytics(range: AnalyticsRange = '30D'): Promise<
 
   return Array.from(dailyMap.values()).sort((a, b) => a.date.localeCompare(b.date));
 }
+
+export type FeaturedAnalytics = {
+  totalViews: number;
+  dailyViews: {
+    date: string;
+    views: number;
+  }[];
+};
+
+export async function getFeaturedBusinessAnalytics(
+  range: AnalyticsRange = '30D'
+): Promise<FeaturedAnalytics> {
+  const startDate = getStartDate(range);
+
+  const events = await prisma.businessEvent.findMany({
+    where: {
+      event: 'FEATURED_PROFILE_VIEW',
+
+      ...(startDate
+        ? {
+            createdAt: {
+              gte: startDate,
+            },
+          }
+        : {}),
+    },
+
+    select: {
+      createdAt: true,
+    },
+
+    orderBy: {
+      createdAt: 'asc',
+    },
+  });
+
+  const dailyMap = new Map<string, number>();
+
+  if (range !== 'ALL' && startDate) {
+    const startParts = getMaseruDateParts(startDate);
+    const todayParts = getMaseruDateParts(new Date());
+
+    const startUTC = new Date(Date.UTC(startParts.year, startParts.month - 1, startParts.day));
+
+    const endUTC = new Date(Date.UTC(todayParts.year, todayParts.month - 1, todayParts.day));
+
+    let current = startUTC;
+
+    while (current <= endUTC) {
+      const date = current.toISOString().slice(0, 10);
+
+      dailyMap.set(date, 0);
+
+      current = addDays(current, 1);
+    }
+  }
+
+  for (const event of events) {
+    const date = getMaseruDate(event.createdAt);
+
+    dailyMap.set(date, (dailyMap.get(date) || 0) + 1);
+  }
+
+  const dailyViews = Array.from(dailyMap.entries())
+    .map(([date, views]) => ({
+      date,
+      views,
+    }))
+    .sort((a, b) => a.date.localeCompare(b.date));
+
+  return {
+    totalViews: events.length,
+    dailyViews,
+  };
+}
