@@ -7,7 +7,6 @@ import {
   getDashboardAnalytics,
 } from '@/actions/analytics';
 import CategoryDistributionChart from '@/components/Dashboard/CategoryDistributionChart';
-import { getAnalyticsOverview } from '@/actions/getAnalytics';
 import DailyAnalyticsChart from '@/components/Dashboard/DailyAnalyticsChart';
 
 export default async function Page() {
