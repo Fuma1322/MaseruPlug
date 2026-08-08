@@ -56,13 +56,13 @@ export default function MeetTheTeam() {
 
     {
       name: 'Motselisi Maraisane',
-      role: 'Frontend Developer',
+      role: 'Growth & Partnerships Lead',
       image: '/maraisane.jpeg',
       bio: 'Responsible for crafting intuitive and engaging user experiences across MPlug platforms. Focuses on frontend development, responsive design, and creating seamless digital experiences for businesses and customers.',
-      whatsapp: 'https://wa.me/26657677241',
-      instagram: 'https://instagram.com/lemohang',
-      facebook: 'https://www.facebook.com/share/1HPHE62WTC/',
-      linkedin: 'https://linkedin.com/in/bokangmatsoso',
+      whatsapp: 'https://wa.me/26669145802',
+      instagram: 'https://instagram.com/maseruplug',
+      facebook: 'https://www.facebook.com/motselisi.maraisane.9',
+      linkedin: 'https://linkedin.com/in/maseruplug',
     },
   ];
 
