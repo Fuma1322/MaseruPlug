@@ -1,6 +1,5 @@
 'use client';
 
-import { LoaderFive } from '../ui/loader';
 import { SectionCards } from './AdminSectionCards';
 
 type Props = {
@@ -24,10 +23,6 @@ export default function AdminCards({
 }: Props) {
   return (
     <div className="space-y-8 p-4 lg:p-6">
-      <div className="flex items-center justify-center">
-        <LoaderFive text="Welcome To MaseruPlug..." />
-      </div>
-
       <SectionCards
         totalBusinesses={totalBusinesses}
         featuredBusinesses={featuredBusinesses}

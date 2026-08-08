@@ -1,9 +1,6 @@
-import {
-  IconTrendingDown,
-  IconTrendingUp,
-} from "@tabler/icons-react";
+import { IconTrendingDown, IconTrendingUp } from '@tabler/icons-react';
 
-import { Badge } from "@/components/ui/badge";
+import { Badge } from '@/components/ui/badge';
 import {
   Card,
   CardContent,
@@ -11,7 +8,7 @@ import {
   CardFooter,
   CardHeader,
   CardTitle,
-} from "@/components/ui/card";
+} from '@/components/ui/card';
 
 type Props = {
   totalBusinesses: number;
@@ -28,92 +25,74 @@ export function SectionCards({
 }: Props) {
   return (
     <div className="grid grid-cols-1 gap-4 md:grid-cols-2 xl:grid-cols-4">
-
       {/* CARD TEMPLATE */}
-      <Card className="hover:shadow-lg transition max-w-xs rounded-2xl bg-white p-6 border border-neutral-200 shadow-xl">
+      <Card className="max-w-xs rounded-2xl border border-neutral-200 bg-white p-6 shadow-xl transition hover:shadow-lg">
         <CardHeader>
           <CardDescription>Total Businesses</CardDescription>
-          <CardTitle className="text-3xl font-bold tabular-nums">
-            {totalBusinesses}
-          </CardTitle>
+          <CardTitle className="text-3xl font-bold tabular-nums">{totalBusinesses}</CardTitle>
           <CardContent className="p-0">
-            <Badge className="mt-2 bg-green-50 text-green-600 border-green-200 rounded-lg">
-              <IconTrendingUp className="h-4 w-4 mr-1" />
+            <Badge className="mt-2 rounded-lg border-green-200 bg-green-50 text-green-600">
+              <IconTrendingUp className="mr-1 h-4 w-4" />
               Live
             </Badge>
           </CardContent>
         </CardHeader>
 
-        <CardFooter className="text-sm text-muted-foreground">
-          All registered listings
-        </CardFooter>
+        <CardFooter className="text-muted-foreground text-sm">All registered listings</CardFooter>
       </Card>
 
       {/* FEATURED */}
-      <Card className="hover:shadow-lg transition max-w-xs rounded-2xl bg-white p-6 border border-neutral-200 shadow-xl">
+      <Card className="max-w-xs rounded-2xl border border-neutral-200 bg-white p-6 shadow-xl transition hover:shadow-lg">
         <CardHeader>
           <CardDescription>Featured</CardDescription>
-          <CardTitle className="text-3xl font-bold tabular-nums">
-            {featuredBusinesses}
-          </CardTitle>
+          <CardTitle className="text-3xl font-bold tabular-nums">{featuredBusinesses}</CardTitle>
 
-          <Badge className="mt-2 bg-blue-50 text-blue-600 border-blue-200 rounded-lg">
+          <Badge className="mt-2 rounded-lg border-blue-200 bg-blue-50 text-blue-600">
             Premium visibility
           </Badge>
         </CardHeader>
 
-        <CardFooter className="text-sm text-muted-foreground">
-          Boosted businesses
-        </CardFooter>
+        <CardFooter className="text-muted-foreground text-sm">Boosted businesses</CardFooter>
       </Card>
 
       {/* CATEGORIES */}
-      <Card className="hover:shadow-lg transition max-w-xs rounded-2xl bg-white p-6 border border-neutral-200 shadow-xl">
+      <Card className="max-w-xs rounded-2xl border border-neutral-200 bg-white p-6 shadow-xl transition hover:shadow-lg">
         <CardHeader>
           <CardDescription>Categories</CardDescription>
-          <CardTitle className="text-3xl font-bold tabular-nums">
-            {totalCategories}
-          </CardTitle>
+          <CardTitle className="text-3xl font-bold tabular-nums">{totalCategories}</CardTitle>
 
-          <Badge className="mt-2 bg-purple-50 text-purple-600 border-purple-200 rounded-lg">
+          <Badge className="mt-2 rounded-lg border-purple-200 bg-purple-50 text-purple-600">
             Structured data
           </Badge>
         </CardHeader>
 
-        <CardFooter className="text-sm text-muted-foreground">
-          Service types
-        </CardFooter>
+        <CardFooter className="text-muted-foreground text-sm">Service types</CardFooter>
       </Card>
 
       {/* NEW */}
-        <Card className="hover:shadow-lg transition max-w-xs rounded-2xl bg-white p-6 border border-neutral-200 shadow-xl">
-          <CardHeader>
-            <CardDescription>New This Month</CardDescription>
-            <CardTitle className="text-3xl font-bold tabular-nums">
-              {newBusinesses}
-            </CardTitle>
+      <Card className="max-w-xs rounded-2xl border border-neutral-200 bg-white p-6 shadow-xl transition hover:shadow-lg">
+        <CardHeader>
+          <CardDescription>New This Month</CardDescription>
+          <CardTitle className="text-3xl font-bold tabular-nums">{newBusinesses}</CardTitle>
 
-            <Badge
-              className={
-                newBusinesses > 0
-                  ? "mt-2 bg-green-50 text-green-600 border-green-200 rounded-lg"
-                  : "mt-2 bg-red-50 text-red-600 border-red-200"
-              }
-            >
-              {newBusinesses > 0 ? (
-                <IconTrendingUp className="h-4 w-4 mr-1" />
-              ) : (
-                <IconTrendingDown className="h-4 w-4 mr-1" />
-              )}
-              {newBusinesses > 0 ? "Growth" : "Low activity"}
-            </Badge>
-          </CardHeader>
+          <Badge
+            className={
+              newBusinesses > 0
+                ? 'mt-2 rounded-lg border-green-200 bg-green-50 text-green-600'
+                : 'mt-2 border-red-200 bg-red-50 text-red-600'
+            }
+          >
+            {newBusinesses > 0 ? (
+              <IconTrendingUp className="mr-1 h-4 w-4" />
+            ) : (
+              <IconTrendingDown className="mr-1 h-4 w-4" />
+            )}
+            {newBusinesses > 0 ? 'Growth' : 'Low activity'}
+          </Badge>
+        </CardHeader>
 
-          <CardFooter className="text-sm text-muted-foreground">
-            Recent platform activity
-          </CardFooter>
-        </Card>
-
+        <CardFooter className="text-muted-foreground text-sm">Recent platform activity</CardFooter>
+      </Card>
     </div>
   );
 }
