@@ -1,55 +1,48 @@
-import Link from "next/link";
-import prisma from "@/lib/db";
-import Image from "next/image";
-import { MapPin } from "lucide-react";
+import Link from 'next/link';
+import prisma from '@/lib/db';
+import Image from 'next/image';
+import { MapPin } from 'lucide-react';
 
-import {
-  Card,
-  CardContent,
-  CardFooter,
-  CardHeader,
-  CardTitle,
-} from "../ui/card";
-
+import { Card, CardContent, CardFooter, CardHeader, CardTitle } from '../ui/card';
+import FeaturedBusinessLink from './FeaturedBusinessLink';
 
 export default async function Featured() {
   const totalFeatured = await prisma.business.count({
-  where: {
-    isFeatured: true,
-  },
-});
+    where: {
+      isFeatured: true,
+    },
+  });
 
-const featuredItems = await prisma.business.findMany({
-  where: {
-    isFeatured: true,
-  },
-  orderBy: {
-    createdAt: "desc",
-  },
-  take: 6,
-});
+  const featuredItems = await prisma.business.findMany({
+    where: {
+      isFeatured: true,
+    },
+    orderBy: {
+      createdAt: 'desc',
+    },
+    take: 6,
+  });
 
   return (
-    <section className="py-16 md:py-24 px-4" id="featured">
-      <div className="max-w-7xl mx-auto">
-
+    <section className="px-4 py-16 md:py-24" id="featured">
+      <div className="mx-auto max-w-7xl">
         {/* Header */}
-        <div className="max-w-3xl mx-auto text-center mb-12 md:mb-16">
+        <div className="mx-auto mb-12 max-w-3xl text-center md:mb-16">
           <span className="inline-flex items-center rounded-full border border-[#25D366]/20 bg-[#25D366]/10 px-4 py-1.5 text-sm font-medium text-[#25D366]">
             Featured Businesses
           </span>
 
-          <h2 className="mt-4 text-3xl md:text-5xl font-bold tracking-tight text-[#111111]">
+          <h2 className="mt-4 text-3xl font-bold tracking-tight text-[#111111] md:text-5xl">
             Discover Trusted Local Businesses
           </h2>
 
-          <p className="mt-4 text-base md:text-lg text-muted-foreground">
+          <p className="text-muted-foreground mt-4 text-base md:text-lg">
             Explore top-rated businesses in Maseru
           </p>
         </div>
 
         {/* Cards */}
-        <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-8">
+        <div className="grid grid-cols-1 gap-8 md:grid-cols-2 xl:grid-cols-3">
           {featuredItems.map((item) => (
             <Card
               key={item.id}
@@ -58,7 +51,7 @@ const featuredItems = await prisma.business.findMany({
               <div className="relative aspect-[16/10] overflow-hidden">
                 <Image
                   priority
-                  src={item.images?.[0] || "/lelo.jpg"}
+                  src={item.images?.[0] || '/lelo.jpg'}
                   alt={item.name}
                   fill
                   className="object-cover transition-transform duration-300 group-hover:scale-105"
@@ -79,18 +72,15 @@ const featuredItems = await prisma.business.findMany({
               </CardHeader>
 
               <CardContent className="pb-6">
-                <p className="text-sm text-muted-foreground line-clamp-3">
-                  {item.description}
-                </p>
+                <p className="text-muted-foreground line-clamp-3 text-sm">{item.description}</p>
               </CardContent>
 
               <CardFooter>
-                <Link
-                  href={`/business/${item.slug}`}
-                  className="inline-flex w-full h-12 items-center justify-center rounded-xl border border-[#25D366] text-[#25D366] font-semibold shadow-sm transition hover:text-[#111111]"
-                >
-                  View Profile
-                </Link>
+                <FeaturedBusinessLink
+                  businessId={item.id}
+                  businessName={item.name}
+                  slug={item.slug}
+                />
               </CardFooter>
             </Card>
           ))}
@@ -101,7 +91,7 @@ const featuredItems = await prisma.business.findMany({
           <div className="mt-12 flex justify-center">
             <Link
               href="/featured"
-              className="inline-flex items-center justify-center h-12 px-8 rounded-xl bg-transparent text-[#25D366] font-semibold shadow-lg transition hover:bg-[#25D366] hover:text-white hover:scale-105"
+              className="inline-flex h-12 items-center justify-center rounded-xl bg-transparent px-8 font-semibold text-[#25D366] shadow-lg transition hover:scale-105 hover:bg-[#25D366] hover:text-white"
             >
               View All Featured Businesses
             </Link>

@@ -111,7 +111,7 @@ export default async function BusinessProfilePage({ params }: Props) {
             />
           </div>
 
-          {/* SMALL IMAGES (max 4 already fixed 👍) */}
+          {/* SMALL IMAGES */}
           <div className="grid grid-cols-4 gap-3">
             {galleryImages.slice(1, 5).map((image, index) => (
               <div key={index} className="overflow-hidden rounded-2xl shadow-md">

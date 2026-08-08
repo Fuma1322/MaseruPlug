@@ -7,14 +7,21 @@ export type AnalyticsRange = '7D' | '30D' | '90D' | 'ALL';
 export type DailyAnalytics = {
   date: string;
   profileViews: number;
+  featuredProfileViews: number;
   whatsappLeads: number;
   phoneLeads: number;
 };
 
-const TRACKED_EVENTS = ['PROFILE_VIEW', 'WHATSAPP_CLICK', 'PHONE_CLICK'] as const;
+const TRACKED_EVENTS = [
+  'PROFILE_VIEW',
+  'FEATURED_PROFILE_VIEW',
+  'WHATSAPP_CLICK',
+  'PHONE_CLICK',
+] as const;
 
 type AnalyticsEvent =
   | 'PROFILE_VIEW'
+  | 'FEATURED_PROFILE_VIEW'
   | 'WHATSAPP_CLICK'
   | 'PHONE_CLICK'
   | 'FACEBOOK_CLICK'
@@ -265,6 +272,7 @@ export async function getDailyAnalytics(range: AnalyticsRange = '30D'): Promise<
       dailyMap.set(date, {
         date,
         profileViews: 0,
+        featuredProfileViews: 0,
         whatsappLeads: 0,
         phoneLeads: 0,
       });
@@ -284,6 +292,7 @@ export async function getDailyAnalytics(range: AnalyticsRange = '30D'): Promise<
       dailyMap.set(date, {
         date,
         profileViews: 0,
+        featuredProfileViews: 0,
         whatsappLeads: 0,
         phoneLeads: 0,
       });
@@ -294,6 +303,10 @@ export async function getDailyAnalytics(range: AnalyticsRange = '30D'): Promise<
     switch (event.event) {
       case 'PROFILE_VIEW':
         day.profileViews += 1;
+        break;
+
+      case 'FEATURED_PROFILE_VIEW':
+        day.featuredProfileViews += 1;
         break;
 
       case 'WHATSAPP_CLICK':

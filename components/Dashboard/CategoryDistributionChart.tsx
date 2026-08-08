@@ -28,7 +28,7 @@ const chartConfig = {
 
 export default function CategoryDistributionChart({ data }: Props) {
   return (
-    <Card className="rounded-3xl border border-gray-200 bg-white py-4 shadow-sm transition hover:shadow-lg">
+    <Card className="rounded-3xl border border-gray-200 bg-white py-4 shadow-xl transition hover:shadow-lg">
       <CardHeader>
         <CardTitle className="text-xl font-bold text-[#111111]">Business Categories</CardTitle>
 

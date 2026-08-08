@@ -83,6 +83,7 @@ model BusinessEvent {
 
 enum AnalyticsEvent {
   PROFILE_VIEW
+  FEATURED_PROFILE_VIEW
   WHATSAPP_CLICK
   PHONE_CLICK
   FACEBOOK_CLICK
