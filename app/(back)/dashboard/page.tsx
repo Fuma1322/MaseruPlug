@@ -1,14 +1,21 @@
 import prisma from '@/lib/db';
 import AdminCards from '@/components/Dashboard/AdminCards';
 import BusinessGrowthChart from '@/components/Dashboard/BusinessGrowthChart';
-import { getCustomerEngagement, getDashboardAnalytics } from '@/actions/analytics';
+import {
+  getCustomerEngagement,
+  getDailyAnalytics,
+  getDashboardAnalytics,
+} from '@/actions/analytics';
 import CategoryDistributionChart from '@/components/Dashboard/CategoryDistributionChart';
-import CustomerEngagementChart from '@/components/Dashboard/CustomerEngagementChart';
+import { getAnalyticsOverview } from '@/actions/getAnalytics';
+import DailyAnalyticsChart from '@/components/Dashboard/DailyAnalyticsChart';
 
 export default async function Page() {
   const growth = await getDashboardAnalytics();
   const totalBusinesses = await prisma.business.count();
   const engagement = await getCustomerEngagement();
+
+  const dailyAnalytics = await getDailyAnalytics('30D');
 
   const featuredBusinesses = await prisma.business.count({
     where: { isFeatured: true },
@@ -39,21 +46,27 @@ export default async function Page() {
   }));
 
   return (
-    <div className="space-y-6">
+    <div className="min-h-screen space-y-8 p-6 md:p-10">
+      {/* ADMIN CARDS */}
+
       <AdminCards
         totalBusinesses={totalBusinesses}
         featuredBusinesses={featuredBusinesses}
         totalCategories={totalCategories}
         newBusinesses={newBusinesses}
-        chartData={chartData}
+        engagement={engagement}
       />
 
-      <div className="grid grid-cols-1 gap-6 lg:grid-cols-2 xl:grid-cols-3">
+      {/* CUSTOMER ENGAGEMENT */}
+
+      <DailyAnalyticsChart initialData={dailyAnalytics} initialRange="30D" />
+
+      {/* BUSINESS / CATEGORY ANALYTICS */}
+
+      <div className="grid w-full grid-cols-1 gap-6 xl:grid-cols-2">
         <BusinessGrowthChart data={growth} />
 
         <CategoryDistributionChart data={chartData} />
-
-        <CustomerEngagementChart data={engagement} />
       </div>
     </div>
   );

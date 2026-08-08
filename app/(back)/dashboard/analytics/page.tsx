@@ -1,6 +1,9 @@
 import { TrendingUp, Store } from 'lucide-react';
+
 import { formatNumber } from '@/lib/formatNumber';
+
 import { getAnalyticsOverview } from '@/actions/getAnalytics';
+
 import AnalyticsCard from '@/components/Dashboard/AnalyticsCard';
 import AnalyticsContent from '@/components/Dashboard/AnalyticsContent';
 
@@ -11,7 +14,7 @@ export default async function AnalyticsPage() {
     data.totalViews > 0 ? Number(((data.whatsappClicks / data.totalViews) * 100).toFixed(1)) : 0;
 
   return (
-    <div className="min-h-screen p-4 sm:p-6 lg:p-10">
+    <div className="min-h-screen p-4 sm:p-6 md:p-10">
       {/* HEADER */}
 
       <div className="flex flex-col gap-3">
@@ -54,7 +57,7 @@ export default async function AnalyticsPage() {
         <AnalyticsCard
           title="Conversion Rate"
           value={`${conversionRate.toFixed(1)}%`}
-          description="Conversion Rate"
+          description="Profile views converted to WhatsApp"
         />
       </div>
 
@@ -62,6 +65,7 @@ export default async function AnalyticsPage() {
 
       <div className="mt-8 rounded-3xl border border-gray-100 bg-white p-4 shadow-xl sm:mt-12 sm:p-8">
         {/* SECTION HEADER */}
+
         <div className="flex flex-col gap-4 sm:flex-row sm:items-center sm:justify-between">
           <div className="flex items-center gap-3">
             <div className="rounded-xl bg-green-50 p-3">

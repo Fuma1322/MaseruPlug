@@ -2,6 +2,17 @@
 
 import prisma from '@/lib/db';
 
+export type AnalyticsRange = '7D' | '30D' | '90D' | 'ALL';
+
+export type DailyAnalytics = {
+  date: string;
+  profileViews: number;
+  whatsappLeads: number;
+  phoneLeads: number;
+};
+
+const TRACKED_EVENTS = ['PROFILE_VIEW', 'WHATSAPP_CLICK', 'PHONE_CLICK'] as const;
+
 type AnalyticsEvent =
   | 'PROFILE_VIEW'
   | 'WHATSAPP_CLICK'
@@ -135,4 +146,165 @@ export async function getCustomerEngagement() {
   });
 
   return grouped;
+}
+
+function getStartDate(range: AnalyticsRange): Date | null {
+  if (range === 'ALL') {
+    return null;
+  }
+
+  const now = new Date();
+
+  const days = range === '7D' ? 7 : range === '30D' ? 30 : 90;
+
+  const start = new Date(now);
+
+  start.setDate(start.getDate() - (days - 1));
+
+  start.setHours(0, 0, 0, 0);
+
+  return start;
+}
+
+function getMaseruDate(date: Date): string {
+  return new Intl.DateTimeFormat('en-CA', {
+    timeZone: 'Africa/Maseru',
+    year: 'numeric',
+    month: '2-digit',
+    day: '2-digit',
+  }).format(date);
+}
+
+function getMaseruDateParts(date: Date) {
+  const formatter = new Intl.DateTimeFormat('en-US', {
+    timeZone: 'Africa/Maseru',
+    year: 'numeric',
+    month: '2-digit',
+    day: '2-digit',
+  });
+
+  const parts = formatter.formatToParts(date);
+
+  const values: Record<string, string> = {};
+
+  for (const part of parts) {
+    if (part.type !== 'literal') {
+      values[part.type] = part.value;
+    }
+  }
+
+  return {
+    year: Number(values.year),
+    month: Number(values.month),
+    day: Number(values.day),
+  };
+}
+
+function createDateKey(year: number, month: number, day: number): string {
+  return `${year}-${String(month).padStart(2, '0')}-${String(day).padStart(2, '0')}`;
+}
+
+function addDays(date: Date, amount: number): Date {
+  const result = new Date(date);
+
+  result.setUTCDate(result.getUTCDate() + amount);
+
+  return result;
+}
+
+export async function getDailyAnalytics(range: AnalyticsRange = '30D'): Promise<DailyAnalytics[]> {
+  const startDate = getStartDate(range);
+
+  const events = await prisma.businessEvent.findMany({
+    where: {
+      event: {
+        in: [...TRACKED_EVENTS],
+      },
+
+      ...(startDate
+        ? {
+            createdAt: {
+              gte: startDate,
+            },
+          }
+        : {}),
+    },
+
+    select: {
+      event: true,
+      createdAt: true,
+    },
+
+    orderBy: {
+      createdAt: 'asc',
+    },
+  });
+
+  const dailyMap = new Map<string, DailyAnalytics>();
+
+  /*
+   * Add every day in the requested range first.
+   *
+   * This means days with zero activity still appear in
+   * the dashboard rather than disappearing from the chart.
+   */
+
+  if (range !== 'ALL' && startDate) {
+    const startParts = getMaseruDateParts(startDate);
+    const todayParts = getMaseruDateParts(new Date());
+
+    const startUTC = new Date(Date.UTC(startParts.year, startParts.month - 1, startParts.day));
+
+    const endUTC = new Date(Date.UTC(todayParts.year, todayParts.month - 1, todayParts.day));
+
+    let current = startUTC;
+
+    while (current <= endUTC) {
+      const date = current.toISOString().slice(0, 10);
+
+      dailyMap.set(date, {
+        date,
+        profileViews: 0,
+        whatsappLeads: 0,
+        phoneLeads: 0,
+      });
+
+      current = addDays(current, 1);
+    }
+  }
+
+  /*
+   * Aggregate events.
+   */
+
+  for (const event of events) {
+    const date = getMaseruDate(event.createdAt);
+
+    if (!dailyMap.has(date)) {
+      dailyMap.set(date, {
+        date,
+        profileViews: 0,
+        whatsappLeads: 0,
+        phoneLeads: 0,
+      });
+    }
+
+    const day = dailyMap.get(date)!;
+
+    switch (event.event) {
+      case 'PROFILE_VIEW':
+        day.profileViews += 1;
+        break;
+
+      case 'WHATSAPP_CLICK':
+        day.whatsappLeads += 1;
+        break;
+
+      case 'PHONE_CLICK':
+        day.phoneLeads += 1;
+        break;
+    }
+  }
+
+  return Array.from(dailyMap.values()).sort((a, b) => a.date.localeCompare(b.date));
 }
