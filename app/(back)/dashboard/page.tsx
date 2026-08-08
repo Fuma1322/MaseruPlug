@@ -1,20 +1,19 @@
 import prisma from '@/lib/db';
 import AdminCards from '@/components/Dashboard/AdminCards';
 import BusinessGrowthChart from '@/components/Dashboard/BusinessGrowthChart';
+import DailyAnalyticsChart from '@/components/Dashboard/DailyAnalyticsChart';
+import CategoryDistributionChart from '@/components/Dashboard/CategoryDistributionChart';
 import {
   getCustomerEngagement,
   getDailyAnalytics,
   getDashboardAnalytics,
 } from '@/actions/analytics';
-import CategoryDistributionChart from '@/components/Dashboard/CategoryDistributionChart';
-import DailyAnalyticsChart from '@/components/Dashboard/DailyAnalyticsChart';
 
 export default async function Page() {
   const growth = await getDashboardAnalytics();
-  const totalBusinesses = await prisma.business.count();
   const engagement = await getCustomerEngagement();
-
   const dailyAnalytics = await getDailyAnalytics('30D');
+  const totalBusinesses = await prisma.business.count();
 
   const featuredBusinesses = await prisma.business.count({
     where: { isFeatured: true },
