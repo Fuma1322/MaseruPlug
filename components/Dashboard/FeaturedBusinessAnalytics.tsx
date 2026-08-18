@@ -1,7 +1,7 @@
 'use client';
 
 import { useEffect, useMemo, useState } from 'react';
-import { Eye, TrendingUp, TrendingDown } from 'lucide-react';
+import { Eye, TrendingUp } from 'lucide-react';
 
 import {
   getFeaturedBusinessAnalytics,
