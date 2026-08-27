@@ -182,7 +182,7 @@ export default function BusinessFeedbackForm() {
                 required
                 value={form.businessName}
                 onChange={(e) => updateField('businessName', e.target.value)}
-                placeholder="e.g. Glamzy's Beauty Parlour"
+                placeholder="e.g. MaseruPlug"
                 className={inputClass}
               />
             </Field>
