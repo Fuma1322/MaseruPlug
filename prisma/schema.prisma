@@ -54,6 +54,7 @@ model Business {
   category        Category        @relation(fields: [categoryId], references: [id])
 
   analytics BusinessEvent[]
+  
 
   createdAt       DateTime        @default(now())
   updatedAt       DateTime        @updatedAt
@@ -90,4 +91,43 @@ enum AnalyticsEvent {
   WEBSITE_CLICK
   DIRECTIONS_CLICK
   SHARE_CLICK
+}
+
+model BusinessFeedback {
+  id String @id @default(auto()) @map("_id") @db.ObjectId
+
+  businessName String
+
+  listingDuration String
+  satisfaction Int
+  profileRepresentation String
+
+  customerDiscovery String
+  customerDiscoveryDetails String?
+
+  usefulness String
+
+  wantsReviews String
+  reviewPreference String?
+
+  desiredFeatures String[]
+  mostWantedFeature String?
+
+  businessGoals String[]
+
+  recommend String
+  recommendationReason String?
+
+  whatTheyLike String?
+  whatToImprove String?
+
+  premiumInterest String
+  premiumFeatures String[]
+
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  @@index([businessName])
+  @@index([createdAt])
+  @@index([satisfaction])
 }

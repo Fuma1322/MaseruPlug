@@ -22,7 +22,7 @@ export default function AdminCards({
   newBusinesses,
 }: Props) {
   return (
-    <div className="space-y-8 p-4 lg:p-6">
+    <div className="space-y-8 lg:p-6">
       <SectionCards
         totalBusinesses={totalBusinesses}
         featuredBusinesses={featuredBusinesses}

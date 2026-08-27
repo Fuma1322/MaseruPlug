@@ -6,6 +6,7 @@ import { cn } from '@/lib/utils';
 
 import {
   Activity,
+  ClipboardPen,
   Home,
   LayoutDashboard,
   MonitorSmartphone,
@@ -41,6 +42,11 @@ export default function Sidebar() {
       title: 'Analytics',
       path: '/dashboard/analytics',
       icon: Activity,
+    },
+    {
+      title: 'Reviews',
+      path: '/dashboard/feedback',
+      icon: ClipboardPen,
     },
   ];
 

@@ -17,6 +17,7 @@ import {
   Users,
   Power,
   LayoutDashboard,
+  ClipboardPen,
 } from 'lucide-react';
 
 import { logoutAdmin } from '@/actions/admin';
@@ -49,6 +50,11 @@ export default function NavBar() {
       title: 'Analytics',
       path: '/dashboard/analytics',
       icon: Activity,
+    },
+    {
+      title: 'Reviews',
+      path: '/dashboard/feedback',
+      icon: ClipboardPen,
     },
   ];
 
