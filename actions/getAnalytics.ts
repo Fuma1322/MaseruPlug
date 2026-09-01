@@ -20,7 +20,7 @@ export async function getAnalyticsOverview(range: 'today' | '7days' | '30days' |
   if (range === '30days') {
     startDate = new Date();
 
-    startDate.setDate(startDate.getDate() - 30);
+    startDate.setDate(startDate.getDate() - 365);
   }
 
   const filter = startDate
