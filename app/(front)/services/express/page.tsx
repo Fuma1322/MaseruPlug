@@ -129,8 +129,8 @@ export default function ExpressVirtualAssistantsPage() {
 
               <p className="mt-7 max-w-2xl text-lg leading-8 text-black/60 md:text-xl">
                 Access flexible professional support through Express Virtual Assistants. Find the
-                expertise you need, choose your support, and continue to EVA when you're ready to
-                book.
+                expertise you need, choose your support, and continue to EVA when you&apos;re ready
+                to book.
               </p>
 
               <div className="mt-9 flex flex-col gap-3 sm:flex-row">
