@@ -1,7 +1,7 @@
 'use client';
 
 import { useState } from 'react';
-import { CheckCircle2, Clock3, Loader2, TicketCheck } from 'lucide-react';
+import { CheckCircle2, Loader2, TicketCheck } from 'lucide-react';
 
 import { Button } from '@/components/ui/button';
 
