@@ -250,13 +250,23 @@ export async function getDealsByBusiness(businessId: string) {
 
 /**
  * Get all deal claims
+ * Optionally search by offer code
  */
-export async function getAllDealClaims() {
+export async function getAllDealClaims(search?: string) {
   try {
-    return await prisma.dealClaim.findMany({
+    const claims = await prisma.dealClaim.findMany({
+      where: search
+        ? {
+            offerCode: {
+              contains: search.toUpperCase(),
+            },
+          }
+        : undefined,
+
       orderBy: {
         createdAt: 'desc',
       },
+
       include: {
         deal: {
           select: {
@@ -274,6 +284,8 @@ export async function getAllDealClaims() {
         },
       },
     });
+
+    return claims;
   } catch (error) {
     console.error('GET DEAL CLAIMS ERROR:', error);
 

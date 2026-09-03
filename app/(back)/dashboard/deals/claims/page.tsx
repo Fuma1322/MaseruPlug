@@ -6,16 +6,26 @@ import {
   Gift,
   Mail,
   Phone,
+  Search,
   TicketCheck,
   User,
+  X,
 } from 'lucide-react';
 
 import { Button } from '@/components/ui/button';
 import { getAllDealClaims } from '@/actions/deals';
 import RedeemClaimButton from '@/components/Frontend/RedeemClaimButton';
 
-export default async function DashboardDealClaimsPage() {
-  const claims = await getAllDealClaims();
+export default async function DashboardDealClaimsPage({
+  searchParams,
+}: {
+  searchParams: {
+    code?: string;
+  };
+}) {
+  const search = searchParams.code?.trim() || '';
+
+  const claims = await getAllDealClaims(search);
 
   const totalClaims = claims.length;
   const redeemedClaims = claims.filter((claim) => claim.redeemed).length;
@@ -49,6 +59,54 @@ export default async function DashboardDealClaimsPage() {
           </div>
         </div>
 
+        {/* Search */}
+        <div className="mt-8 rounded-2xl border border-gray-200 bg-white p-4 shadow-sm">
+          <form method="GET" className="flex flex-col gap-3 sm:flex-row">
+            <div className="relative flex-1">
+              <Search className="absolute left-4 top-1/2 h-5 w-5 -translate-y-1/2 text-gray-400" />
+
+              <input
+                type="text"
+                name="code"
+                defaultValue={search}
+                placeholder="Enter claim code e.g. MP-X7K29A"
+                className="h-12 w-full rounded-xl border border-gray-200 bg-gray-50 pl-12 pr-4 text-sm font-medium text-[#111111] outline-none transition placeholder:text-gray-400 focus:border-[#25D366] focus:bg-white focus:ring-2 focus:ring-[#25D366]/10"
+              />
+            </div>
+
+            <Button
+              type="submit"
+              className="h-12 rounded-xl bg-[#25D366] px-6 font-semibold text-white hover:bg-[#1ebe5d]"
+            >
+              <Search className="mr-2 h-4 w-4" />
+              Search Claim
+            </Button>
+
+            {search && (
+              <Link href="/dashboard/deals/claims">
+                <Button
+                  type="button"
+                  variant="outline"
+                  className="h-12 w-full rounded-xl px-5 sm:w-auto"
+                >
+                  <X className="mr-2 h-4 w-4" />
+                  Clear
+                </Button>
+              </Link>
+            )}
+          </form>
+
+          {search && (
+            <div className="mt-3 flex items-center gap-2 text-sm text-gray-500">
+              <span>Showing results for:</span>
+
+              <span className="rounded-full bg-[#25D366]/10 px-3 py-1 font-mono font-bold text-[#25D366]">
+                {search.toUpperCase()}
+              </span>
+            </div>
+          )}
+        </div>
+
         {/* Stats */}
         <div className="mt-8 grid gap-4 sm:grid-cols-3">
           <StatCard
@@ -72,17 +130,26 @@ export default async function DashboardDealClaimsPage() {
             <div className="rounded-3xl border border-dashed border-gray-300 bg-white p-16 text-center">
               <Gift className="mx-auto h-10 w-10 text-gray-300" />
 
-              <h2 className="mt-4 text-xl font-bold text-[#111111]">No claims yet</h2>
+              <h2 className="mt-4 text-xl font-bold text-[#111111]">
+                {search ? 'No claim found' : 'No claims yet'}
+              </h2>
 
               <p className="mt-2 text-gray-500">
-                Customer claims will appear here when someone claims a deal.
+                {search
+                  ? `We couldn't find a claim matching "${search.toUpperCase()}".`
+                  : 'Customer claims will appear here when someone claims a deal.'}
               </p>
 
-              <Link href="/dashboard/deals">
-                <Button className="mt-6 rounded-xl bg-[#25D366] text-white hover:bg-[#1ebe5d]">
-                  View Deals
-                </Button>
-              </Link>
+              {search && (
+                <Link href="/dashboard/deals/claims">
+                  <Button
+                    variant="outline"
+                    className="mt-6 rounded-xl px-5 font-semibold text-[#25D366] hover:bg-gray-100"
+                  >
+                    View All Claims
+                  </Button>
+                </Link>
+              )}
             </div>
           ) : (
             <div className="space-y-8">
