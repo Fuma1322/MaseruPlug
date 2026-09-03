@@ -1,6 +1,6 @@
 import Link from 'next/link';
 import Image from 'next/image';
-import { Plus, Pencil, Eye, Flame, CalendarDays } from 'lucide-react';
+import { Plus, Pencil, Eye, Flame, CalendarDays, TicketCheck } from 'lucide-react';
 
 import { Button } from '@/components/ui/button';
 import { getDeals } from '@/actions/deals';
@@ -22,12 +22,24 @@ export default async function DashboardDealsPage() {
             </p>
           </div>
 
-          <Link href="/dashboard/deals/new">
-            <Button className="h-11 rounded-xl bg-[#25D366] px-5 font-semibold text-white hover:bg-[#1ebe5d]">
-              <Plus className="mr-2 h-4 w-4" />
-              Create Deal
-            </Button>
-          </Link>
+          <div className="flex flex-wrap gap-2">
+            <Link href="/dashboard/deals/claims">
+              <Button
+                variant="outline"
+                className="h-11 rounded-xl border-[#25D366] px-5 font-semibold text-[#111111] hover:bg-gray-100"
+              >
+                <TicketCheck className="mr-2 h-4 w-4" />
+                View Claims
+              </Button>
+            </Link>
+
+            <Link href="/dashboard/deals/new">
+              <Button className="h-11 rounded-xl bg-[#25D366] px-5 font-semibold text-white hover:bg-[#1ebe5d]">
+                <Plus className="mr-2 h-4 w-4" />
+                Create Deal
+              </Button>
+            </Link>
+          </div>
         </div>
 
         {/* Stats */}

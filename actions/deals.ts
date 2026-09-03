@@ -249,6 +249,39 @@ export async function getDealsByBusiness(businessId: string) {
 }
 
 /**
+ * Get all deal claims
+ */
+export async function getAllDealClaims() {
+  try {
+    return await prisma.dealClaim.findMany({
+      orderBy: {
+        createdAt: 'desc',
+      },
+      include: {
+        deal: {
+          select: {
+            id: true,
+            title: true,
+            slug: true,
+            business: {
+              select: {
+                id: true,
+                name: true,
+                slug: true,
+              },
+            },
+          },
+        },
+      },
+    });
+  } catch (error) {
+    console.error('GET DEAL CLAIMS ERROR:', error);
+
+    return [];
+  }
+}
+
+/**
  * Update a deal
  */
 export async function updateDeal(id: string, data: Partial<DealData>) {
@@ -284,10 +317,20 @@ export async function updateDeal(id: string, data: Partial<DealData>) {
  */
 export async function deleteDeal(id: string) {
   try {
-    await prisma.deal.delete({
-      where: {
-        id,
-      },
+    await prisma.$transaction(async (tx) => {
+      // Delete all claims belonging to the deal first
+      await tx.dealClaim.deleteMany({
+        where: {
+          dealId: id,
+        },
+      });
+
+      // Now delete the deal itself
+      await tx.deal.delete({
+        where: {
+          id,
+        },
+      });
     });
 
     revalidatePath('/dashboard/deals');
@@ -306,7 +349,6 @@ export async function deleteDeal(id: string) {
     };
   }
 }
-
 /**
  * Claim a deal
  */
@@ -401,6 +443,85 @@ export async function claimDeal(data: ClaimDealData) {
     return {
       success: false,
       error: 'Something went wrong while claiming the deal.',
+    };
+  }
+}
+
+/**
+ * Redeem a deal claim
+ */
+export async function redeemClaim(claimId: string) {
+  try {
+    // Only update the claim if it has NOT already been redeemed.
+    // This prevents the same claim from being redeemed twice.
+    const result = await prisma.dealClaim.updateMany({
+      where: {
+        id: claimId,
+        redeemed: false,
+      },
+      data: {
+        redeemed: true,
+        redeemedAt: new Date(),
+      },
+    });
+
+    // If nothing was updated, the claim either doesn't exist
+    // or has already been redeemed.
+    if (result.count === 0) {
+      const existingClaim = await prisma.dealClaim.findUnique({
+        where: {
+          id: claimId,
+        },
+      });
+
+      if (!existingClaim) {
+        return {
+          success: false,
+          error: 'Claim not found.',
+        };
+      }
+
+      if (existingClaim.redeemed) {
+        return {
+          success: false,
+          error: 'This claim has already been redeemed.',
+        };
+      }
+
+      return {
+        success: false,
+        error: 'Unable to redeem this claim.',
+      };
+    }
+
+    const claim = await prisma.dealClaim.findUnique({
+      where: {
+        id: claimId,
+      },
+      include: {
+        deal: {
+          select: {
+            slug: true,
+          },
+        },
+      },
+    });
+
+    revalidatePath('/dashboard/deals/claims');
+    revalidatePath('/dashboard/deals');
+    revalidatePath('/deals');
+    revalidatePath(`/deals/${claim?.deal.slug}`);
+
+    return {
+      success: true,
+      claim,
+    };
+  } catch (error) {
+    console.error('REDEEM CLAIM ERROR:', error);
+
+    return {
+      success: false,
+      error: 'Failed to redeem claim.',
     };
   }
 }
