@@ -13,6 +13,10 @@ export default function Footer() {
       name: 'Categories',
     },
     {
+      href: '/deals',
+      name: 'Hot Deals',
+    },
+    {
       href: '/contact',
       name: 'Join The Plug',
     },

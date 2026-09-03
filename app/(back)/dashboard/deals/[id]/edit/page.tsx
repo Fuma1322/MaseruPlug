@@ -31,7 +31,9 @@ export default async function EditDealPage({ params }: EditDealPageProps) {
 
             <h1 className="mt-4 text-2xl font-black text-[#111111]">Deal not found</h1>
 
-            <p className="mt-2 text-gray-500">The deal you're trying to edit doesn't exist.</p>
+            <p className="mt-2 text-gray-500">
+              The deal you&apos;re trying to edit doesn&apos;t exist.
+            </p>
 
             <Link
               href="/dashboard/deals"
