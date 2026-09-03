@@ -7,6 +7,7 @@ import { cn } from '@/lib/utils';
 import {
   Activity,
   ClipboardPen,
+  HandCoins,
   Home,
   LayoutDashboard,
   MonitorSmartphone,
@@ -37,6 +38,11 @@ export default function Sidebar() {
       title: 'Businesses',
       path: '/dashboard/business',
       icon: University,
+    },
+    {
+      title: 'Deals',
+      path: '/dashboard/deals',
+      icon: HandCoins,
     },
     {
       title: 'Analytics',

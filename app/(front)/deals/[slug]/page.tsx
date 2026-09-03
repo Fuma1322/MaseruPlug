@@ -1,98 +1,83 @@
-import Image from "next/image";
-import { BadgeCheck, Gift } from "lucide-react";
+import { notFound } from 'next/navigation';
+import { BadgeCheck, Gift } from 'lucide-react';
 
-const deal = {
-  slug: "french-braids-special",
-  title: "French Braids Special",
-  business: "Braids By MasTee",
-  image: "/french2.jpg",
-  description:
-    "Get professional French braids completely FREE. Limited to the first 10 customers through MaseruPlug.",
-  originalPrice: 30,
-  offerPrice: 0,
-  spotsLeft: 10,
+import { getDealBySlug } from '@/actions/deals';
+import DealClaim from '@/components/Frontend/DealClaim';
+import DealImageViewer from '@/components/Frontend/DealImageViewer';
+
+type Props = {
+  params: {
+    slug: string;
+  };
 };
 
-export default function DealDetailsPage() {
-  const offerCode =
-    "MP-" +
-    Math.random()
-      .toString(36)
-      .substring(2, 8)
-      .toUpperCase();
+export default async function DealDetailsPage({ params }: Props) {
+  const deal = await getDealBySlug(params.slug);
+
+  if (!deal) {
+    notFound();
+  }
+
+  const spotsLeft = deal.totalSpots - deal.claimedSpots;
 
   return (
     <main className="min-h-screen bg-white">
+      <section className="container mx-auto max-w-6xl px-4 py-16">
+        <div className="grid items-start gap-12 lg:grid-cols-2">
+          {/* Image */}
+          <DealImageViewer image={deal.image} title={deal.title} />
 
-      <section className="container max-w-5xl mx-auto px-4 py-16">
-
-        <div className="grid lg:grid-cols-2 gap-10 items-start">
-
-          <div className="relative aspect-square rounded-3xl overflow-hidden">
-            <Image
-              src={deal.image}
-              alt={deal.title}
-              fill
-              className="object-cover"
-            />
-          </div>
-
+          {/* Details */}
           <div>
-
-            <div className="inline-flex items-center gap-2 rounded-full bg-[#25D366]/10 px-4 py-2 text-[#25D366] font-medium">
-              <Gift className="w-4 h-4" />
+            <div className="inline-flex items-center gap-2 rounded-full bg-[#25D366]/10 px-4 py-2 font-medium text-[#25D366]">
+              <Gift className="h-4 w-4" />
               Limited Time Deal
             </div>
 
-            <h1 className="mt-6 text-5xl font-black text-[#111111]">
+            <p className="mt-6 text-sm font-semibold text-gray-500">{deal.business.name}</p>
+
+            <h1 className="mt-2 text-4xl font-black leading-tight text-[#111111] md:text-5xl">
               {deal.title}
             </h1>
 
-            <p className="mt-3 text-gray-500">
-              Offered by {deal.business}
-            </p>
+            <p className="mt-6 text-lg leading-relaxed text-gray-600">{deal.description}</p>
 
-            <p className="mt-6 text-lg text-gray-600">
-              {deal.description}
-            </p>
-
+            {/* Price */}
             <div className="mt-8 flex items-center gap-4">
-              <span className="text-xl text-gray-400 line-through">
-                M{deal.originalPrice}
-              </span>
+              <span className="text-xl text-gray-400 line-through">M{deal.originalPrice}</span>
 
               <span className="text-4xl font-black text-[#25D366]">
-                FREE
+                {deal.offerPrice === 0 ? 'FREE' : `M${deal.offerPrice}`}
               </span>
             </div>
 
-            <div className="mt-6">
-              <span className="rounded-full bg-gray-100 px-4 py-2 text-sm">
-                {deal.spotsLeft} spots remaining
-              </span>
+            {/* Spots */}
+            <div className="mt-6 inline-flex rounded-full bg-gray-100 px-4 py-2 text-sm font-medium text-gray-600">
+              {spotsLeft > 0 ? `${spotsLeft} spots remaining` : 'This deal is fully claimed'}
             </div>
 
-            <div className="mt-10 rounded-3xl border border-[#25D366]/20 bg-[#25D366]/5 p-6">
-
-              <div className="flex items-center gap-2 text-[#25D366] font-semibold">
-                <BadgeCheck className="w-5 h-5" />
-                Your Offer Code
+            {/* Claim */}
+            {spotsLeft > 0 && (
+              <div className="mt-10">
+                <DealClaim dealId={deal.id} dealTitle={deal.title} />
               </div>
+            )}
 
-              <div className="mt-4 text-4xl font-black tracking-widest text-[#111111]">
-                {offerCode}
+            {/* Trust */}
+            <div className="mt-8 flex items-start gap-3 rounded-2xl border border-gray-200 bg-gray-50 p-5">
+              <BadgeCheck className="mt-0.5 h-5 w-5 shrink-0 text-[#25D366]" />
+
+              <div>
+                <p className="font-semibold text-[#111111]">Powered by MaseruPlug</p>
+
+                <p className="mt-1 text-sm text-gray-500">
+                  Claim your offer through MaseruPlug and present your unique offer code to the
+                  business.
+                </p>
               </div>
-
-              <p className="mt-4 text-gray-600">
-                Show this code at the business to redeem your offer.
-              </p>
-
             </div>
-
           </div>
-
         </div>
-
       </section>
     </main>
   );

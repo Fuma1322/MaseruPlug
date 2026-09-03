@@ -18,6 +18,7 @@ import {
   Power,
   LayoutDashboard,
   ClipboardPen,
+  HandCoins,
 } from 'lucide-react';
 
 import { logoutAdmin } from '@/actions/admin';
@@ -45,6 +46,11 @@ export default function NavBar() {
       title: 'Businesses',
       path: '/dashboard/business',
       icon: University,
+    },
+    {
+      title: 'Deals',
+      path: '/dashboard/deals',
+      icon: HandCoins,
     },
     {
       title: 'Analytics',

@@ -55,7 +55,7 @@ model Business {
 
   analytics BusinessEvent[]
   
-
+  deals     Deal[]
   createdAt       DateTime        @default(now())
   updatedAt       DateTime        @updatedAt
 }
@@ -130,4 +130,58 @@ model BusinessFeedback {
   @@index([businessName])
   @@index([createdAt])
   @@index([satisfaction])
+}
+
+enum DealStatus {
+  DRAFT
+  ACTIVE
+  PAUSED
+  EXPIRED
+}
+
+model Deal {
+  id              String       @id @default(auto()) @map("_id") @db.ObjectId
+
+  slug            String       @unique
+  title           String
+  description     String
+
+  image           String
+
+  originalPrice   Float
+  offerPrice      Float
+
+  totalSpots      Int
+  claimedSpots    Int          @default(0)
+
+  status          DealStatus   @default(DRAFT)
+
+  startsAt        DateTime?
+  expiresAt       DateTime?
+
+  businessId      String       @db.ObjectId
+  business        Business     @relation(fields: [businessId], references: [id])
+
+  claims          DealClaim[]
+
+  createdAt       DateTime     @default(now())
+  updatedAt       DateTime     @updatedAt
+}
+
+model DealClaim {
+  id              String    @id @default(auto()) @map("_id") @db.ObjectId
+
+  offerCode       String    @unique
+
+  customerName    String?
+  customerPhone   String?
+  customerEmail   String?
+
+  redeemed        Boolean   @default(false)
+  redeemedAt      DateTime?
+
+  dealId          String    @db.ObjectId
+  deal            Deal      @relation(fields: [dealId], references: [id])
+
+  createdAt       DateTime  @default(now())
 }
