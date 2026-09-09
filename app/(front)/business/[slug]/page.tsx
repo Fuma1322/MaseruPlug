@@ -3,9 +3,10 @@ import Image from 'next/image';
 import type { Metadata } from 'next';
 import { notFound } from 'next/navigation';
 
-import { MapPin } from 'lucide-react';
+import { ArrowRight, MapPin, Tag } from 'lucide-react';
 import BusinessActions from '@/components/Frontend/BusinessActions';
 import { trackBusinessEvent } from '@/actions/analytics';
+import Link from 'next/link';
 
 interface Props {
   params: {
@@ -29,8 +30,20 @@ export async function generateStaticParams() {
 
 export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const business = await prisma.business.findUnique({
-    where: { slug: params.slug },
-    include: { category: true },
+    where: {
+      slug: params.slug,
+    },
+    include: {
+      category: true,
+      deals: {
+        where: {
+          status: 'ACTIVE',
+        },
+        orderBy: {
+          createdAt: 'desc',
+        },
+      },
+    },
   });
 
   if (!business) {
@@ -80,6 +93,14 @@ export default async function BusinessProfilePage({ params }: Props) {
     },
     include: {
       category: true,
+      deals: {
+        where: {
+          status: 'ACTIVE',
+        },
+        orderBy: {
+          createdAt: 'desc',
+        },
+      },
     },
   });
 
@@ -147,6 +168,94 @@ export default async function BusinessProfilePage({ params }: Props) {
           <BusinessActions business={business} />
         </div>
       </div>
+
+      {/* DEALS */}
+      {business.deals.length > 0 && (
+        <section className="mt-16 md:mt-20">
+          {/* SECTION HEADER */}
+          <div className="mb-7 flex flex-col gap-4 sm:mb-8">
+            <div>
+              <div className="mb-3 inline-flex items-center gap-2 rounded-full bg-[#25D366]/10 px-3 py-1.5 text-xs font-bold text-[#25D366] sm:px-4 sm:py-2 sm:text-sm">
+                <Tag className="h-3.5 w-3.5 sm:h-4 sm:w-4" />
+                Special Offers
+              </div>
+
+              <h2 className="text-2xl font-bold leading-tight text-[#111111] sm:text-3xl md:text-4xl">
+                Deals from {business.name}
+              </h2>
+
+              <p className="mt-2 text-sm leading-relaxed text-gray-500 sm:mt-3 sm:text-base">
+                Grab an exclusive offer before it&apos;s gone.
+              </p>
+            </div>
+          </div>
+
+          <div className="grid grid-cols-1 gap-5 sm:grid-cols-2 sm:gap-6 lg:grid-cols-3">
+            {business.deals.map((deal) => {
+              const spotsLeft = deal.totalSpots - deal.claimedSpots;
+
+              return (
+                <Link
+                  key={deal.id}
+                  href={`/deals/${deal.slug}`}
+                  className="group flex h-full flex-col overflow-hidden rounded-2xl border border-gray-100 bg-white shadow-sm transition duration-300 hover:-translate-y-1 hover:shadow-xl sm:rounded-3xl"
+                >
+                  {/* IMAGE */}
+                  <div className="relative aspect-[4/3] overflow-hidden bg-gray-100 sm:aspect-[5/4]">
+                    <Image
+                      src={deal.image}
+                      alt={deal.title}
+                      fill
+                      sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
+                      className="object-cover transition duration-500 group-hover:scale-105"
+                    />
+
+                    {/* OFFER BADGE */}
+                    <div className="absolute left-3 top-3 rounded-full bg-[#25D366] px-3 py-1.5 text-xs font-bold text-white shadow-lg sm:left-4 sm:top-4 sm:px-4 sm:py-2 sm:text-sm">
+                      Special Offer
+                    </div>
+
+                    {/* SPOTS */}
+                    {spotsLeft > 0 && (
+                      <div className="absolute bottom-3 left-3 rounded-full bg-black/75 px-3 py-1.5 text-[11px] font-semibold text-white backdrop-blur-sm sm:bottom-4 sm:left-4 sm:text-xs">
+                        {spotsLeft} {spotsLeft === 1 ? 'spot' : 'spots'} left
+                      </div>
+                    )}
+                  </div>
+
+                  {/* CONTENT */}
+                  <div className="flex flex-1 items-center justify-between gap-4 p-4 sm:p-5">
+                    <div className="min-w-0">
+                      <h3 className="truncate text-base font-bold text-[#111111] transition group-hover:text-[#25D366] sm:text-lg">
+                        {deal.title}
+                      </h3>
+
+                      <div className="mt-1 flex flex-wrap items-center gap-2">
+                        <span className="text-lg font-black text-[#111111] sm:text-xl">
+                          M{deal.offerPrice.toFixed(2)}
+                        </span>
+
+                        <span className="text-xs text-gray-400 line-through sm:text-sm">
+                          M{deal.originalPrice.toFixed(2)}
+                        </span>
+                      </div>
+                    </div>
+
+                    {/* CTA */}
+                    <div className="flex shrink-0 items-center gap-2 text-sm font-semibold text-[#25D366]">
+                      <span className="hidden sm:inline">View Deal</span>
+
+                      <div className="flex h-9 w-9 items-center justify-center rounded-full bg-[#25D366]/10 text-[#25D366] transition group-hover:bg-[#25D366] group-hover:text-white">
+                        <ArrowRight className="h-4 w-4" />
+                      </div>
+                    </div>
+                  </div>
+                </Link>
+              );
+            })}
+          </div>
+        </section>
+      )}
 
       {/* GALLERY */}
       <div className="mt-20">

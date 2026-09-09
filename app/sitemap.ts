@@ -1,8 +1,11 @@
-import prisma from "@/lib/db";
-import type { MetadataRoute } from "next";
+import prisma from '@/lib/db';
+import type { MetadataRoute } from 'next';
 
 export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
   const businesses = await prisma.business.findMany({
+    where: {
+      status: 'ACTIVE',
+    },
     select: {
       slug: true,
       updatedAt: true,
@@ -28,40 +31,39 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
 
   return [
     {
-      url: "https://mplug.com.ls",
+      url: 'https://mplug.com.ls',
       lastModified: new Date(),
-      changeFrequency: "weekly",
+      changeFrequency: 'weekly',
       priority: 1,
     },
     {
-      url: "https://mplug.com.ls/categories",
+      url: 'https://mplug.com.ls/categories',
       lastModified: new Date(),
-      changeFrequency: "weekly",
+      changeFrequency: 'weekly',
       priority: 0.8,
     },
     {
-      url:
-      "https://mplug.com.ls/business",
+      url: 'https://mplug.com.ls/business',
       lastModified: new Date(),
-      changeFrequency: "weekly",
+      changeFrequency: 'weekly',
       priority: 0.6,
     },
     {
-      url: "https://mplug.com.ls/deals",
+      url: 'https://mplug.com.ls/deals',
       lastModified: new Date(),
-      changeFrequency: "weekly",
+      changeFrequency: 'weekly',
       priority: 0.5,
     },
     {
-      url: "https://mplug.com.ls/about",
+      url: 'https://mplug.com.ls/about',
       lastModified: new Date(),
-      changeFrequency: "weekly",
+      changeFrequency: 'weekly',
       priority: 0.5,
     },
     {
-      url: "https://mplug.com.ls/contact",
+      url: 'https://mplug.com.ls/contact',
       lastModified: new Date(),
-      changeFrequency: "weekly",
+      changeFrequency: 'weekly',
       priority: 0.3,
     },
 

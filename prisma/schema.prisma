@@ -16,48 +16,48 @@ enum BusinessStatus {
 }
 
 model Category {
-  id          String   @id @default(auto()) @map("_id") @db.ObjectId
+  id          String  @id @default(auto()) @map("_id") @db.ObjectId
   name        String
-  slug        String   @unique
+  slug        String  @unique
   description String?
   icon        String?
 
-  businesses  Business[]
+  businesses Business[]
 
-  createdAt   DateTime @default(now())
-  updatedAt   DateTime @updatedAt
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
 }
 
 model Business {
-  id              String          @id @default(auto()) @map("_id") @db.ObjectId
+  id String @id @default(auto()) @map("_id") @db.ObjectId
 
-  name            String
-  slug            String          @unique
-  description     String
-  location        String
+  name        String
+  slug        String @unique
+  description String
+  location    String
 
-  phone           String
-  whatsapp        String
+  phone    String
+  whatsapp String
 
-  images          String[]
+  images String[]
 
-  facebookUrl     String?
-  websiteUrl      String?
+  facebookUrl String?
+  websiteUrl  String?
 
   metaTitle       String?
   metaDescription String?
 
-  isFeatured      Boolean         @default(false)
-  status          BusinessStatus  @default(PENDING)
+  isFeatured Boolean        @default(false)
+  status     BusinessStatus @default(PENDING)
 
-  categoryId      String          @db.ObjectId
-  category        Category        @relation(fields: [categoryId], references: [id])
+  categoryId String   @db.ObjectId
+  category   Category @relation(fields: [categoryId], references: [id])
 
   analytics BusinessEvent[]
-  
+
   deals     Deal[]
-  createdAt       DateTime        @default(now())
-  updatedAt       DateTime        @updatedAt
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
 }
 
 model SearchQuery {
@@ -70,16 +70,16 @@ model SearchQuery {
 }
 
 model BusinessEvent {
-  id         String   @id @default(auto()) @map("_id") @db.ObjectId
+  id String @id @default(auto()) @map("_id") @db.ObjectId
 
   businessId String   @db.ObjectId
   business   Business @relation(fields: [businessId], references: [id], onDelete: Cascade)
 
-  event       AnalyticsEvent
+  event AnalyticsEvent
 
-  userAgent   String?
+  userAgent String?
 
-  createdAt   DateTime @default(now())
+  createdAt DateTime @default(now())
 }
 
 enum AnalyticsEvent {
@@ -98,27 +98,27 @@ model BusinessFeedback {
 
   businessName String
 
-  listingDuration String
-  satisfaction Int
+  listingDuration       String
+  satisfaction          Int
   profileRepresentation String
 
-  customerDiscovery String
+  customerDiscovery        String
   customerDiscoveryDetails String?
 
   usefulness String
 
-  wantsReviews String
+  wantsReviews     String
   reviewPreference String?
 
-  desiredFeatures String[]
+  desiredFeatures   String[]
   mostWantedFeature String?
 
   businessGoals String[]
 
-  recommend String
+  recommend            String
   recommendationReason String?
 
-  whatTheyLike String?
+  whatTheyLike  String?
   whatToImprove String?
 
   premiumInterest String
@@ -140,48 +140,48 @@ enum DealStatus {
 }
 
 model Deal {
-  id              String       @id @default(auto()) @map("_id") @db.ObjectId
+  id String @id @default(auto()) @map("_id") @db.ObjectId
 
-  slug            String       @unique
-  title           String
-  description     String
+  slug        String @unique
+  title       String
+  description String
 
-  image           String
+  image String
 
-  originalPrice   Float
-  offerPrice      Float
+  originalPrice Float
+  offerPrice    Float
 
-  totalSpots      Int
-  claimedSpots    Int          @default(0)
+  totalSpots   Int
+  claimedSpots Int @default(0)
 
-  status          DealStatus   @default(DRAFT)
+  status DealStatus @default(DRAFT)
 
-  startsAt        DateTime?
-  expiresAt       DateTime?
+  startsAt  DateTime?
+  expiresAt DateTime?
 
-  businessId      String       @db.ObjectId
-  business        Business     @relation(fields: [businessId], references: [id])
+  businessId String   @db.ObjectId
+  business   Business @relation(fields: [businessId], references: [id])
 
-  claims          DealClaim[]
+  claims DealClaim[]
 
-  createdAt       DateTime     @default(now())
-  updatedAt       DateTime     @updatedAt
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
 }
 
 model DealClaim {
-  id              String    @id @default(auto()) @map("_id") @db.ObjectId
+  id String @id @default(auto()) @map("_id") @db.ObjectId
 
-  offerCode       String    @unique
+  offerCode String @unique
 
-  customerName    String?
-  customerPhone   String?
-  customerEmail   String?
+  customerName  String?
+  customerPhone String?
+  customerEmail String?
 
-  redeemed        Boolean   @default(false)
-  redeemedAt      DateTime?
+  redeemed   Boolean   @default(false)
+  redeemedAt DateTime?
 
-  dealId          String    @db.ObjectId
-  deal            Deal      @relation(fields: [dealId], references: [id])
+  dealId String @db.ObjectId
+  deal   Deal   @relation(fields: [dealId], references: [id])
 
-  createdAt       DateTime  @default(now())
+  createdAt DateTime @default(now())
 }

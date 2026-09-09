@@ -1,9 +1,10 @@
 import { notFound } from 'next/navigation';
-import { BadgeCheck, Gift } from 'lucide-react';
+import { ArrowRight, BadgeCheck, Gift } from 'lucide-react';
 
 import { getDealBySlug } from '@/actions/deals';
 import DealClaim from '@/components/Frontend/DealClaim';
 import DealImageViewer from '@/components/Frontend/DealImageViewer';
+import Link from 'next/link';
 
 type Props = {
   params: {
@@ -74,6 +75,34 @@ export default async function DealDetailsPage({ params }: Props) {
                   Claim your offer through MaseruPlug and present your unique offer code to the
                   business.
                 </p>
+              </div>
+            </div>
+
+            {/* BUSINESS CTA */}
+            <div className="mt-6 overflow-hidden rounded-3xl border border-gray-100 bg-[#111111]">
+              <div className="p-6 sm:p-8">
+                <div className="flex flex-col gap-6 sm:flex-row sm:items-center sm:justify-between">
+                  <div className="max-w-xl">
+                    <p className="text-sm font-bold text-[#25D366]">Interested in this business?</p>
+
+                    <h2 className="mt-2 text-xl font-bold leading-tight text-white sm:text-2xl">
+                      See more of {deal.business.name}&apos;s work
+                    </h2>
+
+                    <p className="mt-2 text-sm leading-relaxed text-gray-400">
+                      Explore their gallery, learn more about the business, and get in touch with
+                      them directly.
+                    </p>
+                  </div>
+
+                  <Link
+                    href={`/business/${deal.business.slug}`}
+                    className="inline-flex shrink-0 items-center justify-center gap-2 rounded-xl bg-[#25D366] px-5 py-3.5 text-sm font-bold text-white transition hover:bg-[#1ebe5d] sm:px-6"
+                  >
+                    View Business
+                    <ArrowRight className="h-4 w-4" />
+                  </Link>
+                </div>
               </div>
             </div>
           </div>
