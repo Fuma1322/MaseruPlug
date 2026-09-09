@@ -9,14 +9,6 @@ import { Field, FieldDescription, FieldGroup, FieldLabel } from '@/components/ui
 import { Input } from '@/components/ui/input';
 import { useState, useTransition } from 'react';
 import { useRouter } from 'next/navigation';
-import type { Metadata } from 'next';
-
-export const metadata: Metadata = {
-  robots: {
-    index: false,
-    follow: false,
-  },
-};
 
 const container = {
   hidden: { opacity: 0 },
