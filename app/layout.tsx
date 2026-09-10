@@ -41,17 +41,82 @@ export const metadata: Metadata = {
   },
 
   keywords: [
-    'find businesses in Lesotho',
-    'local services Lesotho',
-    'Maseru businesses',
-    'nail technicians in Lesotho',
-    'tattoo artists in Lesotho',
-    'carpenters in Lesotho',
-    'crochet businesses in Lesotho',
-    'welders in Lesotho',
-    'small businesses in Lesotho',
-    'business directory Lesotho',
+    // Core
     'MaseruPlug',
+    'business directory Lesotho',
+    'businesses in Lesotho',
+    'local businesses Lesotho',
+    'local services Lesotho',
+    'businesses in Maseru',
+    'services in Maseru',
+    'find businesses in Lesotho',
+    'find local businesses',
+    'local service providers Lesotho',
+    'service providers in Lesotho',
+
+    // Plumbing
+    'plumbers near me',
+    'plumber near me',
+    'plumbers in Lesotho',
+    'plumbers in Maseru',
+    'professional plumber near me',
+    'plumbing companies in Lesotho',
+    'plumbing services Maseru',
+
+    // Nails
+    'nails in Maseru',
+    'nail technician near me',
+    'nail tech near me',
+    'nail tech Maseru',
+    'nail salon near me',
+    'nail salons in Maseru',
+    'nail technicians in Lesotho',
+    'polygel nails near me',
+    'nail polish Maseru',
+
+    // Tattoo & piercing
+    'tattoo shops in Lesotho',
+    'tattoo artists in Lesotho',
+    'tattoo Maseru',
+    'tattoo Matala',
+    'Matala tattoo',
+    'piercing shops near me',
+    'body piercing near me',
+    'belly button piercing near me',
+    'body piercing Maseru',
+
+    // Barbers & hair
+    'barber shop near me',
+    'barbershop near me',
+    'barber shops near me',
+    'barber near me',
+    'local barber shop',
+    'barbers in Maseru',
+    'barbershops in Lesotho',
+    'hairdresser near me',
+    'hairdressers in Maseru',
+    'salon near me',
+    'salons near me',
+    'salon near me for men',
+    'hair salons in Maseru',
+    'mini twists near me',
+    'retwist near me',
+    'wig wash and style near me',
+    'threading near me',
+
+    // Beauty
+    'beauty studio Maseru',
+    'beauty services Maseru',
+    'beauty service providers',
+    'makeup artist near me',
+    'beauty salons in Lesotho',
+    'male pedicure near me',
+
+    // Other business categories
+    'carpenters in Lesotho',
+    'welders in Lesotho',
+    'crochet businesses in Lesotho',
+    'small businesses in Lesotho',
   ],
 
   authors: [
