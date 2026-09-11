@@ -1,10 +1,9 @@
+import Link from 'next/link';
 import { notFound } from 'next/navigation';
-import { ArrowRight, BadgeCheck, Gift } from 'lucide-react';
-
 import { getDealBySlug } from '@/actions/deals';
 import DealClaim from '@/components/Frontend/DealClaim';
+import { ArrowRight, BadgeCheck, Gift } from 'lucide-react';
 import DealImageViewer from '@/components/Frontend/DealImageViewer';
-import Link from 'next/link';
 
 type Props = {
   params: {

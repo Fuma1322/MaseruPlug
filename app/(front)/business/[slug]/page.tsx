@@ -1,12 +1,11 @@
+import Link from 'next/link';
 import prisma from '@/lib/db';
 import Image from 'next/image';
 import type { Metadata } from 'next';
 import { notFound } from 'next/navigation';
-
 import { ArrowRight, MapPin, Tag } from 'lucide-react';
-import BusinessActions from '@/components/Frontend/BusinessActions';
 import { trackBusinessEvent } from '@/actions/analytics';
-import Link from 'next/link';
+import BusinessActions from '@/components/Frontend/BusinessActions';
 
 interface Props {
   params: {
