@@ -1,10 +1,11 @@
-'use client'
+'use client';
 
-import React, { useState } from "react";
+import Link from 'next/link';
+import React, { useState } from 'react';
 
 const FAQ = () => {
   return (
-    <section className="relative z-20 overflow-hidden pb-12 pt-20 dark:bg-[#25D366] lg:pb-[90px] lg:pt-[70px] ">
+    <section className="relative z-20 overflow-hidden pb-12 pt-20 dark:bg-[#25D366] lg:pb-[90px] lg:pt-[70px]">
       <div className="container mx-auto">
         <div className="-mx-4 flex flex-wrap">
           <div className="w-full px-4">
@@ -12,7 +13,7 @@ const FAQ = () => {
               <span className="mb-2 block text-lg font-bold text-gray-700 dark:text-gray-100">
                 FAQ
               </span>
-              <h2 className="mb-4 text-3xl font-bold text-dark dark:text-gray-400 sm:text-[40px]/[48px] p-4">
+              <h2 className="text-dark mb-4 p-4 text-3xl font-bold dark:text-gray-400 sm:text-[40px]/[48px]">
                 Any Questions? Look Here
               </h2>
             </div>
@@ -23,12 +24,11 @@ const FAQ = () => {
           <div className="w-full px-4 lg:w-1/2">
             <AccordionItem
               header="What is MaseruPlug?"
-              text= {
+              text={
                 <>
-                MaseruPlug is a local platform that helps people
-                in Maseru find trusted service providers such as 
-                nail techs, hair salons, carpenters, and other small 
-                businesses—all in one place.
+                  MaseruPlug is a local platform that helps people in Maseru find trusted service
+                  providers such as nail techs, hair salons, carpenters, and other small
+                  businesses—all in one place.
                 </>
               }
             />
@@ -36,28 +36,36 @@ const FAQ = () => {
               header="How do I contact a business on MaseruPlug?"
               text={
                 <>
-                Simply open a business profile and click the WhatsApp 
-                or Call button to contact the business directly. There 
-                are no middlemen or booking fees.
+                  Simply open a business profile and click the WhatsApp or Call button to contact
+                  the business directly. There are no middlemen or booking fees.
                 </>
               }
             />
           </div>
           <div className="w-full px-4 lg:w-1/2">
-             <AccordionItem
+            <AccordionItem
               header="How much does it cost to list my business?"
               text={
                 <>
-                We offer affordable listing options for small businesses, 
-                including once-off setup and monthly plans with ongoing support 
-                and promotion. Contact us for current pricing.
+                  MaseruPlug offers a free way to get your business discovered, along with optional
+                  plans for businesses that want additional visibility, promotion and growth
+                  opportunities.{' '}
+                  <Link href="/pricing" className="font-semibold text-[#25D366] hover:underline">
+                    View our pricing plans
+                  </Link>{' '}
+                  to find the option that works for your business.
                 </>
               }
             />
             <AccordionItem
               header="How can I list my business on MaseruPlug?"
-              text="If you own a business and want more customers, contact us on WhatsApp. 
-              We’ll create your profile, add your photos and contact details, and help you get discovered online."
+              text={
+                <>
+                  Start by choosing the MaseruPlug option that works for your business. Once
+                  you&apos;re ready, contact us on WhatsApp or through our contact options and
+                  we&apos;ll help you get your business set up and discovered online.
+                </>
+              }
             />
           </div>
         </div>
@@ -98,11 +106,11 @@ const FAQ = () => {
 
 export default FAQ;
 type AccordionItemProps = {
-    header: string;
-    text: string | React.ReactNode;
-  };
-  
-  const AccordionItem = ({ header, text }: AccordionItemProps) => {
+  header: string;
+  text: string | React.ReactNode;
+};
+
+const AccordionItem = ({ header, text }: AccordionItemProps) => {
   const [active, setActive] = useState(false);
 
   const handleToggle = (event: React.MouseEvent<HTMLButtonElement>) => {
@@ -110,15 +118,12 @@ type AccordionItemProps = {
     setActive(!active);
   };
   return (
-    <div className="mb-8 w-full rounded-lg backdrop-blur-md p-4 shadow-[0px_20px_95px_0px_rgba(201,203,204,0.30)] sm:p-8 lg:px-6 xl:px-8">
-<button
-  className={`faq-btn flex w-full text-left`}
-  onClick={(event) => handleToggle(event)}
->
-        <div className="mr-5 flex h-10 w-full max-w-[40px] items-center justify-center rounded-lg bg-[#25D366] text-primary">
+    <div className="mb-8 w-full rounded-lg p-4 shadow-[0px_20px_95px_0px_rgba(201,203,204,0.30)] backdrop-blur-md sm:p-8 lg:px-6 xl:px-8">
+      <button className={`faq-btn flex w-full text-left`} onClick={(event) => handleToggle(event)}>
+        <div className="text-primary mr-5 flex h-10 w-full max-w-[40px] items-center justify-center rounded-lg bg-[#25D366]">
           <svg
             className={`fill-primary stroke-primary duration-200 ease-in-out ${
-              active ? "rotate-180" : ""
+              active ? 'rotate-180' : ''
             }`}
             width="17"
             height="10"
@@ -134,20 +139,12 @@ type AccordionItemProps = {
         </div>
 
         <div className="w-full">
-          <h4 className="mt-1 text-lg font-semibold text-dark dark:text-gray-400">
-            {header}
-          </h4>
+          <h4 className="text-dark mt-1 text-lg font-semibold dark:text-gray-400">{header}</h4>
         </div>
       </button>
 
-      <div
-        className={`pl-[62px] duration-200 ease-in-out ${
-          active ? "block" : "hidden"
-        }`}
-      >
-        <p className="py-3 text-base leading-relaxed text-body-color dark:text-dark-6">
-          {text}
-        </p>
+      <div className={`pl-[62px] duration-200 ease-in-out ${active ? 'block' : 'hidden'}`}>
+        <p className="text-body-color dark:text-dark-6 py-3 text-base leading-relaxed">{text}</p>
       </div>
     </div>
   );
