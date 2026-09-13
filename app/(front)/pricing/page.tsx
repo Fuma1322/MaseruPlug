@@ -180,7 +180,7 @@ export default function PricingPage() {
             </p>
 
             <h2 className="mt-3 text-3xl font-bold tracking-tight sm:text-4xl">
-              Start where you are. Grow when you're ready.
+              Start where you are. Grow when you&apos;re ready.
             </h2>
 
             <p className="mt-4 text-gray-600">
@@ -373,7 +373,9 @@ export default function PricingPage() {
               Frequently asked questions
             </p>
 
-            <h2 className="mt-3 text-3xl font-bold tracking-tight">Questions? We've got you.</h2>
+            <h2 className="mt-3 text-3xl font-bold tracking-tight">
+              Questions? We&apos;ve got you.
+            </h2>
           </div>
 
           <div className="mt-12 space-y-4">
