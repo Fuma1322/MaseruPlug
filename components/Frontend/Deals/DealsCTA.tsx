@@ -1,7 +1,6 @@
 import Link from 'next/link';
-import { ArrowRight, Clock3, Gift, Sparkles, Tag } from 'lucide-react';
-
 import prisma from '@/lib/db';
+import { ArrowRight, Clock3, Gift, Sparkles, Tag } from 'lucide-react';
 
 export default async function DealsCTA() {
   const now = new Date();
@@ -48,52 +47,52 @@ export default async function DealsCTA() {
   });
 
   return (
-    <section className="relative overflow-hidden bg-[#111111] py-16 sm:py-20 md:py-24">
+    <section className="relative w-full overflow-hidden bg-[#111111] py-14 sm:py-20 md:py-24">
       {/* Background glow */}
-      <div className="pointer-events-none absolute -left-40 -top-32 h-72 w-72 rounded-full bg-[#25D366]/20 blur-[100px] sm:-left-32 sm:h-96 sm:w-96 sm:blur-[120px]" />
+      <div className="pointer-events-none absolute -left-32 -top-24 h-64 w-64 rounded-full bg-[#25D366]/20 blur-[90px] sm:-left-32 sm:-top-32 sm:h-96 sm:w-96 sm:blur-[120px]" />
 
-      <div className="pointer-events-none absolute -bottom-40 -right-32 h-72 w-72 rounded-full bg-[#25D366]/10 blur-[100px] sm:-right-20 sm:h-96 sm:w-96 sm:blur-[120px]" />
+      <div className="pointer-events-none absolute -bottom-32 -right-28 h-64 w-64 rounded-full bg-[#25D366]/10 blur-[90px] sm:-right-20 sm:h-96 sm:w-96 sm:blur-[120px]" />
 
       {/* Decorative circles */}
-      <div className="pointer-events-none absolute right-[5%] top-8 h-16 w-16 rounded-full border border-white/10 sm:right-[8%] sm:top-12 sm:h-20 sm:w-20" />
+      <div className="pointer-events-none absolute right-[4%] top-8 h-14 w-14 rounded-full border border-white/10 sm:right-[8%] sm:top-12 sm:h-20 sm:w-20" />
 
-      <div className="pointer-events-none absolute right-[9%] top-12 h-10 w-10 rounded-full border border-[#25D366]/20 sm:right-[12%] sm:top-16 sm:h-12 sm:w-12" />
+      <div className="pointer-events-none absolute right-[8%] top-12 h-9 w-9 rounded-full border border-[#25D366]/20 sm:right-[12%] sm:top-16 sm:h-12 sm:w-12" />
 
-      <div className="relative mx-auto max-w-7xl px-5 sm:px-6 lg:px-8">
-        <div className="grid items-center gap-10 lg:grid-cols-[1.1fr_0.9fr] lg:gap-12">
+      <div className="relative mx-auto w-full max-w-7xl px-4 sm:px-6 lg:px-8">
+        <div className="grid w-full items-center gap-10 lg:grid-cols-[1.1fr_0.9fr] lg:gap-12">
           {/* LEFT CONTENT */}
-          <div className="max-w-2xl text-center lg:text-left">
+          <div className="w-full min-w-0 max-w-2xl text-center lg:text-left">
             {/* Eyebrow */}
-            <div className="mb-5 inline-flex items-center gap-2 rounded-full border border-[#25D366]/30 bg-[#25D366]/10 px-3.5 py-2 sm:mb-6 sm:px-4">
-              <Sparkles className="h-4 w-4 text-[#25D366]" />
+            <div className="mb-5 inline-flex max-w-full items-center gap-2 rounded-full border border-[#25D366]/30 bg-[#25D366]/10 px-3 py-2 sm:mb-6 sm:px-4">
+              <Sparkles className="h-4 w-4 shrink-0 text-[#25D366]" />
 
-              <span className="text-[10px] font-semibold uppercase tracking-[0.18em] text-[#25D366] sm:text-xs">
+              <span className="truncate text-[9px] font-semibold uppercase tracking-[0.14em] text-[#25D366] sm:text-xs sm:tracking-[0.18em]">
                 MaseruPlug Deals
               </span>
             </div>
 
             {/* Heading */}
-            <h2 className="text-4xl font-bold leading-[1.08] tracking-tight text-white sm:text-5xl md:text-[3.5rem] lg:text-6xl">
+            <h2 className="w-full break-words text-[2.15rem] font-bold leading-[1.08] tracking-tight text-white sm:text-5xl md:text-[3.5rem] lg:text-6xl">
               Good things <span className="text-[#25D366]">don&apos;t stay available forever.</span>
             </h2>
 
             {/* Description */}
-            <p className="mx-auto mt-5 max-w-xl text-base leading-7 text-neutral-400 sm:mt-6 sm:text-lg sm:leading-8 lg:mx-0">
+            <p className="mx-auto mt-5 w-full max-w-xl text-sm leading-6 text-neutral-400 sm:mt-6 sm:text-lg sm:leading-8 lg:mx-0">
               Discover special offers, limited-time promotions and exclusive deals from businesses
               around Maseru.
             </p>
 
             {/* CTA */}
-            <div className="mt-7 flex flex-col items-stretch gap-4 sm:mt-8 sm:flex-row sm:items-center sm:justify-center lg:justify-start">
+            <div className="mt-7 flex w-full flex-col gap-3 sm:mt-8 sm:flex-row sm:items-center sm:justify-center lg:justify-start">
               <Link
                 href="/deals"
-                className="group inline-flex items-center justify-center gap-3 rounded-xl bg-[#25D366] px-6 py-3.5 font-semibold text-[#111111] transition-all duration-300 hover:bg-[#20c85d] hover:shadow-[0_0_35px_rgba(37,211,102,0.25)]"
+                className="group inline-flex w-full items-center justify-center gap-2 rounded-xl bg-[#25D366] px-5 py-3.5 text-sm font-semibold text-[#111111] transition-all duration-300 hover:bg-[#20c85d] hover:shadow-[0_0_35px_rgba(37,211,102,0.25)] sm:w-auto sm:px-6 sm:text-base"
               >
                 Explore Deals
-                <ArrowRight className="h-4 w-4 transition-transform duration-300 group-hover:translate-x-1" />
+                <ArrowRight className="h-4 w-4 shrink-0 transition-transform duration-300 group-hover:translate-x-1" />
               </Link>
 
-              <span className="flex items-center justify-center gap-2 text-sm text-neutral-500 sm:justify-start">
+              <span className="flex w-full items-center justify-center gap-2 text-xs text-neutral-500 sm:w-auto sm:justify-start sm:text-sm">
                 <Clock3 className="h-4 w-4 shrink-0" />
                 Limited offers available
               </span>
@@ -101,20 +100,20 @@ export default async function DealsCTA() {
           </div>
 
           {/* RIGHT DEALS */}
-          <div className="relative mx-auto mt-2 w-full max-w-md lg:ml-auto lg:mt-0">
+          <div className="relative mx-auto mt-2 w-full min-w-0 max-w-md lg:ml-auto lg:mt-0">
             {/* Glow behind cards */}
-            <div className="absolute inset-6 rounded-[2rem] bg-[#25D366]/20 blur-3xl sm:inset-8" />
+            <div className="absolute inset-4 rounded-[2rem] bg-[#25D366]/20 blur-3xl sm:inset-8" />
 
-            <div className="relative overflow-hidden rounded-[1.5rem] border border-white/10 bg-white/[0.06] p-1.5 shadow-2xl backdrop-blur-xl sm:rounded-[2rem] sm:p-2">
-              <div className="rounded-[1.15rem] bg-white p-4 sm:rounded-[1.5rem] sm:p-6">
+            <div className="relative w-full min-w-0 overflow-hidden rounded-[1.5rem] border border-white/10 bg-white/[0.06] p-1.5 shadow-2xl backdrop-blur-xl sm:rounded-[2rem] sm:p-2">
+              <div className="w-full min-w-0 overflow-hidden rounded-[1.15rem] bg-white p-4 sm:rounded-[1.5rem] sm:p-6">
                 {/* Header */}
-                <div className="flex items-center justify-between gap-4">
-                  <div className="min-w-0">
+                <div className="flex min-w-0 items-center justify-between gap-3">
+                  <div className="min-w-0 flex-1">
                     <p className="text-[10px] font-semibold uppercase tracking-wider text-neutral-400 sm:text-xs">
                       Available now
                     </p>
 
-                    <h3 className="mt-1 text-lg font-bold text-[#111111] sm:text-xl">
+                    <h3 className="mt-1 truncate text-lg font-bold text-[#111111] sm:text-xl">
                       Latest Deals
                     </h3>
                   </div>
@@ -126,7 +125,7 @@ export default async function DealsCTA() {
 
                 {/* DEAL LIST */}
                 {deals.length > 0 ? (
-                  <div className="mt-5 space-y-3 sm:mt-6">
+                  <div className="mt-5 w-full min-w-0 space-y-3 sm:mt-6">
                     {deals.map((deal) => {
                       const spotsLeft = deal.totalSpots - deal.claimedSpots;
 
@@ -134,11 +133,11 @@ export default async function DealsCTA() {
                         <Link
                           key={deal.id}
                           href={`/deals/${deal.slug}`}
-                          className="group block rounded-xl border border-neutral-100 bg-neutral-50 p-3.5 transition-all duration-300 hover:border-[#25D366]/40 hover:bg-[#25D366]/5 sm:p-4"
+                          className="group block w-full min-w-0 overflow-hidden rounded-xl border border-neutral-100 bg-neutral-50 p-3 transition-all duration-300 hover:border-[#25D366]/40 hover:bg-[#25D366]/5 sm:p-4"
                         >
-                          <div className="flex items-start gap-3 sm:gap-4">
+                          <div className="flex min-w-0 items-start gap-3 sm:gap-4">
                             {/* Deal image */}
-                            <div className="h-14 w-14 shrink-0 overflow-hidden rounded-xl bg-neutral-200 sm:h-16 sm:w-16">
+                            <div className="h-12 w-12 shrink-0 overflow-hidden rounded-xl bg-neutral-200 sm:h-16 sm:w-16">
                               <img
                                 src={deal.image}
                                 alt={deal.title}
@@ -156,13 +155,13 @@ export default async function DealsCTA() {
                                 {deal.business.name}
                               </p>
 
-                              <div className="mt-2 flex items-center gap-2">
-                                <span className="text-sm font-bold text-[#25D366]">
+                              <div className="mt-2 flex min-w-0 items-center gap-2">
+                                <span className="shrink-0 text-sm font-bold text-[#25D366]">
                                   M{deal.offerPrice}
                                 </span>
 
                                 {deal.originalPrice > deal.offerPrice && (
-                                  <span className="text-xs text-neutral-400 line-through">
+                                  <span className="truncate text-xs text-neutral-400 line-through">
                                     M{deal.originalPrice}
                                   </span>
                                 )}
@@ -174,15 +173,15 @@ export default async function DealsCTA() {
 
                           {/* Availability */}
                           {deal.totalSpots > 0 && (
-                            <div className="mt-3 flex items-center justify-between gap-3 border-t border-neutral-200 pt-3">
-                              <span className="text-[10px] text-neutral-400 sm:text-[11px]">
+                            <div className="mt-3 flex min-w-0 items-center justify-between gap-3 border-t border-neutral-200 pt-3">
+                              <span className="truncate text-[10px] text-neutral-400 sm:text-[11px]">
                                 {spotsLeft > 0
                                   ? `${spotsLeft} ${spotsLeft === 1 ? 'spot' : 'spots'} left`
                                   : 'Fully claimed'}
                               </span>
 
                               {spotsLeft > 0 && (
-                                <span className="text-[10px] font-semibold text-[#25D366] sm:text-[11px]">
+                                <span className="shrink-0 text-[10px] font-semibold text-[#25D366] sm:text-[11px]">
                                   Claim now
                                 </span>
                               )}
@@ -210,10 +209,10 @@ export default async function DealsCTA() {
                 {/* View all */}
                 <Link
                   href="/deals"
-                  className="mt-4 flex w-full items-center justify-center gap-2 rounded-xl border border-[#111111] px-5 py-3 text-sm font-semibold text-[#111111] transition hover:bg-[#111111] hover:text-white sm:mt-5"
+                  className="mt-4 flex w-full items-center justify-center gap-2 rounded-xl border border-[#111111] px-4 py-3 text-sm font-semibold text-[#111111] transition hover:bg-[#111111] hover:text-white sm:mt-5 sm:px-5"
                 >
                   See All Deals
-                  <ArrowRight className="h-4 w-4" />
+                  <ArrowRight className="h-4 w-4 shrink-0" />
                 </Link>
               </div>
             </div>
