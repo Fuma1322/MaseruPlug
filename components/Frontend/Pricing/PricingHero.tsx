@@ -14,7 +14,7 @@ export default function PricingHero() {
         <div className="absolute inset-0 bg-[radial-gradient(#11111112_1px,transparent_1px)] opacity-80 [background-size:24px_24px]" />
       </div>
 
-      <div className="mx-auto max-w-7xl px-6 pb-20 pt-32 lg:px-8 lg:pb-28 lg:pt-20">
+      <div className="mx-auto max-w-7xl px-6 pb-20 pt-24 lg:px-8 lg:pb-28 lg:pt-20">
         <div className="mx-auto max-w-4xl text-center">
           {/* Badge */}
           <div className="mb-7 inline-flex items-center gap-2 rounded-full border border-[#25D366]/30 bg-white/80 px-4 py-2 text-sm font-semibold text-[#111111] shadow-[0_8px_30px_rgba(37,211,102,0.08)] backdrop-blur">
