@@ -32,9 +32,9 @@ export default function AboutSection() {
     <section className="relative overflow-hidden bg-white py-24 lg:py-32">
       {/* Background atmosphere */}
       <div className="pointer-events-none absolute inset-0">
-        <div className="absolute left-1/2 top-0 h-[600px] w-[900px] -translate-x-1/2 rounded-full bg-[#25D366]/5 blur-[140px]" />
+        <div className="absolute left-1/2 top-0 h-[600px] w-[900px] -translate-x-1/2 rounded-full bg-[#25D366]/20 blur-[140px]" />
 
-        <div className="absolute inset-0 bg-[radial-gradient(#11111108_1px,transparent_1px)] [background-size:24px_24px]" />
+        <div className="absolute inset-0 bg-[radial-gradient(#11111108_2px,transparent_1px)] [background-size:24px_24px]" />
       </div>
 
       <div className="relative mx-auto max-w-7xl px-6 lg:px-8">
