@@ -38,9 +38,7 @@ export default function AboutSection() {
       </div>
 
       <div className="relative mx-auto max-w-7xl px-6 lg:px-8">
-        {/* ------------------------------------------------ */}
         {/* HERO */}
-        {/* ------------------------------------------------ */}
 
         <div className="mx-auto max-w-4xl text-center">
           <div className="mb-6 inline-flex items-center gap-2 rounded-full border border-[#25D366]/30 bg-white px-4 py-2 text-xs font-bold uppercase tracking-wider text-[#111111] shadow-sm">
@@ -61,9 +59,7 @@ export default function AboutSection() {
           </p>
         </div>
 
-        {/* ------------------------------------------------ */}
         {/* STORY */}
-        {/* ------------------------------------------------ */}
 
         <div className="mt-24 grid items-stretch gap-6 lg:grid-cols-[1.25fr_0.75fr]">
           {/* Main story */}
@@ -136,9 +132,7 @@ export default function AboutSection() {
           </div>
         </div>
 
-        {/* ------------------------------------------------ */}
         {/* PILLARS */}
-        {/* ------------------------------------------------ */}
 
         <div className="mt-24">
           <div className="mx-auto max-w-2xl text-center">
@@ -185,9 +179,7 @@ export default function AboutSection() {
           </div>
         </div>
 
-        {/* ------------------------------------------------ */}
         {/* CLOSING CTA */}
-        {/* ------------------------------------------------ */}
 
         <div className="relative mt-24 overflow-hidden rounded-[2rem] bg-[#25D366] px-8 py-14 text-center sm:px-12 lg:py-16">
           {/* Decorative circles */}
