@@ -196,7 +196,7 @@ export default function AboutSection() {
           <div className="pointer-events-none absolute -bottom-32 -right-20 h-72 w-72 rounded-full border-[50px] border-white/10" />
 
           <div className="relative mx-auto max-w-3xl">
-            <p className="text-xs font-black uppercase tracking-[0.2em] text-[#111111]/60">
+            <p className="text-xs font-black uppercase tracking-[0.2em] text-white">
               Your business belongs here
             </p>
 
