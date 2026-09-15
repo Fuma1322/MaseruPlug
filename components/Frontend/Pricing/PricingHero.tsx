@@ -7,11 +7,11 @@ export default function PricingHero() {
     <section className="relative isolate overflow-hidden bg-white">
       {/* Background atmosphere */}
       <div className="absolute inset-0 -z-10">
-        <div className="absolute left-1/2 top-0 h-[500px] w-[900px] -translate-x-1/2 rounded-full bg-[#25D366]/10 blur-[120px]" />
+        <div className="absolute left-1/3 top-0 h-[500px] w-[900px] -translate-x-1/2 rounded-full bg-[#25D366]/30 blur-[120px]" />
 
         <div className="absolute right-0 top-40 h-72 w-72 rounded-full bg-[#25D366]/10 blur-[100px]" />
 
-        <div className="absolute inset-0 bg-[radial-gradient(#11111112_1px,transparent_1px)] opacity-40 [background-size:24px_24px]" />
+        <div className="absolute inset-0 bg-[radial-gradient(#11111112_1px,transparent_1px)] opacity-80 [background-size:24px_24px]" />
       </div>
 
       <div className="mx-auto max-w-7xl px-6 pb-20 pt-32 lg:px-8 lg:pb-28 lg:pt-20">
