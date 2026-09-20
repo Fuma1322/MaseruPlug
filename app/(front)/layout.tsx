@@ -5,18 +5,16 @@ import React, { ReactNode } from 'react';
 
 export default async function Layout({ children }: { children: ReactNode }) {
   return (
-    <html lang="en">
-      <body>
-        <Navbar />
+    <div>
+      <Navbar />
 
-        <main className="min-h-screen">{children}</main>
+      <main className="min-h-screen">{children}</main>
 
-        <div className="pb-12 md:pb-0">
-          <Footer />
-        </div>
+      <div className="pb-12 md:pb-0">
+        <Footer />
+      </div>
 
-        <MobileDock />
-      </body>
-    </html>
+      <MobileDock />
+    </div>
   );
 }
