@@ -59,9 +59,9 @@ export default async function Categories() {
               return (
                 <li key={category.id}>
                   <Link href={`/categories/${category.slug}`} className="group block h-full">
-                    <div className="relative flex h-full min-h-[220px] w-full max-w-xs flex-col items-center justify-center overflow-hidden rounded-[1.75rem] border border-white/10 bg-gradient-to-br from-[#171717] via-[#111111] to-[#090909] p-6 shadow-[0_20px_60px_rgba(17,17,17,0.18)] transition-all duration-500 hover:-translate-y-2 hover:border-[#25D366]/30 hover:shadow-[0_25px_70px_rgba(17,17,17,0.25)]">
+                    <div className="relative flex h-full min-h-[220px] w-full max-w-xs flex-col items-center justify-center overflow-hidden rounded-[1.75rem] border border-white/10 bg-white p-6 shadow-[0_20px_60px_rgba(17,17,17,0.18)] transition-all duration-500 hover:-translate-y-2 hover:border-[#25D366]/30 hover:shadow-[0_25px_70px_rgba(17,17,17,0.25)]">
                       {/* Top-right ambient glow */}
-                      <div className="pointer-events-none absolute -right-20 -top-20 h-48 w-48 rounded-full bg-[#25D366]/[0.07] blur-[55px] transition-all duration-500 group-hover:bg-[#25D366]/[0.14]" />
+                      <div className="pointer-events-none absolute -right-20 -top-20 h-48 w-48 rounded-full bg-[#25D366]/[0.07] blur-[55px] transition-all duration-500 group-hover:bg-[#25D366]/[0.07]" />
 
                       {/* Bottom-left ambient glow */}
                       <div className="pointer-events-none absolute -bottom-24 -left-20 h-44 w-44 rounded-full bg-[#25D366]/[0.035] blur-[50px] transition-all duration-500 group-hover:bg-[#25D366]/[0.08]" />
@@ -75,12 +75,12 @@ export default async function Categories() {
                       </div>
 
                       {/* Name */}
-                      <p className="relative mt-5 text-center text-lg font-bold tracking-tight text-white transition-colors duration-300 group-hover:text-[#25D366]">
+                      <p className="relative mt-5 text-center text-lg font-bold tracking-tight text-[#111111] transition-colors duration-300 group-hover:text-[#25D366]">
                         {category.name}
                       </p>
 
                       {/* Business count */}
-                      <p className="relative mt-1 text-sm text-white/45">
+                      <p className="relative mt-1 text-sm text-[#111111]/70 transition-colors duration-300 group-hover:text-[#25D366]/90">
                         {category._count.businesses}{' '}
                         {category._count.businesses === 1 ? 'business' : 'businesses'}
                       </p>
