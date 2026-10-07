@@ -1,0 +1,187 @@
+// schema.prisma
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "mongodb"
+  url      = env("DATABASE_URL")
+}
+
+enum BusinessStatus {
+  PENDING
+  ACTIVE
+  INACTIVE
+}
+
+model Category {
+  id          String  @id @default(auto()) @map("_id") @db.ObjectId
+  name        String
+  slug        String  @unique
+  description String?
+  icon        String?
+
+  businesses Business[]
+
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+}
+
+model Business {
+  id String @id @default(auto()) @map("_id") @db.ObjectId
+
+  name        String
+  slug        String @unique
+  description String
+  location    String
+
+  phone    String
+  whatsapp String
+
+  images String[]
+
+  facebookUrl String?
+  websiteUrl  String?
+
+  metaTitle       String?
+  metaDescription String?
+
+  isFeatured Boolean        @default(false)
+  status     BusinessStatus @default(PENDING)
+
+  categoryId String   @db.ObjectId
+  category   Category @relation(fields: [categoryId], references: [id])
+
+  analytics BusinessEvent[]
+
+  deals     Deal[]
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+}
+
+model SearchQuery {
+  id        String   @id @default(auto()) @map("_id") @db.ObjectId
+  query     String
+  createdAt DateTime @default(now())
+
+  @@index([query])
+  @@index([createdAt])
+}
+
+model BusinessEvent {
+  id String @id @default(auto()) @map("_id") @db.ObjectId
+
+  businessId String   @db.ObjectId
+  business   Business @relation(fields: [businessId], references: [id], onDelete: Cascade)
+
+  event AnalyticsEvent
+
+  userAgent String?
+
+  createdAt DateTime @default(now())
+}
+
+enum AnalyticsEvent {
+  PROFILE_VIEW
+  FEATURED_PROFILE_VIEW
+  WHATSAPP_CLICK
+  PHONE_CLICK
+  FACEBOOK_CLICK
+  WEBSITE_CLICK
+  DIRECTIONS_CLICK
+  SHARE_CLICK
+}
+
+model BusinessFeedback {
+  id String @id @default(auto()) @map("_id") @db.ObjectId
+
+  businessName String
+
+  listingDuration       String
+  satisfaction          Int
+  profileRepresentation String
+
+  customerDiscovery        String
+  customerDiscoveryDetails String?
+
+  usefulness String
+
+  wantsReviews     String
+  reviewPreference String?
+
+  desiredFeatures   String[]
+  mostWantedFeature String?
+
+  businessGoals String[]
+
+  recommend            String
+  recommendationReason String?
+
+  whatTheyLike  String?
+  whatToImprove String?
+
+  premiumInterest String
+  premiumFeatures String[]
+
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  @@index([businessName])
+  @@index([createdAt])
+  @@index([satisfaction])
+}
+
+enum DealStatus {
+  DRAFT
+  ACTIVE
+  PAUSED
+  EXPIRED
+}
+
+model Deal {
+  id String @id @default(auto()) @map("_id") @db.ObjectId
+
+  slug        String @unique
+  title       String
+  description String
+
+  image String
+
+  originalPrice Float
+  offerPrice    Float
+
+  totalSpots   Int
+  claimedSpots Int @default(0)
+
+  status DealStatus @default(DRAFT)
+
+  startsAt  DateTime?
+  expiresAt DateTime?
+
+  businessId String   @db.ObjectId
+  business   Business @relation(fields: [businessId], references: [id])
+
+  claims DealClaim[]
+
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+}
+
+model DealClaim {
+  id String @id @default(auto()) @map("_id") @db.ObjectId
+
+  offerCode String @unique
+
+  customerName  String?
+  customerPhone String?
+  customerEmail String?
+
+  redeemed   Boolean   @default(false)
+  redeemedAt DateTime?
+
+  dealId String @db.ObjectId
+  deal   Deal   @relation(fields: [dealId], references: [id])
+
+  createdAt DateTime @default(now())
+}

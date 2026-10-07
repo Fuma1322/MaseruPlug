@@ -1,0 +1,75 @@
+"use client";
+
+import React from "react";
+import { Label } from "../ui/label";
+import { Input } from "../ui/input";
+import Link from "next/link";
+import { cn } from "@/lib/utils";
+
+import {
+  FieldErrors,
+  FieldValues,
+  UseFormRegister,
+  Path,
+} from "react-hook-form";
+
+type TextInputsProps<T extends FieldValues> = {
+  label: string;
+  register: UseFormRegister<T>;
+  name: Path<T>;
+  errors: FieldErrors<T>;
+  type?: string;
+  page?: string;
+  placeholder?: string;
+  className?: string;
+  isRequired?: boolean;
+  value?: string;
+  onChange?: (e: React.ChangeEvent<HTMLInputElement>) => void;
+};;
+
+export default function TextInput<T extends FieldValues>({
+  label,
+  register,
+  name,
+  errors,
+  type = "text",
+  placeholder,
+  page,
+  className = "col-span-full",
+  isRequired = false,
+}: TextInputsProps<T>) {
+  
+  return (
+    <div className={cn("grid gap-2", className)}>
+      {type === "password" && page === "login" ? (
+        <div className="flex items-center">
+          <Label htmlFor={name}>{label}</Label>
+          <Link
+            href="/forgot-password"
+            className="ml-auto inline-block text-sm underline"
+          >
+            Forgot your password?
+          </Link>
+        </div>
+      ) : (
+        <Label htmlFor={name}>{label}</Label>
+      )}
+
+      <Input
+        id={name}
+        type={type}
+        autoComplete={name}
+        placeholder={placeholder || ""}
+        {...register(name, {
+          required: isRequired ? `${label} is required` : false,
+        })}
+      />
+
+      {errors[name] && (
+        <span className="text-sm text-red-600">
+          {errors[name]?.message?.toString() || `${label} is required`}
+        </span>
+      )}
+    </div>
+  );
+}

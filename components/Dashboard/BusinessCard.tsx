@@ -1,0 +1,137 @@
+'use client';
+
+import Image from 'next/image';
+import { Trash2, MapPin, Loader2 } from 'lucide-react';
+import { useState } from 'react';
+import toast from 'react-hot-toast';
+import { useRouter } from 'next/navigation';
+
+import { deleteBusiness } from '@/actions/business';
+
+import {
+  AlertDialog,
+  AlertDialogAction,
+  AlertDialogCancel,
+  AlertDialogContent,
+  AlertDialogDescription,
+  AlertDialogFooter,
+  AlertDialogHeader,
+  AlertDialogTitle,
+  AlertDialogTrigger,
+} from '@/components/ui/alert-dialog';
+import EditBusinessDialog from './EditBusinessDialog';
+import { Category } from '@prisma/client';
+import { BusinessWithCategory } from '@/types/business';
+
+type BusinessCardProps = {
+  business: BusinessWithCategory;
+  categories: Category[];
+};
+
+export default function BusinessCard({ business, categories }: BusinessCardProps) {
+  const router = useRouter();
+
+  const [deleting, setDeleting] = useState(false);
+
+  const image = business.images?.[0] || '/lelo.jpg';
+
+  async function handleDelete() {
+    try {
+      setDeleting(true);
+
+      const response = await deleteBusiness(business.id);
+
+      if (!response.ok) {
+        toast.error(response.error || 'Failed to delete business');
+        return;
+      }
+
+      toast.success('Business deleted successfully');
+
+      router.refresh();
+    } catch (error) {
+      console.error(error);
+      toast.error('Something went wrong');
+    } finally {
+      setDeleting(false);
+    }
+  }
+
+  return (
+    <div className="overflow-hidden rounded-3xl border border-[#25D366] bg-white shadow-sm transition hover:-translate-y-1 hover:shadow-xl">
+      {/* IMAGE */}
+      <div className="h-48 overflow-hidden">
+        <Image
+          src={image}
+          alt={business.name}
+          width={600}
+          height={400}
+          className="h-full w-full object-cover transition duration-300 hover:scale-105"
+        />
+      </div>
+
+      {/* CONTENT */}
+      <div className="space-y-4 p-5">
+        <div>
+          <h2 className="text-xl font-bold text-[#111111]">{business.name}</h2>
+
+          <div className="mt-2 flex items-center gap-2 text-sm text-gray-500">
+            <MapPin size={15} />
+            {business.location}
+          </div>
+        </div>
+
+        <span className="inline-flex rounded-full bg-[#25D366]/10 px-3 py-1 text-xs font-semibold text-[#25D366]">
+          {business.category.name}
+        </span>
+
+        <div className="flex justify-between border-t pt-4">
+          <EditBusinessDialog business={business} categories={categories} />
+
+          <AlertDialog>
+            <AlertDialogTrigger asChild>
+              <button
+                disabled={deleting}
+                className="flex items-center gap-2 text-sm text-red-500 transition hover:text-red-600 disabled:opacity-50"
+              >
+                {deleting ? (
+                  <>
+                    <Loader2 size={16} className="animate-spin" />
+                    Deleting...
+                  </>
+                ) : (
+                  <>
+                    <Trash2 size={16} />
+                    Delete
+                  </>
+                )}
+              </button>
+            </AlertDialogTrigger>
+
+            <AlertDialogContent className="rounded-3xl">
+              <AlertDialogHeader>
+                <AlertDialogTitle>Delete &quot;{business.name}&quot;?</AlertDialogTitle>
+
+                <AlertDialogDescription>
+                  This action cannot be undone. The business profile and all of its analytics data
+                  will be permanently deleted from MaseruPlug.
+                </AlertDialogDescription>
+              </AlertDialogHeader>
+
+              <AlertDialogFooter>
+                <AlertDialogCancel className="rounded-xl">Cancel</AlertDialogCancel>
+
+                <AlertDialogAction
+                  onClick={handleDelete}
+                  className="rounded-xl bg-red-600 hover:bg-red-700"
+                >
+                  Delete Business
+                </AlertDialogAction>
+              </AlertDialogFooter>
+            </AlertDialogContent>
+          </AlertDialog>
+        </div>
+      </div>
+    </div>
+  );
+}
