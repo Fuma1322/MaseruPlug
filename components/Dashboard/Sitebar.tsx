@@ -57,7 +57,7 @@ export default function Sidebar() {
   ];
 
   return (
-    <aside className="hidden w-72 flex-col border-r border-neutral-200 bg-white p-6 md:flex">
+    <aside className="sticky top-0 hidden h-screen w-full flex-col overflow-hidden border-r border-neutral-200 bg-white p-6 md:flex">
       {/* BRAND */}
 
       <div className="mb-10">
