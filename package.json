@@ -9,11 +9,7 @@
     "lint": "next lint",
     "format": "prettier --write .",
     "format:check": "prettier --check .",
-<<<<<<< HEAD
-    "postinstall": "prisma generanpm run dev te"
-=======
     "postinstall": "prisma generate"
->>>>>>> 8458634ff90328154d0baef1bfa9ba8a0c5196aa
   },
   "dependencies": {
     "@base-ui/react": "^1.5.0",
