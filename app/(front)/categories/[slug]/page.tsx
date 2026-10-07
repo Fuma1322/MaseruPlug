@@ -153,7 +153,7 @@ export default async function CategoryPage({ params }: Props) {
             {/* IMAGE */}
             <div className="relative aspect-[16/10] overflow-hidden">
               <Image
-                src={item.images?.[0] || '/lelo.jpg'}
+                src={item.images?.[0] || '/logo.jpg'}
                 alt={`${item.name} - ${category.name} in Maseru`}
                 fill
                 sizes="(max-width: 768px) 100vw, (max-width: 1280px) 50vw, 33vw"

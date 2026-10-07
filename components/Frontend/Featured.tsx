@@ -51,7 +51,7 @@ export default async function Featured() {
               <div className="relative aspect-[16/10] overflow-hidden">
                 <Image
                   priority
-                  src={item.images?.[0] || '/lelo.jpg'}
+                  src={item.images?.[0] || '/logo.jpg'}
                   alt={item.name}
                   fill
                   className="object-cover transition-transform duration-300 group-hover:scale-105"

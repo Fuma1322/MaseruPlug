@@ -62,7 +62,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
     business.description ||
     `Contact ${business.name}, a trusted ${business.category.name.toLowerCase()} in ${business.location}. Find details, location, and services on MaseruPlug.`;
 
-  const image = business.images?.[0] || '/lelo.jpg';
+  const image = business.images?.[0] || '/logo.jpg';
 
   return {
     title,
@@ -107,7 +107,7 @@ export default async function BusinessProfilePage({ params }: Props) {
     notFound();
   }
 
-  const galleryImages = business.images.length > 0 ? business.images : ['/lelo.jpg'];
+  const galleryImages = business.images.length > 0 ? business.images : ['/logo.jpg'];
 
   const mainTitle = `${business.name}`;
 
@@ -124,7 +124,7 @@ export default async function BusinessProfilePage({ params }: Props) {
               src={galleryImages[0]}
               alt={`${business.name} main image`}
               placeholder="blur"
-              blurDataURL="/lelo.jpg"
+              blurDataURL="/logo.jpg"
               width={1200}
               height={800}
               className="h-[400px] w-full object-cover transition duration-500 hover:scale-105"
@@ -139,7 +139,7 @@ export default async function BusinessProfilePage({ params }: Props) {
                   src={image}
                   alt={`${business.name} gallery ${index + 1}`}
                   placeholder="blur"
-                  blurDataURL="/lelo.jpg"
+                  blurDataURL="/logo.jpg"
                   width={400}
                   height={300}
                   className="h-24 w-full object-cover transition duration-300 hover:scale-110 md:h-28"
@@ -274,7 +274,7 @@ export default async function BusinessProfilePage({ params }: Props) {
                 height={500}
                 className="h-[280px] w-full object-cover transition duration-500 group-hover:scale-110"
                 placeholder="blur"
-                blurDataURL="/lelo.jpg"
+                blurDataURL="/logo.jpg"
               />
             </div>
           ))}
