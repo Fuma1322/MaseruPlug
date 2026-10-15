@@ -12,6 +12,10 @@ export default function Footer() {
       href: '/categories',
       name: 'Categories',
     },
+    // {
+    //   href: '/deals',
+    //   name: 'Hot Deals',
+    // },
     {
       href: '/contact',
       name: 'Join The Plug',

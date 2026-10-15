@@ -33,7 +33,7 @@ export default function BusinessCard({ business, categories }: BusinessCardProps
 
   const [deleting, setDeleting] = useState(false);
 
-  const image = business.images?.[0] || '/lelo.jpg';
+  const image = business.images?.[0] || '/logo.jpg';
 
   async function handleDelete() {
     try {

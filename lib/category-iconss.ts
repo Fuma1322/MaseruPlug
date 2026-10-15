@@ -13,6 +13,7 @@ import {
   Paintbrush,
   HardHat,
   Book,
+  Bike,
 } from 'lucide-react';
 
 export const categoryIcons = [
@@ -30,4 +31,5 @@ export const categoryIcons = [
   { key: 'Brush', label: 'Tattoo & Body Art', icon: Brush },
   { key: 'HardHat', label: 'Building & Renovation', icon: HardHat },
   { key: 'Book', label: 'Tutoring & Education', icon: Book },
+  { key: 'Bike', label: 'Delivery & Logistics', icon: Bike },
 ];
