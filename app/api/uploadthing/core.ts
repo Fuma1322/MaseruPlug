@@ -1,38 +1,41 @@
-import { createUploadthing, type FileRouter } from "uploadthing/next";
-import { cookies } from "next/headers";
-import { verifyAdmin } from "@/lib/admin";
+import { createUploadthing, type FileRouter } from 'uploadthing/next';
+import { cookies } from 'next/headers';
+import { verifyAdmin } from '@/lib/admin';
 
 const f = createUploadthing();
 
 export const ourFileRouter = {
+  dealsImage: f({ image: { maxFileSize: '2MB' } }).onUploadComplete(async ({ file }) => {
+    console.log('file url', file.url);
+    // !!! Whatever is returned here is sent to the clientside `onClientUploadComplete` callback
+    return { uploadedBy: 'ClinicEase' };
+  }),
+
   businessImages: f({
     image: {
-      maxFileSize: "4MB",
+      maxFileSize: '4MB',
       maxFileCount: 12,
     },
   })
-
     .middleware(async () => {
       const cookieStore = await cookies();
       await verifyAdmin();
-      const adminAuth = cookieStore.get("admin-auth");
+      const adminAuth = cookieStore.get('admin-auth');
 
       if (!adminAuth) {
-        throw new Error("Unauthorized");
+        throw new Error('Unauthorized');
       }
 
       return {
-        role: "admin",
+        role: 'admin',
       };
     })
 
     .onUploadComplete(async ({ metadata }) => {
-      console.log(
-        `Upload completed by ${metadata.role}`
-      );
+      console.log(`Upload completed by ${metadata.role}`);
 
       return {
-        uploadedBy: "MaseruPlug",
+        uploadedBy: 'MaseruPlug',
       };
     }),
 } satisfies FileRouter;

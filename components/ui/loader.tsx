@@ -1,16 +1,16 @@
-"use client";
+'use client';
 
-import { motion } from "framer-motion";
-import React from "react";
+import { motion } from 'framer-motion';
+import React from 'react';
 
 export const LoaderOne = () => {
   const transition = (x: number) => ({
     duration: 1,
     repeat: Infinity,
-    repeatType: "loop" as const,
+    repeatType: 'loop' as const,
     delay: x * 0.2,
-    ease: "easeInOut" as const,
-    });
+    ease: 'easeInOut' as const,
+  });
 
   return (
     <div className="flex items-center gap-2">
@@ -52,10 +52,10 @@ export const LoaderTwo = () => {
   const transition = (x: number) => ({
     duration: 1,
     repeat: Infinity,
-    repeatType: "loop" as const,
+    repeatType: 'loop' as const,
     delay: x * 0.2,
-    ease: "easeInOut" as const,
-    });
+    ease: 'easeInOut' as const,
+  });
 
   return (
     <div className="flex items-center">
@@ -109,13 +109,13 @@ export const LoaderThree = () => {
     >
       <motion.path stroke="none" d="M0 0h24v24H0z" fill="none" />
       <motion.path
-        initial={{ pathLength: 0, fill: "var(--fill-initial)" }}
-        animate={{ pathLength: 1, fill: "var(--fill-final)" }}
+        initial={{ pathLength: 0, fill: 'var(--fill-initial)' }}
+        animate={{ pathLength: 1, fill: 'var(--fill-final)' }}
         transition={{
           duration: 2,
-          ease: "easeInOut",
+          ease: 'easeInOut',
           repeat: Infinity,
-          repeatType: "reverse",
+          repeatType: 'reverse',
         }}
         d="M13 3l0 7l6 0l-8 11l0 -7l-6 0l8 -11"
       />
@@ -123,23 +123,19 @@ export const LoaderThree = () => {
   );
 };
 
-export const LoaderFour = ({ text = "Loading..." }: { text?: string }) => {
+export const LoaderFour = ({ text = 'Loading...' }: { text?: string }) => {
   return (
     <div className="relative font-bold text-black [perspective:1000px] dark:text-white">
       <motion.span
         animate={{
-            transform: [
-            "skew(0deg) scaleX(1)",
-            "skew(-40deg) scaleX(2)",
-            "skew(0deg) scaleX(1)",
-            ],
+          transform: ['skew(0deg) scaleX(1)', 'skew(-40deg) scaleX(2)', 'skew(0deg) scaleX(1)'],
         }}
         transition={{
           duration: 0.05,
           repeat: Infinity,
-          repeatType: "reverse",
+          repeatType: 'reverse',
           repeatDelay: 2,
-          ease: "linear",
+          ease: 'linear',
           times: [0, 0.2, 0.5, 0.8, 1],
         }}
         className="relative z-20 inline-block"
@@ -156,8 +152,8 @@ export const LoaderFour = ({ text = "Loading..." }: { text?: string }) => {
         transition={{
           duration: 0.5,
           repeat: Infinity,
-          repeatType: "reverse",
-          ease: "linear",
+          repeatType: 'reverse',
+          ease: 'linear',
           times: [0, 0.2, 0.5, 0.8, 1],
         }}
       >
@@ -173,8 +169,8 @@ export const LoaderFour = ({ text = "Loading..." }: { text?: string }) => {
         transition={{
           duration: 0.8,
           repeat: Infinity,
-          repeatType: "reverse",
-          ease: "linear",
+          repeatType: 'reverse',
+          ease: 'linear',
           times: [0, 0.3, 0.6, 0.8, 1],
         }}
       >
@@ -186,8 +182,8 @@ export const LoaderFour = ({ text = "Loading..." }: { text?: string }) => {
 
 export const LoaderFive = ({ text }: { text: string }) => {
   return (
-    <div className="font-sans sm:text-6xl font-bold text-[#25D366] [--shadow-color:var(--color-neutral-500)] dark:[--shadow-color:var(--color-neutral-100)] flex items-center justify-center py-10">
-      {text.split("").map((char, i) => (
+    <div className="flex items-center justify-center font-sans font-bold text-[#25D366] [--shadow-color:var(--color-neutral-500)] dark:[--shadow-color:var(--color-neutral-100)] sm:text-xl">
+      {text.split('').map((char, i) => (
         <motion.span
           key={i}
           className="inline-block"
@@ -195,22 +191,22 @@ export const LoaderFive = ({ text }: { text: string }) => {
           animate={{
             scale: [1, 1.1, 1],
             textShadow: [
-              "0 0 0 var(--shadow-color)",
-              "0 0 1px var(--shadow-color)",
-              "0 0 0 var(--shadow-color)",
+              '0 0 0 var(--shadow-color)',
+              '0 0 1px var(--shadow-color)',
+              '0 0 0 var(--shadow-color)',
             ],
             opacity: [0.5, 1, 0.5],
           }}
           transition={{
             duration: 0.5,
             repeat: Infinity,
-            repeatType: "loop",
+            repeatType: 'loop',
             delay: i * 0.05,
-            ease: "easeInOut",
+            ease: 'easeInOut',
             repeatDelay: 2,
           }}
         >
-          {char === " " ? "\u00A0" : char}
+          {char === ' ' ? '\u00A0' : char}
         </motion.span>
       ))}
     </div>

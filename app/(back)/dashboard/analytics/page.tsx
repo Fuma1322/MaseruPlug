@@ -1,9 +1,11 @@
 import { TrendingUp, Store } from 'lucide-react';
+
 import { formatNumber } from '@/lib/formatNumber';
+
 import { getAnalyticsOverview } from '@/actions/getAnalytics';
+
 import AnalyticsCard from '@/components/Dashboard/AnalyticsCard';
-import AnalyticsDashboard from '@/components/Dashboard/AnalyticsDashboard';
-import BusinessAnalyticsTable from '@/components/Dashboard/BusinessAnalyticsTable';
+import AnalyticsContent from '@/components/Dashboard/AnalyticsContent';
 
 export default async function AnalyticsPage() {
   const data = await getAnalyticsOverview();
@@ -12,13 +14,13 @@ export default async function AnalyticsPage() {
     data.totalViews > 0 ? Number(((data.whatsappClicks / data.totalViews) * 100).toFixed(1)) : 0;
 
   return (
-    <div className="min-h-screen p-4 sm:p-6 lg:p-10">
+    <div className="min-h-screen p-4 sm:p-6 md:p-10">
       {/* HEADER */}
 
       <div className="flex flex-col gap-3">
         <div className="flex items-center gap-3">
-          <div className="flex h-12 w-12 items-center justify-center rounded-2xl bg-[#25D366] shadow-lg shadow-green-200">
-            <TrendingUp className="text-white" size={26} />
+          <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-xl bg-[#25D366] shadow-lg shadow-green-200 sm:h-12 sm:w-12 sm:rounded-2xl">
+            <TrendingUp className="h-5 w-5 text-white sm:h-6 sm:w-6" />
           </div>
 
           <div>
@@ -55,7 +57,7 @@ export default async function AnalyticsPage() {
         <AnalyticsCard
           title="Conversion Rate"
           value={`${conversionRate.toFixed(1)}%`}
-          description="Conversion Rate"
+          description="Profile views converted to WhatsApp"
         />
       </div>
 
@@ -63,6 +65,7 @@ export default async function AnalyticsPage() {
 
       <div className="mt-8 rounded-3xl border border-gray-100 bg-white p-4 shadow-xl sm:mt-12 sm:p-8">
         {/* SECTION HEADER */}
+
         <div className="flex flex-col gap-4 sm:flex-row sm:items-center sm:justify-between">
           <div className="flex items-center gap-3">
             <div className="rounded-xl bg-green-50 p-3">
@@ -81,16 +84,10 @@ export default async function AnalyticsPage() {
           </div>
         </div>
 
-        {/* ANALYTICS CHARTS */}
-
-        <div className="mt-8">
-          <AnalyticsDashboard />
-        </div>
-
         {/* BUSINESS TABLE */}
 
-        <div className="mt-10 divide-y">
-          <BusinessAnalyticsTable businesses={data.businesses} />
+        <div className="mt-10">
+          <AnalyticsContent businesses={data.businesses} />
         </div>
       </div>
     </div>

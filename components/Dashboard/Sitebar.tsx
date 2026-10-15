@@ -1,11 +1,13 @@
 'use client';
 
 import Link from 'next/link';
-import { usePathname } from 'next/navigation';
 import { cn } from '@/lib/utils';
+import { usePathname } from 'next/navigation';
 
 import {
   Activity,
+  ClipboardPen,
+  HandCoins,
   Home,
   LayoutDashboard,
   MonitorSmartphone,
@@ -38,14 +40,24 @@ export default function Sidebar() {
       icon: University,
     },
     {
+      title: 'Deals',
+      path: '/dashboard/deals',
+      icon: HandCoins,
+    },
+    {
       title: 'Analytics',
       path: '/dashboard/analytics',
       icon: Activity,
     },
+    {
+      title: 'Reviews',
+      path: '/dashboard/feedback',
+      icon: ClipboardPen,
+    },
   ];
 
   return (
-    <aside className="hidden w-72 flex-col border-r border-neutral-200 bg-white p-6 md:flex">
+    <aside className="sticky top-0 hidden h-screen w-full flex-col overflow-hidden border-r border-neutral-200 bg-white p-6 md:flex">
       {/* BRAND */}
 
       <div className="mb-10">

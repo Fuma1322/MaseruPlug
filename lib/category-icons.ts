@@ -14,6 +14,7 @@ import {
   HardHat,
   Paintbrush,
   Book,
+  Bike,
 } from 'lucide-react';
 
 export type CategoryIconComponent = ComponentType<SVGProps<SVGSVGElement>>;
@@ -33,6 +34,7 @@ export const categoryIconMap: Record<string, CategoryIconComponent> = {
   Shirt,
   HardHat,
   Book,
+  Bike,
 };
 
 export function getCategoryIcon(iconKey?: string) {

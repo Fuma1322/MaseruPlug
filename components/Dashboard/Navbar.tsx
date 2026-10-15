@@ -4,7 +4,6 @@ import React from 'react';
 import Link from 'next/link';
 import { cn } from '@/lib/utils';
 import { usePathname } from 'next/navigation';
-
 import { Button } from '@/components/ui/button';
 import { Sheet, SheetContent, SheetTrigger } from '@/components/ui/sheet';
 
@@ -17,6 +16,8 @@ import {
   Users,
   Power,
   LayoutDashboard,
+  ClipboardPen,
+  HandCoins,
 } from 'lucide-react';
 
 import { logoutAdmin } from '@/actions/admin';
@@ -46,9 +47,19 @@ export default function NavBar() {
       icon: University,
     },
     {
+      title: 'Deals',
+      path: '/dashboard/deals',
+      icon: HandCoins,
+    },
+    {
       title: 'Analytics',
       path: '/dashboard/analytics',
       icon: Activity,
+    },
+    {
+      title: 'Reviews',
+      path: '/dashboard/feedback',
+      icon: ClipboardPen,
     },
   ];
 

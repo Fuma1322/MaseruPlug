@@ -26,32 +26,92 @@ export const metadata: Metadata = {
   metadataBase: new URL('https://mplug.com.ls'),
 
   title: {
-    default: 'MaseruPlug | Find Trusted Local Businesses & Services In Lesotho',
+    default: 'MaseruPlug | Find Local Businesses & Services in Maseru, Lesotho',
     template: '%s | MaseruPlug',
   },
 
   description:
-    'Find trusted nail technicians, tattoo artists, carpenters, welders, plumbers, salons, and other local businesses across Lesotho. MaseruPlug connects customers with verified service providers.',
-
-  other: {
-    'geo.region': 'LS',
-    'geo.placename': 'Maseru, Lesotho',
-    'geo.position': '-29.3158;27.4869',
-    ICBM: '-29.3158, 27.4869',
-  },
+    'Find plumbers, nail technicians, tattoo artists, barbers, salons, piercing studios and other trusted local businesses in Maseru and across Lesotho. Discover businesses, view profiles and connect directly.',
 
   keywords: [
-    'find businesses in Lesotho',
-    'local services Lesotho',
-    'Maseru businesses',
-    'nail technicians in Lesotho',
-    'tattoo artists in Lesotho',
-    'carpenters in Lesotho',
-    'crochet businesses in Lesotho',
-    'welders in Lesotho',
-    'small businesses in Lesotho',
-    'business directory Lesotho',
+    // Brand & core discovery
     'MaseruPlug',
+    'businesses in Lesotho',
+    'businesses in Maseru',
+    'local businesses Lesotho',
+    'local services Lesotho',
+    'services in Maseru',
+    'find businesses in Lesotho',
+    'find local businesses',
+    'business directory Lesotho',
+    'business directory Maseru',
+    'local service providers Lesotho',
+    'service providers in Lesotho',
+    'small businesses in Lesotho',
+
+    // Plumbing — strong Search Console signal
+    'plumbers near me',
+    'plumber near me',
+    'plumbers in Lesotho',
+    'plumbers in Maseru',
+    'professional plumber near me',
+    'plumbing companies in Lesotho',
+    'plumbing services Maseru',
+
+    // Nails — strong Search Console signal
+    'nails in Maseru',
+    'nail technician near me',
+    'nail tech near me',
+    'nail tech Maseru',
+    'nail salon near me',
+    'nail salons in Maseru',
+    'nail technicians in Lesotho',
+    'polygel nails near me',
+    'nail polish Maseru',
+
+    // Tattoo & piercing — strong Search Console signal
+    'tattoo artists in Lesotho',
+    'tattoo artists in Maseru',
+    'tattoo shops in Lesotho',
+    'tattoo shops in Maseru',
+    'tattoo Matala',
+    'Matala tattoo',
+    'piercing shops near me',
+    'body piercing near me',
+    'belly button piercing near me',
+    'body piercing Maseru',
+
+    // Barbers & hair — strong Search Console signal
+    'barber shop near me',
+    'barbershop near me',
+    'barber shops near me',
+    'barber near me',
+    'local barber shop',
+    'barbers in Maseru',
+    'barbershops in Lesotho',
+    'hairdresser near me',
+    'hairdressers in Maseru',
+    'salon near me',
+    'salons near me',
+    'salon near me for men',
+    'hair salons in Maseru',
+    'mini twists near me',
+    'retwist near me',
+    'wig wash and style near me',
+    'threading near me',
+
+    // Beauty
+    'beauty studio Maseru',
+    'beauty services Maseru',
+    'beauty service providers',
+    'beauty salons in Lesotho',
+    'makeup artist near me',
+    'male pedicure near me',
+
+    // Other existing MaseruPlug categories
+    'carpenters in Lesotho',
+    'welders in Lesotho',
+    'crochet businesses in Lesotho',
   ],
 
   authors: [
@@ -74,8 +134,10 @@ export const metadata: Metadata = {
   },
 
   openGraph: {
-    title: 'MaseruPlug — Discover Trusted Businesses In Maseru',
-    description: 'Find trusted businesses and services in Maseru, Lesotho.',
+    title: 'MaseruPlug — Find Local Businesses & Services in Maseru, Lesotho',
+
+    description:
+      'Discover plumbers, nail technicians, tattoo artists, barbers, salons, piercing studios and other local businesses in Maseru and across Lesotho.',
 
     url: 'https://mplug.com.ls',
 
@@ -90,7 +152,7 @@ export const metadata: Metadata = {
         url: '/og-image.png',
         width: 1200,
         height: 630,
-        alt: 'MaseruPlug',
+        alt: 'MaseruPlug — Find Local Businesses & Services in Lesotho',
       },
     ],
   },
@@ -98,9 +160,10 @@ export const metadata: Metadata = {
   twitter: {
     card: 'summary_large_image',
 
-    title: 'MaseruPlug',
+    title: 'MaseruPlug | Find Local Businesses & Services in Lesotho',
 
-    description: 'Discover trusted businesses and local services in Maseru, Lesotho.',
+    description:
+      'Discover trusted plumbers, nail technicians, tattoo artists, barbers, salons and other local businesses in Maseru and across Lesotho.',
 
     images: '/og-image.png',
   },
@@ -117,6 +180,14 @@ export const metadata: Metadata = {
       'max-snippet': -1,
     },
   },
+
+  other: {
+    'geo.region': 'LS',
+    'geo.placename': 'Maseru, Lesotho',
+    'geo.position': '-29.3158;27.4869',
+    ICBM: '-29.3158, 27.4869',
+  },
+
   icons: {
     icon: '/favicon.ico',
     shortcut: '/favicon.ico',
